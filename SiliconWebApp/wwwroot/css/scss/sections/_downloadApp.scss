@@ -1,0 +1,111 @@
+.downloadApp {
+    background-color: $gray-200;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        .downloadApp-image {
+            display: none;
+
+            @include xl {
+                display: block;
+                max-width: 600px;
+                margin-right: 100px;
+            }
+
+            @include xxl {
+                max-width: 800px;          
+            }
+        }
+
+        .downloadApp-content {
+            margin: auto;
+            padding-top: 50px;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+
+            h1 {        
+                padding-bottom: 50px;
+
+                @include xl {
+                    padding-right: 20%;
+                }
+            }
+
+            p {
+                margin: 0;
+            }
+
+            a {
+                margin-top: 10%;
+                margin-left: 10%;
+            }
+
+            .appstore-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-bottom: 40px;
+
+                @include md {
+                    flex-direction: row;
+                }
+
+                @include xl{
+                    justify-content: left;
+                }
+
+                a {
+                    margin: auto;
+                    margin-top: 20px;
+
+                    @include md {
+                        padding-top: 30px;
+                        margin: 30px;
+                    }
+                }
+                #appstore-darkmode {
+                    display: none;
+                }
+            }
+
+            .googleplay-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-bottom: 40px;
+
+
+                @include md {
+                    flex-direction: row;
+                }
+
+                @include xl{
+                    justify-content: left;
+                }
+
+                a {
+                    margin: auto;
+                    margin-top: 20px;
+
+                    @include md {
+                        padding-top: 30px;
+                        margin: 30px;
+                    }
+                }
+                
+                #googleplay-darkmode {
+                    display: none;
+                }
+            }
+        }
+
+    }
+}
