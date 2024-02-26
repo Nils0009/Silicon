@@ -1,0 +1,13 @@
+.img-slider { 
+      display: none;
+
+      @include md {
+        display: flex;
+        justify-content: center;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }   
+}
