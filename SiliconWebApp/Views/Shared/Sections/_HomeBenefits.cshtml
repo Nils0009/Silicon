@@ -1,58 +1,62 @@
-﻿<section class="benefits">
+﻿@model HomeBenefitsViewModel
+
+<section class="benefits">
     <div class="container">
 
         <div class="section-title">
-            <h2>What Do You Get with Our Tool?</h2>
-            <p>Make sure all your tasks are organized so you can set the priorities and focus on important.</p>
+            <h2>@Model.Title</h2>
+            <p>@Model.Text</p>
         </div>
 
         <div class="benefits-f-2">
-            <div id="b-box" class="comments-on-tasks">
-                <a href="#">
-                    <img src="images/chat.svg" alt="icon of chat bubble">
-                    <h6>Comments on Tasks</h6>
-                    <p>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+            
+            <div id="@Model.BenefitBox1.IdName" class="@Model.BenefitBox1.ClassName">
+                <a asp-controller="@Model.BenefitBox1.Link.ControllerName" asp-action="@Model.BenefitBox1.Link.ActionName">
+                    <img src="@Model.BenefitBox1.BenefitImage.ImageUrl" alt="@Model.BenefitBox1.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox1.Title</h6>
+                    <p>@Model.BenefitBox1.Text</p>
                 </a>
             </div>
-            <div id="b-box" class="notifications">
-                <a href="#">
-                    <img src="images/bell.svg" alt="icon of a bell">
-                    <h6>Notifications</h6>
-                    <p>Diam, suspendisse velit cras ac. Lobortis diam volutpat, eget pellentesque viverra.</p>
+
+            <div id="@Model.BenefitBox2.IdName" class="@Model.BenefitBox2.ClassName">
+                <a asp-controller="@Model.BenefitBox2.Link.ControllerName" asp-action="@Model.BenefitBox2.Link.ActionName">
+                    <img src="@Model.BenefitBox2.BenefitImage.ImageUrl" alt="@Model.BenefitBox2.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox2.Title</h6>
+                    <p>@Model.BenefitBox2.Text</p>
                 </a>
             </div>
         </div>
 
         <div class="benefits-s-2">
-            <div id="b-box" class="tasks-analytics">
-                <a href="#">
-                    <img src="images/presentation.svg" alt="icon of a chart">
-                    <h6>Tasks Analytics</h6>
-                    <p>Non imperdiet facilisis nulla tellus Morbi scelerisque eget adipiscing vulputate.</p>
+            <div id="@Model.BenefitBox3.IdName" class="@Model.BenefitBox3.ClassName">
+                <a asp-controller="@Model.BenefitBox3.Link.ControllerName" asp-action="@Model.BenefitBox3.Link.ActionName">
+                    <img src="@Model.BenefitBox3.BenefitImage.ImageUrl" alt="@Model.BenefitBox3.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox3.Title</h6>
+                    <p>@Model.BenefitBox3.Text</p>
                 </a>
             </div>
-            <div id="b-box" class="sections-subtasks">
-                <a href="#">
-                    <img src="images/test.svg" alt="icon of a check list">
-                    <h6>Sections & Subtasks</h6>
-                    <p>Mi feugiat hac id in. Sit elit placerat lacus nibh lorem ridiculus lectus.</p>
+            <div id="@Model.BenefitBox4.IdName" class="@Model.BenefitBox4.ClassName">
+                <a asp-controller="@Model.BenefitBox4.Link.ControllerName" asp-action="@Model.BenefitBox4.Link.ActionName">
+                    <img src="@Model.BenefitBox4.BenefitImage.ImageUrl" alt="@Model.BenefitBox4.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox4.Title</h6>
+                    <p>@Model.BenefitBox4.Text</p>
                 </a>
             </div>
         </div>
 
         <div class="benefits-t-2">
-            <div id="b-box" class="multiple-assignees">
-                <a href="#">
-                    <img src="images/add-group.svg" alt="icon of a group">
-                    <h6>Multiple Assignees</h6>
-                    <p>A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.</p>
+            <div id="@Model.BenefitBox5.IdName" class="@Model.BenefitBox5.ClassName">
+                <a asp-controller="@Model.BenefitBox5.Link.ControllerName" asp-action="@Model.BenefitBox5.Link.ActionName">
+                    <img src="@Model.BenefitBox5.BenefitImage.ImageUrl" alt="@Model.BenefitBox5.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox5.Title</h6>
+                    <p>@Model.BenefitBox5.Text</p>
                 </a>
             </div>
-            <div id="b-box" class="data-security">
-                <a href="#">
-                    <img src="images/shield.svg" alt="icon of a shield">
-                    <h6>Data Security</h6>
-                    <p>Aliquam malesuada neque eget elit nulla vestibulum nunc cras.</p>
+            <div id="@Model.BenefitBox6.IdName" class="@Model.BenefitBox6.ClassName">
+                <a asp-controller="@Model.BenefitBox6.Link.ControllerName" asp-action="@Model.BenefitBox6.Link.ActionName">
+                    <img src="@Model.BenefitBox6.BenefitImage.ImageUrl" alt="@Model.BenefitBox6.BenefitImage.AltText">
+                    <h6>@Model.BenefitBox6.Title</h6>
+                    <p>@Model.BenefitBox6.Text</p>
                 </a>
             </div>
         </div>

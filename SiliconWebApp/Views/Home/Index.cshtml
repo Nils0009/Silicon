@@ -1,7 +1,11 @@
-﻿<partial name="~/Views/Shared/Sections/_HomeShowcase.cshtml" />
-<partial name="~/Views/Shared/Sections/_HomeBenefits.cshtml" />
+﻿@model HomeViewModel
+
+@await Html.PartialAsync("~/Views/Shared/Sections/_HomeShowcase.cshtml", Model.Showcase)
+@await Html.PartialAsync("~/Views/Shared/Sections/_HomeBenefits.cshtml", Model.Benefits)
+
+@* <partial name="~/Views/Shared/Sections/_HomeBenefits.cshtml" />
 <partial name="~/Views/Shared/Sections/_HomeImgSlider.cshtml" />
 <partial name="~/Views/Shared/Sections/_HomeManageWork.cshtml" />
 <partial name="~/Views/Shared/Sections/_HomeDownloadApp.cshtml" />
 <partial name="~/Views/Shared/Sections/_HomeWorkTools.cshtml" />
-<partial name="~/Views/Shared/Sections/_HomeSubscribe.cshtml" />
+<partial name="~/Views/Shared/Sections/_HomeSubscribe.cshtml" /> *@
