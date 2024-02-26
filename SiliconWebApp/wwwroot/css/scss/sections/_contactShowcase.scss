@@ -1,0 +1,103 @@
+.contactShowcase {
+    background-color: $gray-100;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include lg {
+            flex-direction: row;
+            justify-content: left;
+            align-items: start;
+        }
+
+        .contactUs {
+
+            .top-text {
+                margin-top: 50px;
+
+                i {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+
+                .active {
+                    color: $theme;
+                }
+            }
+
+            .email-info {
+                display: flex;
+                margin-top: 30px;
+                width: 300px;
+
+                img {
+                    margin-right: 20px;
+                    margin-bottom: 40px;
+                }
+
+                .email-info-text {
+                    flex-direction: column;
+                }
+            }
+
+            .career-info {
+                display: flex;
+                margin-top: 30px;
+                margin-bottom: 100px;
+                width: 300px;
+
+                img {
+                    margin-right: 20px;
+                    margin-bottom: 40px;
+                }
+
+                .career-info-text {
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .contactForm {
+
+            @include lg {
+                position: absolute;
+                top: 150px;
+                right: 200px;
+            }
+
+            @include xl {
+                right: 400px;
+            }
+
+            padding: 40px;
+            color: black;
+            background-color: white;
+            @include shadow-l;
+            border-radius: 5px;
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+                input, textarea {
+                    margin-bottom: 15px;
+                    padding: 10px;
+                }
+
+                button {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    .contactMap {
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.signUp-section {
+    margin-top: 100px;
+    margin-bottom: 200px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        .signUp-text {
+            text-align: left;
+            width: 80%;
+
+            @include xl {
+                width: 50%;
+            }
+        }
+
+        form {
+
+            .fullname {
+                display: flex;
+
+                .firstName, .lastName {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+
+                    input {
+                        padding-right: 50px;
+                    }
+                }
+
+                .firstName {
+                    margin-right: 10px;
+                }
+            }
+
+            .signUp-checkbox {
+                margin-bottom: 20px;
+
+                label {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

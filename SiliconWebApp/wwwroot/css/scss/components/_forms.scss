@@ -1,0 +1,32 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    @include xl {
+        width: 50%;
+    }
+
+
+    label {
+        margin-top: 20px;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $gray-400;
+    }
+
+    .signIn-checkbox {
+        label {
+            margin-left: 5px;
+        }
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
