@@ -1,0 +1,40 @@
+﻿<header>
+    <div class="container">
+        <a id="logo" href="index.html">
+            <img id="lightmode-logo" src="Images/SiliconLogotypeLightMode.svg" alt="silicon logo">
+            <img id="darkmode-logo" src="Images/darkmode-logo.svg" alt="silicon logo">
+        </a>
+        <div id="menu">
+            <nav>
+                <a class="menu-link" href="#showcase">showcase</a>
+                <a class="menu-link" href="#features">features</a>
+                <a class="menu-link" href="Contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="btn-switch">
+            <label>light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" onchange="toggleDarkMode()" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+
+        <div class="account-buttons">
+            <a class="btn-gray" href="SignIn.html">Sign in<i class="fa-solid fa-right-to-bracket"></i></a>
+            <a class="btn-theme" href="SignUp.html">Sign up<i class="fa-solid fa-user-plus"></i></a>
+        </div>
+
+        <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        <div class="mobile-menu">
+            <nav>
+                <a class="btn-gray" href="#showcase">Overview</a>
+                <a class="btn-gray" href="#features">Features</a>
+                <a class="btn-gray" href="#contact">Contact</a>
+                <a class="btn-gray" href="SignIn.html">Sign in</a>
+                <a class="btn-gray" href="SignUp.html">Sign up</a>
+            </nav>
+        </div>
+
+    </div>
+</header>
