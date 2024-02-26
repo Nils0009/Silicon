@@ -1,43 +1,25 @@
-﻿<section class="subscribe">
+﻿@model HomeSubscriptionViewModel
+
+<section class="subscribe">
     <div class="container">
         <div class="section-title">
-            <h1>Don't Want to Miss Anything?</h1>
-            <img src="Images/subscribe-img.svg" alt="">
+            <h1>@Model.MainTitle</h1>
+            <img src="@Model.SubscriptionImage.ImageUrl" alt="@Model.SubscriptionImage.AltText">
         </div>
         <div class="signup-content">
-            <h5>Sign up for Newsletters</h5>
+            <h5>@Model.InnerTitle</h5>
             <div class="checkbox-content">
-
-                <div id="ch-b" class="ch-b1">
-                    <input type="checkbox" name="ch-b1">
-                    <label for="ch-b1">Daily Newsletter</label>
-                </div>
-
-                <div id="ch-b" class="ch-b2">
-                    <input type="checkbox" name="ch-b2">
-                    <label for="ch-b2">Advertising Updates</label>
-                </div>
-
-                <div id="ch-b" class="ch-b3">
-                    <input type="checkbox" name="ch-b3">
-                    <label for="ch-b3">Week in Review</label>
-                </div>
-
-                <div id="ch-b" class="ch-b4">
-                    <input type="checkbox" name="ch-b4">
-                    <label for="ch-b4">Event Updates</label>
-                </div>
-
-                <div id="ch-b" class="ch-b5">
-                    <input type="checkbox" name="ch-b5">
-                    <label for="ch-b5">Startups Weekly</label>
-                </div>
-
-                <div id="ch-b" class="ch-b6">
-                    <input type="checkbox" name="ch-b6">
-                    <label for="ch-b6">Podcasts</label>
-                </div>
-
+                
+                @if (Model.SubscriptionBox != null)
+                {
+                    foreach (var subscriptionBox in Model.SubscriptionBox)
+                    {
+                        <div id="ch-b" class="@subscriptionBox.BoxClassName">
+                            <input type="@subscriptionBox.InputType" name="@subscriptionBox.InputName">
+                            <label for="@subscriptionBox.LabelFor">@subscriptionBox.LabelText</label>
+                        </div>
+                    }
+                }             
             </div>
         </div>
         <div>

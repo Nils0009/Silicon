@@ -1,15 +1,17 @@
-﻿<section class="downloadApp">
+﻿@model HomeDownloadAppViewModel
+
+<section class="downloadApp">
     <div class="container">
-        <img class="downloadApp-image" src="Images/download-app-image.svg" alt="">
+        <img class="downloadApp-image" src="@Model.DownloadAppImage.ImageUrl" alt="@Model.DownloadAppImage.AltText">
         <div class="downloadApp-content">
-            <h1>Download Our App for Any Devices:</h1>
+            <h1>@Model.Title</h1>
 
             <div class="appstore-content">
                 <div class="appstore-text">
-                    <p>App Store</p>
-                    <img class="rating" src="Images/rating.svg" alt="">
-                    <h4>Editor's Choice</h4>
-                    <p>rating 4.7, 187K+ reviews</p>
+                    <p>@Model.AppSource.SourceTitle</p>
+                    <img class="rating" src="@Model.AppSource.SourceImage.ImageUrl" alt="@Model.AppSource.SourceImage.AltText">
+                    <h4>@Model.AppSource.SourceText</h4>
+                    <p>@Model.AppSource.SourceTextRating</p>
                 </div>
                 <a href="#"><img id="appstore-lightmode" src="Images/appstore.svg" alt=""></a>
                 <a href="#"><img id="appstore-darkmode" src="Images/appstoredark-mode.svg" alt=""></a>
@@ -17,10 +19,10 @@
 
             <div class="googleplay-content">
                 <div class="googleplay-text">
-                    <p>Google Play</p>
-                    <img class="rating" src="Images/rating.svg" alt="">
-                    <h4>App of the Day</h4>
-                    <p>rating 4.8, 30K+ reviews</p>
+                    <p>@Model.GoogleSource.SourceTitle</p>
+                    <img class="rating" src="@Model.GoogleSource.SourceImage.ImageUrl" alt="@Model.GoogleSource.SourceImage.AltText">
+                    <h4>@Model.GoogleSource.SourceText</h4>
+                    <p>@Model.GoogleSource.SourceTextRating</p>
                 </div>
                 <a href="#"><img id="googleplay-lightmode" src="Images/googleplay.svg" alt=""></a>
                 <a href="#"><img id="googleplay-darkmode" src="Images/googleplaydark-mode.svg" alt=""></a>
