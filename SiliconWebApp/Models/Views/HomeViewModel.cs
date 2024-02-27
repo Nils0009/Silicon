@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using SiliconWebApp.Models.Sections;
+﻿using SiliconWebApp.Models.Sections;
 
 namespace SiliconWebApp.Models.Views;
 

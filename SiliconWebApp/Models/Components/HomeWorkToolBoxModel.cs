@@ -1,8 +1,8 @@
 ﻿namespace SiliconWebApp.Models.Components;
 
-public class HomeWorkToolBoxViewModel
+public class HomeWorkToolBoxModel
 {
     public string? BoxClassName { get; set; }
-    public ImageViewModel? BoxImage { get; set; }
+    public ImageModel? BoxImage { get; set; }
     public string? BoxText { get; set; }
 }

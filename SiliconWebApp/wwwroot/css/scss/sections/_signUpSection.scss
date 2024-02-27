@@ -1,4 +1,4 @@
-.signUp-section {
+#signUp-section {
     margin-top: 100px;
     margin-bottom: 200px;
 
@@ -19,6 +19,10 @@
         }
 
         form {
+
+            label {
+                font-weight: bold;
+            }
 
             .fullname {
                 display: flex;

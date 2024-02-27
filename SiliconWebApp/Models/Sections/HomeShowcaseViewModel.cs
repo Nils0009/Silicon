@@ -5,10 +5,10 @@ namespace SiliconWebApp.Models.Sections;
 public class HomeShowcaseViewModel
 {
     public string? Id { get; set; }
-    public ImageViewModel ShowcaseImage { get; set; } = null!;
+    public ImageModel ShowcaseImage { get; set; } = null!;
     public string? Title { get; set; }
     public string? Text { get; set; }
-    public LinkViewModel Link { get; set; } = new LinkViewModel();
+    public LinkModel Link { get; set; } = new LinkModel();
     public string? BrandsText { get; set; }
-    public List<ImageViewModel>? Brands { get; set; }
+    public List<ImageModel>? Brands { get; set; }
 }

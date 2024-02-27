@@ -1,6 +1,6 @@
 ﻿namespace SiliconWebApp.Models.Components;
 
-public class ListViewModel
+public class ListModel
 {
     public string? Icon { get; set; }
     public string? Text { get; set; }

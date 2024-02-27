@@ -1,6 +1,6 @@
 ﻿namespace SiliconWebApp.Models.Components;
 
-public class HomeSubscriptionBoxViewModel
+public class HomeSubscriptionBoxModel
 {
     public string? BoxClassName { get; set; }
     public string? InputType { get; set; }

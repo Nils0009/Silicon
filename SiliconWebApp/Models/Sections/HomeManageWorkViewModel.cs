@@ -4,7 +4,7 @@ namespace SiliconWebApp.Models.Sections;
 
 public class HomeManageWorkViewModel
 {
-    public ImageViewModel ManageImage { get; set; } = null!;
+    public ImageModel ManageImage { get; set; } = null!;
     public string? Title { get; set; }
-    public List<ListViewModel>? ManageWorkList { get; set; }
+    public List<ListModel>? ManageWorkList { get; set; }
 }
