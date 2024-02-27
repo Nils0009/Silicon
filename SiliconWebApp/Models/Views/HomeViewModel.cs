@@ -8,7 +8,7 @@ public class HomeViewModel
     public string Title { get; set; } = "Home";
     public HomeShowcaseViewModel Showcase { get; set; } = new HomeShowcaseViewModel
     {
-        Id = "Showcase",
+        Id = "showcase",
 
         ShowcaseImage = new() { ImageUrl = "Images/showcase-image.svg", AltText = "" },
 
