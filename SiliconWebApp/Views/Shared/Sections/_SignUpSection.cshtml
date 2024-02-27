@@ -1,0 +1,47 @@
+﻿@model SignUpViewModel
+
+<section id="signUp-section">
+    <div class="container">
+        <div class="signUp-text">
+            <h1>@Model.InnerTitle</h1>
+            <p>@Model.Text<a asp-controller="Auth" asp-action="SignIn"> Sign in here.</a></p>
+        </div>
+
+        <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
+            <div class="fullname">
+                <div class="firstName">
+                    <label asp-for="@Model.FirstName"></label>
+                    <span asp-validation-for="@Model.FirstName"></span>
+                    <input asp-for="@Model.FirstName" />
+                </div>
+
+                <div class="lastName">
+                    <label asp-for="@Model.LastName"></label>
+                    <span asp-validation-for="@Model.LastName"></span>
+                    <input asp-for="@Model.LastName" />
+                </div>
+            </div>
+
+            <label asp-for="@Model.EmailAddress"></label>
+            <span asp-validation-for="@Model.EmailAddress"></span>
+            <input asp-for="@Model.EmailAddress" />
+
+            <label asp-for="@Model.Password"></label>
+            <span asp-validation-for="@Model.Password"></span>
+            <input asp-for="@Model.Password" />
+
+            <label asp-for="@Model.ConfirmPassword"></label>
+            <span asp-validation-for="@Model.ConfirmPassword"></span>
+            <input asp-for="@Model.ConfirmPassword" />
+
+            <div class="signUp-checkbox">
+                <input asp-for="@Model.TermsAndConditions" />
+                <label asp-for="@Model.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Index">Terms And Conditions</a></label>
+                <span asp-validation-for="@Model.TermsAndConditions"></span>
+            </div>
+
+            <button class="btn-theme">@Model.Title</button>
+
+        </form>
+    </div>
+</section>

@@ -387,6 +387,33 @@ a:hover {
   color: #FFFFFF;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  form {
+    width: 50%;
+  }
+}
+form label {
+  margin-top: 20px;
+}
+form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #D4D7E5;
+}
+form .signIn-checkbox label {
+  margin-left: 5px;
+}
+form button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 header {
   padding: 15px 0;
 }
@@ -1471,4 +1498,169 @@ main .showcase .container .background-image {
 }
 .courseDescription-contentSection .container .content-bottom .content-bottom-text #fb {
   background-color: blue;
+}
+
+.contactShowcase {
+  background-color: #F3F6FF;
+}
+.contactShowcase .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container {
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+  }
+}
+.contactShowcase .container .contactUs .top-text {
+  margin-top: 50px;
+}
+.contactShowcase .container .contactUs .top-text i {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.contactShowcase .container .contactUs .top-text .active {
+  color: #6366F1;
+}
+.contactShowcase .container .contactUs .email-info {
+  display: flex;
+  margin-top: 30px;
+  width: 300px;
+}
+.contactShowcase .container .contactUs .email-info img {
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+.contactShowcase .container .contactUs .email-info .email-info-text {
+  flex-direction: column;
+}
+.contactShowcase .container .contactUs .career-info {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  width: 300px;
+}
+.contactShowcase .container .contactUs .career-info img {
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+.contactShowcase .container .contactUs .career-info .career-info-text {
+  flex-direction: column;
+}
+.contactShowcase .container .contactForm {
+  padding: 40px;
+  color: black;
+  background-color: white;
+  box-shadow: 0px 4px 13px -2px rgba(19, 16, 34, 0.06), 0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1);
+  border-radius: 5px;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactForm {
+    position: absolute;
+    top: 150px;
+    right: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  .contactShowcase .container .contactForm {
+    right: 400px;
+  }
+}
+.contactShowcase .container .contactForm form {
+  display: flex;
+  flex-direction: column;
+}
+.contactShowcase .container .contactForm form input, .contactShowcase .container .contactForm form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+}
+.contactShowcase .container .contactForm form button {
+  margin-top: 20px;
+}
+.contactShowcase .contactMap img {
+  width: 100%;
+}
+
+.signIn-section {
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+.signIn-section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signIn-section .container .signIn-text {
+  text-align: left;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  .signIn-section .container .signIn-text {
+    width: 50%;
+  }
+}
+.signIn-section .container form .signIn-checkbox label {
+  margin-left: 5px;
+}
+.signIn-section .container form .forgot-signIn {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #D4D7E5;
+  padding-bottom: 20px;
+}
+.signIn-section .container form .forgot-signIn button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.signIn-section .container .altSignIn {
+  display: flex;
+}
+.signIn-section .container .altSignIn button {
+  margin: 10px;
+}
+
+#signUp-section {
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+#signUp-section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#signUp-section .container .signUp-text {
+  text-align: left;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  #signUp-section .container .signUp-text {
+    width: 50%;
+  }
+}
+#signUp-section .container form .fullname {
+  display: flex;
+}
+#signUp-section .container form .fullname .firstName, #signUp-section .container form .fullname .lastName {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+#signUp-section .container form .fullname .firstName input, #signUp-section .container form .fullname .lastName input {
+  padding-right: 50px;
+}
+#signUp-section .container form .fullname .firstName {
+  margin-right: 10px;
+}
+#signUp-section .container form .signUp-checkbox {
+  margin-bottom: 20px;
+}
+#signUp-section .container form .signUp-checkbox label {
+  margin-left: 5px;
 }

@@ -4,10 +4,10 @@ namespace SiliconWebApp.Models.Sections;
 
 public class HomeDownloadAppViewModel
 {
-    public ImageViewModel DownloadAppImage { get; set; } = null!;
+    public ImageModel DownloadAppImage { get; set; } = null!;
     public string? Title { get; set; }
-    public HomeDownloadAppSourceViewModel? AppSource { get; set; }
-    public HomeDownloadAppSourceViewModel? GoogleSource { get; set; }
+    public HomeDownloadAppSourceModel? AppSource { get; set; }
+    public HomeDownloadAppSourceModel? GoogleSource { get; set; }
 
 
 }
