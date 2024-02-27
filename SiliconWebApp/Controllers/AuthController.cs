@@ -28,9 +28,28 @@ public class AuthController : Controller
         }
         
     }
-
+    [HttpGet]
     public IActionResult SignIn()
     {
-        return View();
+        var viewModel = new SignInViewModel();
+
+        @ViewData["Title"] = viewModel.Title;
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult SignIn(SignInViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+        {
+            viewModel.ErrorMessage = "Incorrect email or password";
+            return View(viewModel);
+        }
+        else
+        {
+            return RedirectToAction("Account", "Index");
+        }
+            
     }
 }

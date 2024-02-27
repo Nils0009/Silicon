@@ -1604,6 +1604,9 @@ main .showcase .container .background-image {
     width: 50%;
   }
 }
+.signIn-section .container form label {
+  font-weight: bold;
+}
 .signIn-section .container form .signIn-checkbox label {
   margin-left: 5px;
 }
@@ -1643,6 +1646,9 @@ main .showcase .container .background-image {
   #signUp-section .container .signUp-text {
     width: 50%;
   }
+}
+#signUp-section .container form label {
+  font-weight: bold;
 }
 #signUp-section .container form .fullname {
   display: flex;

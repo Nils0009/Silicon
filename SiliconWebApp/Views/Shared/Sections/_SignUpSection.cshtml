@@ -10,37 +10,37 @@
         <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate>
             <div class="fullname">
                 <div class="firstName">
-                    <label asp-for="@Model.FirstName"></label>
-                    <span asp-validation-for="@Model.FirstName"></span>
-                    <input asp-for="@Model.FirstName" />
+                    <label asp-for="@Model.Form.FirstName"></label>
+                    <span asp-validation-for="@Model.Form.FirstName"></span>
+                    <input asp-for="@Model.Form.FirstName" />
                 </div>
 
                 <div class="lastName">
-                    <label asp-for="@Model.LastName"></label>
-                    <span asp-validation-for="@Model.LastName"></span>
-                    <input asp-for="@Model.LastName" />
+                    <label asp-for="@Model.Form.LastName"></label>
+                    <span asp-validation-for="@Model.Form.LastName"></span>
+                    <input asp-for="@Model.Form.LastName" />
                 </div>
             </div>
 
-            <label asp-for="@Model.EmailAddress"></label>
-            <span asp-validation-for="@Model.EmailAddress"></span>
-            <input asp-for="@Model.EmailAddress" />
+            <label asp-for="@Model.Form.EmailAddress"></label>
+            <span asp-validation-for="@Model.Form.EmailAddress"></span>
+            <input asp-for="@Model.Form.EmailAddress" />
 
-            <label asp-for="@Model.Password"></label>
-            <span asp-validation-for="@Model.Password"></span>
-            <input asp-for="@Model.Password" />
+            <label asp-for="@Model.Form.Password"></label>
+            <span asp-validation-for="@Model.Form.Password"></span>
+            <input asp-for="@Model.Form.Password" />
 
-            <label asp-for="@Model.ConfirmPassword"></label>
-            <span asp-validation-for="@Model.ConfirmPassword"></span>
-            <input asp-for="@Model.ConfirmPassword" />
+            <label asp-for="@Model.Form.ConfirmPassword"></label>
+            <span asp-validation-for="@Model.Form.ConfirmPassword"></span>
+            <input asp-for="@Model.Form.ConfirmPassword" />
 
             <div class="signUp-checkbox">
-                <input asp-for="@Model.TermsAndConditions" />
-                <label asp-for="@Model.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Index">Terms And Conditions</a></label>
-                <span asp-validation-for="@Model.TermsAndConditions"></span>
+                <input asp-for="@Model.Form.TermsAndConditions" />
+                <label asp-for="@Model.Form.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Index">Terms And Conditions</a></label>
+                <span asp-validation-for="@Model.Form.TermsAndConditions"></span>
             </div>
 
-            <button class="btn-theme">@Model.Title</button>
+            <button class="btn-theme" type="submit">@Model.Title</button>
 
         </form>
     </div>
