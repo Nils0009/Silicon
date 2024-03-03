@@ -36,7 +36,7 @@
 
             <div class="signUp-checkbox">
                 <input asp-for="@Model.Form.TermsAndConditions" />
-                <label asp-for="@Model.Form.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Index">Terms And Conditions</a></label>
+                <label asp-for="@Model.Form.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Index">Terms</a> & <a asp-controller="About" asp-action="Index">Conditions</a></label>
                 <span asp-validation-for="@Model.Form.TermsAndConditions"></span>
             </div>
 
