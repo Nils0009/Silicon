@@ -1,5 +1,5 @@
 ﻿using SiliconWebApp.Models.Components;
-namespace SiliconWebApp.Models.Sections;
+namespace SiliconWebApp.ViewModels.Sections;
 
 public class HomeBenefitsViewModel
 {
