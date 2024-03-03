@@ -1,6 +1,6 @@
 ﻿using SiliconWebApp.Models.Components;
 
-namespace SiliconWebApp.Models.Views;
+namespace SiliconWebApp.ViewModels.Views;
 
 public class SignInViewModel
 {

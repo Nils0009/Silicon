@@ -2,7 +2,7 @@
 using SiliconWebApp.Models.Components;
 using System.ComponentModel.DataAnnotations;
 
-namespace SiliconWebApp.Models.Views;
+namespace SiliconWebApp.ViewModels.Views;
 
 public class SignUpViewModel
 {
