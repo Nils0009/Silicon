@@ -5,6 +5,7 @@ namespace SiliconWebApp.Controllers;
 
 public class AuthController : Controller
 {
+    #region SignUp
     [HttpGet]
     public IActionResult SignUp()
     {
@@ -28,6 +29,10 @@ public class AuthController : Controller
         }
         
     }
+    #endregion
+
+
+    #region SignIn
     [HttpGet]
     public IActionResult SignIn()
     {
@@ -52,4 +57,5 @@ public class AuthController : Controller
         }
             
     }
+    #endregion
 }
