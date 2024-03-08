@@ -1,4 +1,8 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
   line-height: 160%;
   font-weight: 400;
@@ -239,6 +243,216 @@ a:hover {
   text-decoration: none;
 }
 
+html, body {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+}
+html .dark-mode, body .dark-mode {
+  background-color: #000000;
+  border-color: gray;
+}
+html .dark-mode h1, html .dark-mode h2, html .dark-mode h3, html .dark-mode h4, html .dark-mode h5, html .dark-mode h6, html .dark-mode p, body .dark-mode h1, body .dark-mode h2, body .dark-mode h3, body .dark-mode h4, body .dark-mode h5, body .dark-mode h6, body .dark-mode p {
+  color: white;
+}
+html .dark-mode .benefits, html .dark-mode .downloadApp, html .dark-mode .subscribe, html .dark-mode .managework, body .dark-mode .benefits, body .dark-mode .downloadApp, body .dark-mode .subscribe, body .dark-mode .managework {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header, body .dark-mode header {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header label, body .dark-mode header label {
+  color: white;
+}
+html .dark-mode header #menu, body .dark-mode header #menu {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link {
+  color: #ffffff !important;
+}
+html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
+  color: white;
+}
+
+.text-xs {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px !important;
+}
+
+.text-s {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+}
+
+.text-m {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+
+.text-lg {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px !important;
+}
+
+.text-xl {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px !important;
+}
+
+.text-lead {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px !important;
+}
+
+.d1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 80px !important;
+}
+
+.d2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 72px !important;
+}
+
+.d3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 64px !important;
+}
+
+.d4 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 56px !important;
+}
+
+.d5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 48px !important;
+}
+
+.d6 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 42px !important;
+}
+
+h1, .h1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 40px !important;
+}
+
+h2, .h2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+
+h3, .h3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+}
+
+h4, .h4 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 24px !important;
+}
+
+h5, .h5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+}
+
+h6, .h6 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .btn-theme {
   border-radius: 6px;
   text-align: center;
@@ -385,6 +599,63 @@ a:hover {
   text-decoration: none;
   background: #565973;
   color: #FFFFFF;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  form {
+    width: 50%;
+  }
+}
+form label {
+  margin-top: 20px;
+}
+form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #D4D7E5;
+  font-size: 16px;
+}
+form .signIn-checkbox label {
+  margin-left: 5px;
+}
+form button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+form .field-validation-error {
+  display: block;
+  color: red;
+}
+form .input-validation-error {
+  border: 5px solid red;
+  opacity: 30%;
+  color: red;
+}
+form span {
+  position: relative;
+}
+form span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+form span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
 }
 
 header {
@@ -956,9 +1227,6 @@ main .showcase .container .background-image {
   padding-top: 90px;
   padding-bottom: 90px;
 }
-.subscribe .container {
-  text-align: center;
-}
 .subscribe .container .signup-content {
   display: flex;
   flex-direction: column;
@@ -1039,30 +1307,38 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  opacity: 80%;
 }
-@media (min-width: 768px) {
-  .subscribe .container .signup-email {
-    flex-direction: row;
-  }
+.subscribe .container .signup-email .signup-top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
-.subscribe .container .signup-email input {
-  padding-right: 25%;
-  margin-bottom: 10px;
+.subscribe .container .signup-email .signup-top input {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 35px;
+  margin-right: 10px;
+  border-radius: 5px;
 }
-@media (min-width: 768px) {
-  .subscribe .container .signup-email input {
-    margin-right: 10px;
-  }
+.subscribe .container .signup-email .signup-top i {
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 20px;
 }
-.subscribe .container p {
-  margin-top: 5px;
+.subscribe .container .signup-email label {
+  width: 100%;
+  margin-top: 10px;
 }
-@media (min-width: 768px) {
-  .subscribe .container p {
-    padding-right: 25%;
-  }
+.subscribe .container .signup-email label a {
+  text-decoration: underline;
 }
-
 .readyTo-section .container {
   display: flex;
   justify-content: space-between;
@@ -1471,4 +1747,195 @@ main .showcase .container .background-image {
 }
 .courseDescription-contentSection .container .content-bottom .content-bottom-text #fb {
   background-color: blue;
+}
+
+.contactShowcase {
+  background-color: #F3F6FF;
+}
+.contactShowcase .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container {
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+  }
+}
+.contactShowcase .container .contactUs .top-text {
+  margin-top: 50px;
+}
+.contactShowcase .container .contactUs .top-text i {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.contactShowcase .container .contactUs .top-text .active {
+  color: #6366F1;
+}
+.contactShowcase .container .contactUs .email-info {
+  display: flex;
+  margin-top: 30px;
+  width: 300px;
+}
+.contactShowcase .container .contactUs .email-info img {
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+.contactShowcase .container .contactUs .email-info .email-info-text {
+  flex-direction: column;
+}
+.contactShowcase .container .contactUs .career-info {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  width: 300px;
+}
+.contactShowcase .container .contactUs .career-info img {
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+.contactShowcase .container .contactUs .career-info .career-info-text {
+  flex-direction: column;
+}
+.contactShowcase .container .contactForm {
+  padding: 40px;
+  color: black;
+  background-color: white;
+  box-shadow: 0px 4px 13px -2px rgba(19, 16, 34, 0.06), 0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1);
+  border-radius: 5px;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactForm {
+    position: absolute;
+    top: 150px;
+    right: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  .contactShowcase .container .contactForm {
+    right: 400px;
+  }
+}
+.contactShowcase .container .contactForm form {
+  display: flex;
+  flex-direction: column;
+}
+.contactShowcase .container .contactForm form input, .contactShowcase .container .contactForm form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+}
+.contactShowcase .container .contactForm form button {
+  margin-top: 20px;
+}
+.contactShowcase .contactMap img {
+  width: 100%;
+}
+
+.signIn-section {
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+.signIn-section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signIn-section .container .signIn-text {
+  text-align: left;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  .signIn-section .container .signIn-text {
+    width: 50%;
+  }
+}
+.signIn-section .container form label {
+  font-weight: bold;
+}
+.signIn-section .container form .signIn-checkbox label {
+  margin-left: 5px;
+}
+.signIn-section .container form .forgot-signIn {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #D4D7E5;
+  padding-bottom: 20px;
+}
+.signIn-section .container form .forgot-signIn button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.signIn-section .container .altSignIn {
+  display: flex;
+}
+.signIn-section .container .altSignIn button {
+  margin: 10px;
+}
+
+#signUp-section {
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+#signUp-section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#signUp-section .container .signUp-text {
+  text-align: left;
+  width: 80%;
+}
+@media (min-width: 1200px) {
+  #signUp-section .container .signUp-text {
+    width: 50%;
+  }
+}
+#signUp-section .container form label {
+  font-weight: bold;
+}
+#signUp-section .container form .fullname {
+  display: flex;
+}
+#signUp-section .container form .fullname .firstName, #signUp-section .container form .fullname .lastName {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+#signUp-section .container form .fullname .firstName input, #signUp-section .container form .fullname .lastName input {
+  padding-right: 50px;
+}
+#signUp-section .container form .fullname .firstName {
+  margin-right: 10px;
+}
+#signUp-section .container form .signUp-checkbox {
+  margin-bottom: 20px;
+}
+#signUp-section .container form .signUp-checkbox label {
+  margin-left: 5px;
+}
+#signUp-section .container form .signUp-checkbox span {
+  position: relative;
+}
+#signUp-section .container form .signUp-checkbox span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+#signUp-section .container form .signUp-checkbox span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
 }

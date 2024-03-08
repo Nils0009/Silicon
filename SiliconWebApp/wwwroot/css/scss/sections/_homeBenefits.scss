@@ -1,0 +1,130 @@
+.benefits {
+    background-color: $gray-100;
+    padding-bottom: 100px;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas:"section-title"
+                            "benefits-f-2"
+                            "benefits-s-2"
+                            "benefits-t-2";
+        @include md {
+            grid-template-columns: auto auto;
+            grid-template-areas:"section-title section-title"
+                                "benefits-f-2 benefits-f-2"
+                                "benefits-s-2 benefits-s-2"
+                                "benefits-t-2 benefits-t-2";
+        }
+
+        @include xl {
+            grid-template-columns:  auto auto auto;
+            grid-template-areas:"section-title section-title section-title"
+                                "benefits-f-2 benefits-s-2 benefits-t-2"
+                                "benefits-f-2 benefits-s-2 benefits-t-2";
+        }
+
+
+        #b-box {
+            grid-area: b-box;
+            text-align: center;           
+            padding: 40px;
+
+            @include md {
+                width: 370px;
+            }
+
+            @include xxl {
+                width: 450px;
+            }
+            &:hover {
+                background-color: $white;
+            }
+            a {
+                text-decoration: none;
+                color:$black;
+            }
+            h6 {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+        }
+        .section-title {
+            grid-area: section-title;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .benefits-f-2 {
+            grid-area: benefits-f-2;          
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            @include md {
+                flex-direction: row;
+            }
+
+            @include xl {
+                display: block;
+                border-right: 1px solid $gray-300;
+            }
+                      
+            .comments-on-tasks {
+                @include xl {
+                border-bottom: 1px solid $gray-300;
+                }
+            }
+
+        }
+        
+        .benefits-s-2 {
+            grid-area: benefits-s-2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            @include md {
+                flex-direction: row;
+            }
+
+            @include xl {
+                display: block;
+                border-right: 1px solid $gray-300;
+            }
+
+            .tasks-analytics {
+                @include xl {
+                    border-bottom: 1px solid $gray-300;
+                }
+            }
+        }
+        .benefits-t-2 {
+            grid-area: benefits-t-2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            @include md {
+                flex-direction: row;
+            }
+
+            @include xl {
+                display: block;
+            }
+
+            .multiple-assignees {
+
+                @include xl {
+                    border-bottom: 1px solid $gray-300;
+                }
+            }
+        }
+    }
+}

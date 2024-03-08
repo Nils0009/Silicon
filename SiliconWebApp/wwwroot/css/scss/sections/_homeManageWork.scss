@@ -1,0 +1,53 @@
+.managework {
+
+    .container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            display: none;
+
+            @include xl {
+                display: block;
+                margin-right: 50px;
+                max-width: 600px;
+            }
+
+            @include xxl {
+                max-width: 800px;          
+            }
+        }
+
+        .managework-content {                   
+
+            h2 {
+                padding-bottom: 30px;
+                padding: 0px;
+            }
+
+            ul {
+                padding: 0;
+                list-style: none;
+
+                li {
+                    i {
+                        margin-right: 5px;
+                        color: $theme;
+                    }
+                }
+            }
+            .btn-theme {
+                margin-top: 30px;
+                width: 100%;
+
+                @include xl {
+                    width: 50%;
+                }
+                
+            }
+        }
+    }
+}

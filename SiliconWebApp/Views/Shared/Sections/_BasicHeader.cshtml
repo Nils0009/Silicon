@@ -1,0 +1,40 @@
+﻿<header>
+    <div class="container">
+        <a id="logo" asp-controller="Home" asp-action="Index">
+            <img id="lightmode-logo" src="~/Images/SiliconLogotypeLightMode.svg" alt="silicon logo">
+            <img id="darkmode-logo" src="~/Images/darkmode-logo.svg" alt="silicon logo">
+        </a>
+        <div id="menu">
+            <nav>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="showcase">Overview</a>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="benefits">Features</a>
+                <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+            </nav>
+        </div>
+
+        <div class="btn-switch">
+            <label>light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" onchange="toggleDarkMode()" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+
+        <div class="account-buttons">
+            <a class="btn-gray" asp-controller="Auth" asp-action="SignIn">Sign in<i class="fa-solid fa-right-to-bracket"></i></a>
+            <a class="btn-theme" asp-controller="Auth" asp-action="SignUp">Sign up<i class="fa-solid fa-user-plus"></i></a>
+        </div>
+
+        <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        <div class="mobile-menu">
+            <nav>
+                <a class="btn-gray" asp-controller="Home" asp-action="Index" asp-fragment="showcase">showcase</a>
+                <a class="btn-gray" asp-controller="Home" asp-action="Index" asp-fragment="benefits">features</a>
+                <a class="btn-gray" asp-controller="Contact" asp-action="Index">Contact</a>
+                <a class="btn-gray" asp-controller="Auth" asp-action="SignIn">Sign in</a>
+                <a class="btn-gray" asp-controller="Auth" asp-action="SignUp">Sign up</a>
+            </nav>
+        </div>
+
+    </div>
+</header>
