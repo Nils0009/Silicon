@@ -1,6 +1,6 @@
-﻿using SiliconWebApp.Models.Sections;
+﻿using SiliconWebApp.ViewModels.Sections;
 
-namespace SiliconWebApp.Models.Views;
+namespace SiliconWebApp.ViewModels.Views;
 
 public class HomeViewModel
 {
@@ -32,14 +32,14 @@ public class HomeViewModel
         Title = "What Do You Get with Our Tool?",
         Text = "Make sure all your tasks are organized so you can set the priorities and focus on important.",
         BenefitBox1 =
-   
-            new() 
-            { 
-                IdName = "b-box", 
+
+            new()
+            {
+                IdName = "b-box",
                 ClassName = "comments-on-tasks",
                 Link = new() { ControllerName = "Home", ActionName = "Index" },
-                BenefitImage = new() { ImageUrl = "Images/chat.svg", AltText = "icon of chat bubble" }, 
-                Title = "Comments on Tasks", 
+                BenefitImage = new() { ImageUrl = "Images/chat.svg", AltText = "icon of chat bubble" },
+                Title = "Comments on Tasks",
                 Text = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
             },
 
@@ -97,13 +97,13 @@ public class HomeViewModel
                 Title = "Data Security",
                 Text = "Aliquam malesuada neque eget elit nulla vestibulum nunc cras.",
             },
-     
+
     };
-    public HomeManageWorkViewModel ManageWork { get; set; } = new HomeManageWorkViewModel 
+    public HomeManageWorkViewModel ManageWork { get; set; } = new HomeManageWorkViewModel
     {
-        ManageImage = new() { ImageUrl = "Images/managework-image.svg", AltText = ""},
+        ManageImage = new() { ImageUrl = "Images/managework-image.svg", AltText = "" },
         Title = "Manage Your Work",
-        ManageWorkList = 
+        ManageWorkList =
                         [
                             new() { Icon = "fa-regular fa-square-check", Text = "Powerful project management", },
                             new() { Icon = "fa-regular fa-square-check", Text = "Transparent work management", },
@@ -112,34 +112,34 @@ public class HomeViewModel
                             new() { Icon = "fa-regular fa-square-check", Text = "Easiest way to track time spent on tasks", }
                         ],
     };
-    public HomeDownloadAppViewModel DownloadApp { get; set; } = new HomeDownloadAppViewModel 
+    public HomeDownloadAppViewModel DownloadApp { get; set; } = new HomeDownloadAppViewModel
     {
-        DownloadAppImage = new() { ImageUrl = "Images/download-app-image.svg", AltText = ""},
+        DownloadAppImage = new() { ImageUrl = "Images/download-app-image.svg", AltText = "" },
         Title = "Download Our App for Any Devices:",
 
-        AppSource = new() 
-        { 
-            SourceTitle = "App Store", 
-            SourceImage = new() { ImageUrl = "Images/rating.svg", AltText = ""},
-            SourceText = "Editor's Choice", 
+        AppSource = new()
+        {
+            SourceTitle = "App Store",
+            SourceImage = new() { ImageUrl = "Images/rating.svg", AltText = "" },
+            SourceText = "Editor's Choice",
             SourceTextRating = "rating 4.7, 187K+ reviews"
         },
 
-        GoogleSource = new() 
-        { 
+        GoogleSource = new()
+        {
             SourceTitle = "Google Play",
             SourceImage = new() { ImageUrl = "Images/rating.svg", AltText = "" },
-            SourceText = "App of the Day", 
+            SourceText = "App of the Day",
             SourceTextRating = "rating 4.8, 30K+ reviews"
         },
 
     };
 
-    public HomeWorkToolsViewModel WorkTools = new HomeWorkToolsViewModel 
+    public HomeWorkToolsViewModel WorkTools = new HomeWorkToolsViewModel
     {
         Title = "Integrate Top Work Tools",
         TitleText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
-        HomeWorkBox = 
+        HomeWorkBox =
         [
             new() { BoxClassName = "google-box", BoxImage = new() { ImageUrl = "Images/worktools-Google.svg", AltText = ""}, BoxText = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.", },
             new() { BoxClassName = "zoom-box", BoxImage = new() { ImageUrl = "Images/worktools-zoom.svg", AltText = "" }, BoxText = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.", },
@@ -152,12 +152,12 @@ public class HomeViewModel
         ],
     };
 
-    public HomeSubscriptionViewModel Subscribe = new HomeSubscriptionViewModel 
+    public HomeSubscriptionViewModel Subscribe = new HomeSubscriptionViewModel
     {
         MainTitle = "Don't Want to Miss Anything?",
-        SubscriptionImage = new() { ImageUrl = "images/subscribe-img.svg", AltText = ""},
+        SubscriptionImage = new() { ImageUrl = "images/subscribe-img.svg", AltText = "" },
         InnerTitle = "Sign up for Newsletters",
-        SubscriptionBox = 
+        SubscriptionBox =
         [
             new() { BoxClassName = "ch-b1", InputType = "checkbox", InputName = "ch-b1", LabelFor = "ch-b1", LabelText = "Daily Newsletter" },
             new() { BoxClassName = "ch-b2", InputType = "checkbox", InputName = "ch-b2", LabelFor = "ch-b2", LabelText = "Advertising Updates" },

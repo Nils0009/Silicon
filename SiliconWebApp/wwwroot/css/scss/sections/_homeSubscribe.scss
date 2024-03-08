@@ -4,7 +4,6 @@
     padding-bottom: 90px;
 
     .container {
-        text-align: center;
 
         .signup-content {
             display: flex;
@@ -21,28 +20,22 @@
                 @include md {
                     margin-right: 50px;
                     width: 150px;
-                }          
+                }
             }
 
             .checkbox-content {
                 display: grid;
                 justify-content: center;
                 grid-template-columns: auto;
-                grid-template-areas:"ch-b1" 
-                                    "ch-b2"
-                                    "ch-b3" 
-                                    "ch-b4"                                       
-                                    "ch-b5" 
-                                    "ch-b6";
+                grid-template-areas: "ch-b1" "ch-b2" "ch-b3" "ch-b4" "ch-b5" "ch-b6";
 
                 @include md {
                     grid-template-columns: auto auto auto;
-                    grid-template-areas:"ch-b1 ch-b2 ch-b3"
-                                        "ch-b4 ch-b5 ch-b6";
+                    grid-template-areas: "ch-b1 ch-b2 ch-b3" "ch-b4 ch-b5 ch-b6";
                 }
 
-                
-                #ch-b {                 
+
+                #ch-b {
                     display: flex;
                     align-items: center;
                     margin-bottom: 5px;
@@ -50,26 +43,43 @@
                     @include md {
                         margin-right: 20px;
                     }
-                                                     
+
                     label {
                         margin-left: 5px;
                     }
                 }
 
-                .ch-b1 {grid-area: ch-b1;}
-                .ch-b2 {grid-area: ch-b2;}
-                .ch-b3 {grid-area: ch-b3;}
-                .ch-b4 {grid-area: ch-b4;}
-                .ch-b5 {grid-area: ch-b5;}
-                .ch-b6 {grid-area: ch-b6;}
+                .ch-b1 {
+                    grid-area: ch-b1;
+                }
+
+                .ch-b2 {
+                    grid-area: ch-b2;
+                }
+
+                .ch-b3 {
+                    grid-area: ch-b3;
+                }
+
+                .ch-b4 {
+                    grid-area: ch-b4;
+                }
+
+                .ch-b5 {
+                    grid-area: ch-b5;
+                }
+
+                .ch-b6 {
+                    grid-area: ch-b6;
+                }
             }
         }
 
         .section-title {
-            display: flex; 
+            display: flex;
             justify-content: center;
-            margin-bottom: 20px; 
-            
+            margin-bottom: 20px;
+
             h1 {
                 margin-right: 20px;
             }
@@ -85,30 +95,51 @@
 
         .signup-email {
             display: flex;
-            flex-direction: column;         
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            opacity: 80%;
 
             @include md {
-                flex-direction: row;
             }
-            input {
-                padding-right: 25%;
-                margin-bottom: 10px;
-                
-                @include md {
+
+            .signup-top {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+
+                input {
+                    position: relative;
+                    width: 100%;
+                    z-index: 0;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 35px;
                     margin-right: 10px;
+                    border-radius: 5px;
                 }
-                
-                
+
+                i {
+                    position: absolute;
+                    z-index: 1;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    font-size: 20px;
+                }
+
+            }
+
+            label {
+                width: 100%;
+                margin-top: 10px;
+
+                a {
+                    text-decoration: underline;
+                }
+
+                @include md {
+                }
             }
         }
-                    
-        p {
-            margin-top: 5px;
-
-            @include md {
-                padding-right: 25%;
-            }             
-         }
     }
 }
