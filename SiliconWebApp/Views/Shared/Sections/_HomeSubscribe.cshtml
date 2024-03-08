@@ -22,13 +22,14 @@
                 }             
             </div>
         </div>
-        <div>
-            <div class="signup-email">
-                <input type="text" placeholder="Your Email">
-                <button class="btn-theme">Subscribe *</button>
-            </div>
-            <p>* Yes, I agree to the terms and privacy policy.</p>
+        <div class="signup-email">
+            <div class="signup-top">
+                <i class=" fa-regular fa-envelope"></i>
+                <input placeholder="Your Email" />
+                <button class="btn-theme">Subscribe</button>
+            </div>          
+            <label>*Yes, I agree to the <a asp-controller="About" asp-action="Index">Terms </a> and <a asp-controller="About" asp-action="Index"> privacy policy</a></label>
         </div>
-
+        
     </div>
 </section>

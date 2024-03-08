@@ -1,4 +1,7 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
   line-height: 160%;
   font-weight: 400;
@@ -239,6 +242,216 @@ a:hover {
   text-decoration: none;
 }
 
+html, body {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+}
+html .dark-mode, body .dark-mode {
+  background-color: #000000;
+  border-color: gray;
+}
+html .dark-mode h1, html .dark-mode h2, html .dark-mode h3, html .dark-mode h4, html .dark-mode h5, html .dark-mode h6, html .dark-mode p, body .dark-mode h1, body .dark-mode h2, body .dark-mode h3, body .dark-mode h4, body .dark-mode h5, body .dark-mode h6, body .dark-mode p {
+  color: white;
+}
+html .dark-mode .benefits, html .dark-mode .downloadApp, html .dark-mode .subscribe, html .dark-mode .managework, body .dark-mode .benefits, body .dark-mode .downloadApp, body .dark-mode .subscribe, body .dark-mode .managework {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header, body .dark-mode header {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header label, body .dark-mode header label {
+  color: white;
+}
+html .dark-mode header #menu, body .dark-mode header #menu {
+  background-color: #000000;
+  color: white;
+}
+html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link {
+  color: #ffffff !important;
+}
+html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
+  color: white;
+}
+
+.text-xs {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px !important;
+}
+
+.text-s {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+}
+
+.text-m {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+
+.text-lg {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px !important;
+}
+
+.text-xl {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px !important;
+}
+
+.text-lead {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px !important;
+}
+
+.d1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 80px !important;
+}
+
+.d2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 72px !important;
+}
+
+.d3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 64px !important;
+}
+
+.d4 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 56px !important;
+}
+
+.d5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 48px !important;
+}
+
+.d6 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 42px !important;
+}
+
+h1, .h1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 40px !important;
+}
+
+h2, .h2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+
+h3, .h3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+}
+
+h4, .h4 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 24px !important;
+}
+
+h5, .h5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+}
+
+h6, .h6 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .btn-theme {
   border-radius: 6px;
   text-align: center;
@@ -404,6 +617,7 @@ form input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #D4D7E5;
+  font-size: 16px;
 }
 form .signIn-checkbox label {
   margin-left: 5px;
@@ -412,6 +626,15 @@ form button {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+form .field-validation-error {
+  display: block;
+  color: red;
+}
+form .input-validation-error {
+  border: 5px solid red;
+  opacity: 30%;
+  color: red;
 }
 
 header {
@@ -983,9 +1206,6 @@ main .showcase .container .background-image {
   padding-top: 90px;
   padding-bottom: 90px;
 }
-.subscribe .container {
-  text-align: center;
-}
 .subscribe .container .signup-content {
   display: flex;
   flex-direction: column;
@@ -1066,30 +1286,38 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  opacity: 80%;
 }
-@media (min-width: 768px) {
-  .subscribe .container .signup-email {
-    flex-direction: row;
-  }
+.subscribe .container .signup-email .signup-top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
-.subscribe .container .signup-email input {
-  padding-right: 25%;
-  margin-bottom: 10px;
+.subscribe .container .signup-email .signup-top input {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 35px;
+  margin-right: 10px;
+  border-radius: 5px;
 }
-@media (min-width: 768px) {
-  .subscribe .container .signup-email input {
-    margin-right: 10px;
-  }
+.subscribe .container .signup-email .signup-top i {
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 20px;
 }
-.subscribe .container p {
-  margin-top: 5px;
+.subscribe .container .signup-email label {
+  width: 100%;
+  margin-top: 10px;
 }
-@media (min-width: 768px) {
-  .subscribe .container p {
-    padding-right: 25%;
-  }
+.subscribe .container .signup-email label a {
+  text-decoration: underline;
 }
-
 .readyTo-section .container {
   display: flex;
   justify-content: space-between;
