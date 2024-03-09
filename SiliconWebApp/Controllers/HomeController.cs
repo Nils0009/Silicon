@@ -18,6 +18,7 @@ public class HomeController : Controller
     public IActionResult Error404(int statusCode)
     {
         var viewModel = new Error404ViewModel();
+        @ViewData["Title"] = viewModel.Title;
         return View(viewModel);
     }
 }
