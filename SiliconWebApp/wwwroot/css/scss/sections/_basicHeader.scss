@@ -5,64 +5,69 @@ header {
         display: grid;
         align-items: center;
         grid-template-columns: 1fr auto auto auto;
-        grid-template-areas:  "logo switch mobile profile-img";
+        grid-template-areas: "logo switch mobile profile-img";
         row-gap: 20px;
-        
+
         @include xl {
             grid-template-columns: auto 1fr auto auto auto;
-            grid-template-areas:  "logo menu switch buttons profile-img";
+            grid-template-areas: "logo menu switch buttons profile-img";
             gap: 40px;
         }
 
         #logo {
             grid-area: logo;
-        
+
             #light-logo {
                 display: block;
             }
-        
+
             #darkmode-logo {
                 display: none;
             }
-        
+
             .dark-mode & {
                 #light-logo {
                     display: none;
                 }
-        
+
                 #darkmode-logo {
                     display: block;
                 }
             }
-        }        
+        }
 
         .profile-img {
             grid-area: profile-img;
         }
-        #menu { 
-            grid-area: menu; 
+
+        #menu {
+            grid-area: menu;
             display: none;
 
             @include xl {
                 display: block;
             }
-            
+
             nav {
                 display: flex;
                 gap: 15px;
             }
         }
-        
-        .btn-switch { 
-            grid-area: switch; 
+
+        .btn-switch {
+            grid-area: switch;
+
+            .darklabel {
+                margin-right: 10px;
+            }
         }
 
-        .account-buttons { 
-            grid-area: buttons; 
+        .account-buttons {
+            grid-area: buttons;
             display: none;
 
             @include xl {
-                grid-area: buttons; 
+                grid-area: buttons;
                 display: flex;
                 gap: 15px;
             }
@@ -80,13 +85,12 @@ header {
                 display: none;
             }
         }
-        
+
         .mobile-menu {
             position: absolute;
             top: 10%;
             right: 10%;
             width: 20%;
-
             text-align: center;
             justify-content: center;
 
