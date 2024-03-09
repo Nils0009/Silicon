@@ -1939,3 +1939,12 @@ main .showcase .container .background-image {
   display: block;
   content: "⮿";
 }
+
+.errorShowcase .container {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
