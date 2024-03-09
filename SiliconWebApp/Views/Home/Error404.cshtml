@@ -1,0 +1,10 @@
+﻿@model Error404ViewModel
+
+<section class="errorShowcase">
+    <div class="container">
+        <img src="@Model.ImgUrl" alt="">
+        <h1>@Model.Title</h1>
+        <p>@Model.ErrorMsg</p>
+        <a class="btn-theme" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i>Go to homepage</a>
+    </div>
+</section>

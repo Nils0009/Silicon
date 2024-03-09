@@ -1,4 +1,5 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
@@ -36,6 +37,14 @@ html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link
 }
 html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
   color: white;
+}
+html .alert, body .alert {
+  background: var(--color-danger-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .text-xs {
@@ -276,6 +285,14 @@ html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link
 }
 html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
   color: white;
+}
+html .alert, body .alert {
+  background: var(--color-danger-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .text-xs {
@@ -636,6 +653,26 @@ form .input-validation-error {
   opacity: 30%;
   color: red;
 }
+form span {
+  position: relative;
+}
+form span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+form span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
+}
 
 header {
   padding: 15px 0;
@@ -687,6 +724,9 @@ header .container #menu nav {
 }
 header .container .btn-switch {
   grid-area: switch;
+}
+header .container .btn-switch .darklabel {
+  margin-right: 10px;
 }
 header .container .account-buttons {
   grid-area: buttons;
@@ -1897,4 +1937,33 @@ main .showcase .container .background-image {
 }
 #signUp-section .container form .signUp-checkbox label {
   margin-left: 5px;
+}
+#signUp-section .container form .signUp-checkbox span {
+  position: relative;
+}
+#signUp-section .container form .signUp-checkbox span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+#signUp-section .container form .signUp-checkbox span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
+}
+
+.errorShowcase .container {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

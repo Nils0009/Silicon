@@ -1,6 +1,4 @@
-﻿using SiliconWebApp.Helpers;
-using SiliconWebApp.Models.Components;
-using System.ComponentModel.DataAnnotations;
+﻿using SiliconWebApp.Models.Components;
 
 namespace SiliconWebApp.ViewModels.Views;
 

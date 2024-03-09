@@ -12,7 +12,7 @@ html, body {
     .dark-mode {
         background-color: $black;
         border-color: gray;
-        
+
         h1, h2, h3, h4, h5, h6, p {
             color: white;
         }
@@ -29,17 +29,29 @@ html, body {
             label {
                 color: white;
             }
+
             #menu {
                 background-color: $black;
                 color: white;
+
                 .menu-link {
                     color: $dark-text !important;
                 }
             }
+
             .mobile-menu-btn {
                 color: white
             }
         }
+    }
+
+    .alert {
+        background: var(--color-danger-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
     }
 }
 

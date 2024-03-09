@@ -2,6 +2,14 @@
 
 <section class="signIn-section">
     <div class="container">
+
+        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="alert">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+
         <div class="signIn-text">
             <h1>@Model.InnerTitle</h1>
             <p>@Model.Text<a asp-controller="Auth" asp-action="SignUp"> Sign up here.</a></p>
@@ -40,3 +48,4 @@
 
     </div>
 </section>
+@await Html.PartialAsync("/Views/Shared/_ValidationScript.cshtml")
