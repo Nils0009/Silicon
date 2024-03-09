@@ -38,6 +38,14 @@ html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link
 html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
   color: white;
 }
+html .alert, body .alert {
+  background: var(--color-danger-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
 
 .text-xs {
   line-height: 160%;
@@ -277,6 +285,14 @@ html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link
 }
 html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
   color: white;
+}
+html .alert, body .alert {
+  background: var(--color-danger-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .text-xs {
@@ -708,6 +724,9 @@ header .container #menu nav {
 }
 header .container .btn-switch {
   grid-area: switch;
+}
+header .container .btn-switch .darklabel {
+  margin-right: 10px;
 }
 header .container .account-buttons {
   grid-area: buttons;
