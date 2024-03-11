@@ -1,0 +1,104 @@
+﻿@model AccountDetailsViewModel
+
+<section class="accountDetails">
+    <div class="container">
+        <div class="profileInfo">
+            <div class="userInfo">
+                <img src="Images/profile-header.svg" alt="">
+                <h5>@Model.User.FirstName</h5>
+                <p>@Model.User.Email</p>
+            </div>
+            <a asp-controller="Account" asp-action="Details" class="menu-link-active"><i class="fa-solid fa-gear"></i> Account Details</a>
+            <a asp-controller="Account" asp-action="Security" class="menu-link"><i class="fa-solid fa-lock"></i>Security</a>
+            <a asp-controller="Account" asp-action="SavedCourses" class="menu-link"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+            <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+        </div>
+
+        <div class="accountDetailsForms">
+            <div class="basicInfo">
+                <h1>Account details</h1>
+                <h5>Basic info</h5>
+                <form method="post" asp-action="BasicInfo" asp-controller="Account" novalidate>
+
+                    <div id="firstName" class="accountFormBox">
+                        <label asp-for="User.FirstName"></label>
+                        <input asp-for="User.FirstName" />
+                        <span asp-validation-for="User.FirstName"></span>
+                    </div>
+
+                    <div id="lastName" class="accountFormBox">
+                        <label asp-for="User.LastName"></label>
+                        <input asp-for="User.LastName" />
+                        <span asp-validation-for="User.LastName"></span>
+                    </div>
+
+                    <div id="emailAddress" class="accountFormBox">
+                        <label asp-for="User.Email"></label>
+                        <input asp-for="User.Email" />
+                        <span asp-validation-for="User.Email"></span>
+                    </div>
+
+                    <div id="phoneNumber" class="accountFormBox">
+                        <label asp-for="User.PhoneNumber"></label>
+                        <input asp-for="User.PhoneNumber" />
+                        <span asp-validation-for="User.PhoneNumber"></span>
+                    </div>
+
+                    <div id="bioInfo" class="accountFormBox">
+                        <label asp-for="User.Bio"></label>
+                        <input asp-for="User.Bio" />
+                        <span asp-validation-for="User.Bio"></span>
+                    </div>
+
+                    <div class="form-btn">
+                        <button class="btn-gray" type="reset">Cancel</button>
+                        <button class="btn-theme" type="submit">Save changes</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="addressInfo">
+                <div class="addressInfo">
+                    <h5>Address</h5>
+                    <form method="post" asp-action="AddressInfo" asp-controller="Account" novalidate>
+
+                        <div id="addressline1" class="accountFormBox">
+                            <label asp-for="User.Address!.StreetName"></label>
+                            <input asp-for="User.Address!.StreetName" />
+                            <span asp-validation-for="User.Address!.StreetName"></span>
+                        </div>
+
+                        <div id="addressline2" class="accountFormBox">
+                            <label asp-for="User.Address!.AddressLine2"></label>
+                            <input asp-for="User.Address!.AddressLine2" />
+                            <span asp-validation-for="User.Address!.AddressLine2"></span>
+                        </div>
+
+                        <div id="postalCode" class="accountFormBox">
+                            <label asp-for="User.Address!.PostalCode"></label>
+                            <input asp-for="User.Address!.PostalCode" />
+                            <span asp-validation-for="User.Address!.PostalCode"></span>
+                        </div>
+
+                        <div id="city" class="accountFormBox">
+                            <label asp-for="User.Address!.City"></label>
+                            <input asp-for="User.Address!.City" />
+                            <span asp-validation-for="User.Address!.City"></span>
+                        </div>
+
+                        <div class="form-btn">
+                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button class="btn-theme" type="submit">Save changes</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

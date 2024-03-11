@@ -10,11 +10,13 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
+
+
     #region SignUp
     [HttpGet]
     public IActionResult SignUp()
     {
-        var viewModel = new SignInViewModel();
+        var viewModel = new SignUpViewModel();
         if (_signInManager.IsSignedIn(User))
         {
             return RedirectToAction("Details", "Account");
