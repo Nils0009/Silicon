@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SiliconWebApp.ViewModels.Views;
@@ -6,6 +7,8 @@ using System.Diagnostics;
 
 namespace SiliconWebApp.Controllers;
 
+
+[Authorize]
 public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager) : Controller
 {
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
