@@ -19,6 +19,7 @@
             <div>
                 @Model.ErrorMessage
             </div>
+
             <label asp-for="@Model.Form.EmailAddress"></label>
             <span asp-validation-for="@Model.Form.EmailAddress"></span>
             <input asp-for="@Model.Form.EmailAddress" />
