@@ -1967,3 +1967,199 @@ main .showcase .container .background-image {
   justify-content: center;
   align-items: center;
 }
+
+.accountDetails .container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .accountDetails .container {
+    justify-content: left;
+    flex-direction: row;
+  }
+}
+.accountDetails .container .profileInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+  .accountDetails .container .profileInfo {
+    flex-direction: column;
+    justify-content: left;
+  }
+}
+@media (min-width: 992px) {
+  .accountDetails .container .profileInfo {
+    width: 300px;
+    margin-right: 200px;
+    border-right: 1px solid gray;
+  }
+}
+.accountDetails .container .profileInfo nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.accountDetails .container .profileInfo nav a {
+  margin: 5px;
+  justify-content: left;
+}
+@media (min-width: 768px) {
+  .accountDetails .container .profileInfo nav {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .accountDetails .container .profileInfo nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .accountDetails .container .profileInfo nav a {
+    text-align: left;
+    width: 200px;
+  }
+}
+.accountDetails .container .profileInfo .userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.accountDetails .container .profileInfo .userInfo img {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+.accountDetails .container .profileInfo a {
+  margin-bottom: 20px;
+}
+.accountDetails .container .profileInfo a i {
+  margin-right: 5px;
+}
+.accountDetails .container .accountDetailsForms {
+  width: 100%;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .accountDetails .container .accountDetailsForms {
+    text-align: left;
+  }
+}
+.accountDetails .container .accountDetailsForms .basicInfo {
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid gray;
+}
+.accountDetails .container .accountDetailsForms .basicInfo h5 {
+  color: #6366F1;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  grid-template-columns: auto auto;
+  grid-template-areas: "firstName lastName" "emailAddress phoneNumber" "bioInfo bioInfo" "btns btns";
+}
+.accountDetails .container .accountDetailsForms .basicInfo form .accountFormBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #firstName {
+  grid-area: firstName;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #lastName {
+  grid-area: lastName;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #emailAddress {
+  grid-area: emailAddress;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #phoneNumber {
+  grid-area: phoneNumber;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #bioInfo {
+  grid-area: bioInfo;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form #bioInfo p {
+  margin: 0;
+}
+.accountDetails .container .accountDetailsForms .basicInfo .form-btn {
+  grid-area: btns;
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .accountDetails .container .accountDetailsForms .basicInfo .form-btn {
+    justify-content: left;
+    align-items: flex-start;
+  }
+}
+.accountDetails .container .accountDetailsForms .basicInfo .form-btn .btn-gray, .accountDetails .container .accountDetailsForms .basicInfo .form-btn .btn-theme {
+  padding: 0;
+  margin: 5px;
+  width: 150px;
+  height: 50px;
+}
+.accountDetails .container .accountDetailsForms .addressInfo {
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+}
+.accountDetails .container .accountDetailsForms .addressInfo h5 {
+  color: #6366F1;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form {
+  width: 100%;
+  display: grid;
+  text-align: left;
+  gap: 10px;
+  grid-template-areas: "addressline1 addressline1" "addressline2 addressline2" "postalCode city" "btns btns";
+}
+.accountDetails .container .accountDetailsForms .addressInfo form .accountFormBox {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form .accountFormBox input {
+  width: 100%;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form #addressline1 {
+  grid-area: addressline1;
+  margin-right: 5px;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form #addressline2 {
+  grid-area: addressline2;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form #postalCode {
+  grid-area: postalCode;
+  margin-right: 5px;
+}
+.accountDetails .container .accountDetailsForms .addressInfo form #city {
+  grid-area: city;
+}
+.accountDetails .container .accountDetailsForms .addressInfo .form-btn {
+  grid-area: btns;
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .accountDetails .container .accountDetailsForms .addressInfo .form-btn {
+    justify-content: left;
+    align-items: flex-start;
+  }
+}
+.accountDetails .container .accountDetailsForms .addressInfo .form-btn .btn-gray, .accountDetails .container .accountDetailsForms .addressInfo .form-btn .btn-theme {
+  padding: 0;
+  margin: 5px;
+  width: 150px;
+  height: 50px;
+}
