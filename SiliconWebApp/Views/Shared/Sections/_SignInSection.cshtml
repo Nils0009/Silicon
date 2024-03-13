@@ -15,7 +15,7 @@
             <p>@Model.Text<a asp-controller="Auth" asp-action="SignUp"> Sign up here.</a></p>
         </div>
 
-        <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
+        <form id="signInForm" method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
             <div>
                 @Model.ErrorMessage
             </div>

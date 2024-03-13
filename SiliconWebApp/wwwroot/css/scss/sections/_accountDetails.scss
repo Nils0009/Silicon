@@ -1,0 +1,231 @@
+.accountDetails {
+
+    .container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+
+        @include lg {
+            justify-content: left;
+            flex-direction: row;
+        }
+
+
+        .profileInfo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+
+            @include md {
+                flex-direction: column;
+                justify-content: left;
+            }
+
+            @include lg {
+                width: 300px;
+                margin-right: 200px;
+                border-right: 1px solid gray;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+
+
+                a {
+                    margin: 5px;
+                    justify-content: left;
+                }
+
+                @include md {
+                    flex-direction: row;
+                    text-align: center;
+                }
+
+                @include lg {
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    a {
+                        text-align: left;
+                        width: 200px;
+                    }
+                }
+            }
+
+            .userInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    align-self: center;
+                }
+            }
+
+            a {
+                margin-bottom: 20px;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .accountDetailsForms {
+            width: 100%;
+            text-align: center;
+
+            @include md {
+                text-align: left;
+            }
+
+
+            .basicInfo {
+                margin-bottom: 25px;
+                padding-bottom: 50px;
+                border-bottom: 1px solid gray;
+
+                h5 {
+                    color: $theme;
+                }
+
+                form {
+                    width: 100%;
+                    display: grid;
+                    gap: 10px;
+                    text-align: left;
+                    grid-template-columns: auto auto;
+                    grid-template-areas: "firstName lastName" "emailAddress phoneNumber" "bioInfo bioInfo" "btns btns";
+
+
+
+
+                    .accountFormBox {
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                    }
+
+                    #firstName {
+                        grid-area: firstName;
+                    }
+
+                    #lastName {
+                        grid-area: lastName;
+                    }
+
+                    #emailAddress {
+                        grid-area: emailAddress;
+                    }
+
+                    #phoneNumber {
+                        grid-area: phoneNumber;
+                    }
+
+                    #bioInfo {
+                        grid-area: bioInfo;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                .form-btn {
+                    grid-area: btns;
+                    display: flex;
+                    margin-top: 25px;
+                    justify-content: center;
+                    align-items: center;
+
+                    @include md {
+                        justify-content: left;
+                        align-items: flex-start;
+                    }
+
+
+
+                    .btn-gray, .btn-theme {
+                        padding: 0;
+                        margin: 5px;
+                        width: 150px;
+                        height: 50px;
+                    }
+                }
+            }
+
+            .addressInfo {
+                margin-bottom: 25px;
+                padding-bottom: 50px;
+
+                h5 {
+                    color: $theme;
+                }
+
+                form {
+                    width: 100%;
+                    display: grid;
+                    text-align: left;
+                    gap: 10px;
+                    grid-template-areas: "addressline1 addressline1" "addressline2 addressline2" "postalCode city" "btns btns";
+
+
+                    .accountFormBox {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+
+                        input {
+                            width: 100%;
+                        }
+                    }
+
+                    #addressline1 {
+                        grid-area: addressline1;
+                        margin-right: 5px;
+                    }
+
+                    #addressline2 {
+                        grid-area: addressline2;
+                    }
+
+                    #postalCode {
+                        grid-area: postalCode;
+                        margin-right: 5px;
+                    }
+
+                    #city {
+                        grid-area: city;
+                    }
+                }
+
+                .form-btn {
+                    grid-area: btns;
+                    display: flex;
+                    margin-top: 25px;
+                    justify-content: center;
+                    align-items: center;
+
+                    @include md {
+                        justify-content: left;
+                        align-items: flex-start;
+                    }
+
+                    .btn-gray, .btn-theme {
+                        padding: 0;
+                        margin: 5px;
+                        width: 150px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
