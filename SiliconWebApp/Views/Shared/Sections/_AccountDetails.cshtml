@@ -8,9 +8,9 @@
     <div class="container">
         <div class="profileInfo">
             <div class="userInfo">
-                <img src="~/images/@Model.ProfileImgUrl" alt="">
-                <h5>@Model.FirstName @Model.LastName</h5>
-                <p>@Model.Email</p>
+                <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
+                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                <p>@Model.ProfileInfo.Email</p>
             </div>
             <nav>
                 <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-solid fa-gear"></i> Account Details</a>
@@ -27,33 +27,33 @@
                 <form id="basicInfoForm" method="post" asp-controller="Account" asp-action="Details" novalidate>
 
                     <div id="firstName" class="accountFormBox">
-                        <label asp-for="BasicInfo!.FirstName"></label>
-                        <input asp-for="BasicInfo!.FirstName" />
-                        <span asp-validation-for="@Model.FirstName"></span>
+                        <label asp-for="@Model.BasicInfo.FirstName"></label>
+                        <input asp-for="@Model.BasicInfo.FirstName" />
+                        <span asp-validation-for="@Model.BasicInfo.FirstName"></span>
                     </div>
 
                     <div id="lastName" class="accountFormBox">
-                        <label asp-for="BasicInfo!.LastName"></label>
-                        <input asp-for="BasicInfo!.LastName" />
-                        <span asp-validation-for="BasicInfo!.LastName"></span>
+                        <label asp-for="@Model.BasicInfo.LastName"></label>
+                        <input asp-for="@Model.BasicInfo.LastName" />
+                        <span asp-validation-for="@Model.BasicInfo.LastName"></span>
                     </div>
 
                     <div id="emailAddress" class="accountFormBox">
-                        <label asp-for="BasicInfo!.Email"></label>
-                        <input asp-for="BasicInfo!.Email" />
-                        <span asp-validation-for="BasicInfo!.Email"></span>
+                        <label asp-for="@Model.BasicInfo.Email"></label>
+                        <input asp-for="@Model.BasicInfo.Email" />
+                        <span asp-validation-for="@Model.BasicInfo.Email"></span>
                     </div>
 
                     <div id="phoneNumber" class="accountFormBox">
-                        <label asp-for="BasicInfo!.Phone"></label>
-                        <input asp-for="BasicInfo!.Phone" />
-                        <span asp-validation-for="BasicInfo!.Phone"></span>
+                        <label asp-for="@Model.BasicInfo.Phone"></label>
+                        <input asp-for="@Model.BasicInfo.Phone" />
+                        <span asp-validation-for="@Model.BasicInfo.Phone"></span>
                     </div>
 
                     <div id="bioInfo" class="accountFormBox">
-                        <label asp-for="BasicInfo!.Bio"></label>
-                        <input asp-for="BasicInfo!.Bio" />
-                        <span asp-validation-for="BasicInfo!.Bio"></span>
+                        <label asp-for="@Model.BasicInfo.Bio"></label>
+                        <input asp-for="@Model.BasicInfo.Bio" />
+                        <span asp-validation-for="@Model.BasicInfo.Bio"></span>
                     </div>
 
                     <div class="form-btn">
@@ -70,27 +70,27 @@
                     <form id="addressInfoForm" method="post" asp-controller="Account" asp-action="Details" novalidate>
 
                         <div id="addressline1" class="accountFormBox">
-                            <label asp-for="AddressInfo!.AddressLine1"></label>
-                            <input asp-for="AddressInfo!.AddressLine1" />
-                            <span asp-validation-for="AddressInfo!.AddressLine1"></span>
+                            <label asp-for="@Model.AddressInfo.AddressLine1"></label>
+                            <input asp-for="@Model.AddressInfo.AddressLine1" />
+                            <span asp-validation-for="@Model.AddressInfo.AddressLine1"></span>
                         </div>
 
                         <div id="addressline2" class="accountFormBox">
-                            <label asp-for="AddressInfo!.AddressLine2"></label>
-                            <input asp-for="AddressInfo!.AddressLine2" />
-                            <span asp-validation-for="AddressInfo!.AddressLine2"></span>
+                            <label asp-for="@Model.AddressInfo.AddressLine2"></label>
+                            <input asp-for="@Model.AddressInfo.AddressLine2" />
+                            <span asp-validation-for="@Model.AddressInfo.AddressLine2"></span>
                         </div>
 
                         <div id="postalCode" class="accountFormBox">
-                            <label asp-for="AddressInfo!.PostalCode"></label>
-                            <input asp-for="AddressInfo!.PostalCode" />
-                            <span asp-validation-for="AddressInfo!.PostalCode"></span>
+                            <label asp-for="@Model.AddressInfo.PostalCode"></label>
+                            <input asp-for="@Model.AddressInfo.PostalCode" />
+                            <span asp-validation-for="@Model.AddressInfo.PostalCode"></span>
                         </div>
 
                         <div id="city" class="accountFormBox">
-                            <label asp-for="AddressInfo!.City"></label>
-                            <input asp-for="AddressInfo!.City" />
-                            <span asp-validation-for="AddressInfo!.City"></span>
+                            <label asp-for="@Model.AddressInfo.City"></label>
+                            <input asp-for="@Model.AddressInfo.City" />
+                            <span asp-validation-for="@Model.AddressInfo.City"></span>
                         </div>
 
                         <div class="form-btn">
