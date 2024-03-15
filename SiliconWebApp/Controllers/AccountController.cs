@@ -40,11 +40,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
 
         try
         {
+            var user = await _userManager.GetUserAsync(User);
+
             if (viewModel.BasicInfo != null)
             {
                 if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
                 {
-                    var user = await _userManager.GetUserAsync(User);
                     if (user != null)
                     {
                         if (viewModel.BasicInfo != null)
@@ -65,11 +66,10 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             {
                 if (viewModel.AddressInfo.AddressLine1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
                 {
-                    var user = await _userManager.GetUserAsync(User);
                     if (user != null)
                     {
                         var existingAddress = await _addressService.GetAddressAsync(user.Id);
-                        if (existingAddress != null) 
+                        if (existingAddress != null)
                         {
                             existingAddress.AddressLine1 = viewModel.AddressInfo.AddressLine1;
                             existingAddress.AddressLine2 = viewModel.AddressInfo.AddressLine2;
@@ -89,9 +89,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                                 AddressLine2 = viewModel.AddressInfo.AddressLine2!,
                                 PostalCode = viewModel.AddressInfo.PostalCode,
                                 City = viewModel.AddressInfo.City,
-                                UserId = user.Id,
                             };
-
+                            user.AddressId = existingAddress.Id;
                             var newAddress = await _addressService.CreateAddressAsync(existingAddress!.AddressLine1, existingAddress.PostalCode, existingAddress.City, user.Id);
                         }
 
@@ -154,7 +153,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     private async Task<AccountProfileInfoViewModel> PopulateProfileInfoAsync()
     {
         var existingUser = await _userManager.GetUserAsync(User);
-        if (existingUser != null) 
+        if (existingUser != null)
         {
             return new AccountProfileInfoViewModel
             {
