@@ -83,15 +83,17 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                         }
                         else
                         {
-                            existingAddress = new AddressEntity
+                            var newAddress = new AddressEntity
                             {
                                 AddressLine1 = viewModel.AddressInfo.AddressLine1,
                                 AddressLine2 = viewModel.AddressInfo.AddressLine2!,
                                 PostalCode = viewModel.AddressInfo.PostalCode,
                                 City = viewModel.AddressInfo.City,
                             };
-                            user.AddressId = existingAddress.Id;
-                            var newAddress = await _addressService.CreateAddressAsync(existingAddress!.AddressLine1, existingAddress.PostalCode, existingAddress.City, user.Id);
+                            newAddress = await _addressService.CreateAddressAsync(newAddress!.AddressLine1, newAddress.PostalCode, newAddress.City, user.Id);
+                            user.AddressId = newAddress.Id;
+                            await _userManager.UpdateAsync(user);
+
                         }
 
                     }
