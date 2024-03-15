@@ -51,6 +51,15 @@
             <div class="profile-img">
                 <a asp-controller="Account" asp-action="Details"><img id="" src="~/Images/profile-header.svg" alt=""></a>
             </div>
+
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <div class="mobile-menu">
+                <nav>
+                    <a class="btn-gray" asp-controller="Account" asp-action="Details">Overview</a>
+                    <a class="btn-gray" asp-controller="Courses" asp-action="Index" asp-fragment="benefits">Courses</a>
+                    <a class="btn-gray" asp-controller="Contact" asp-action="Index">Contact</a>
+                </nav>
+            </div>
         }
         else
         {
