@@ -15,7 +15,7 @@ public class HomeController : Controller
     }
 
     [Route("/error")]
-    public IActionResult Error404(int statusCode)
+    public IActionResult Error404()
     {
         var viewModel = new Error404ViewModel();
         @ViewData["Title"] = viewModel.Title;
