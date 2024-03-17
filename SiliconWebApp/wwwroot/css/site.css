@@ -39,7 +39,15 @@ html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn
   color: white;
 }
 html .alert, body .alert {
-  background: var(--color-danger-bg);
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+html .success, body .success {
+  background: green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,7 +295,15 @@ html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn
   color: white;
 }
 html .alert, body .alert {
-  background: var(--color-danger-bg);
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+html .success, body .success {
+  background: green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2161,4 +2177,144 @@ main .showcase .container .background-image {
   margin: 5px;
   width: 150px;
   height: 50px;
+}
+
+.accountSecurity .container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .accountSecurity .container {
+    justify-content: left;
+    flex-direction: row;
+  }
+}
+.accountSecurity .container .profileInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+  .accountSecurity .container .profileInfo {
+    flex-direction: column;
+    justify-content: left;
+  }
+}
+@media (min-width: 992px) {
+  .accountSecurity .container .profileInfo {
+    width: 300px;
+    margin-right: 200px;
+    border-right: 1px solid gray;
+  }
+}
+.accountSecurity .container .profileInfo nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.accountSecurity .container .profileInfo nav a {
+  margin: 5px;
+  justify-content: left;
+}
+@media (min-width: 768px) {
+  .accountSecurity .container .profileInfo nav {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .accountSecurity .container .profileInfo nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .accountSecurity .container .profileInfo nav a {
+    text-align: left;
+    width: 200px;
+  }
+}
+.accountSecurity .container .profileInfo .userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.accountSecurity .container .profileInfo .userInfo img {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+.accountSecurity .container .profileInfo a {
+  margin-bottom: 20px;
+}
+.accountSecurity .container .profileInfo a i {
+  margin-right: 5px;
+}
+.accountSecurity .container .securityMain .passwordInfo {
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid gray;
+}
+.accountSecurity .container .securityMain .passwordInfo h5 {
+  color: #6366F1;
+}
+.accountSecurity .container .securityMain .passwordInfo form {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  grid-template-areas: "currentPassword currentPassword" "newPassword confirmNewPassword" "btns btns";
+}
+.accountSecurity .container .securityMain .passwordInfo form .accountFormBox {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.accountSecurity .container .securityMain .passwordInfo form .accountFormBox input, .accountSecurity .container .securityMain .passwordInfo form .accountFormBox textarea {
+  width: 100%;
+}
+.accountSecurity .container .securityMain .passwordInfo form #currentPassword {
+  grid-area: currentPassword;
+  margin-right: 5px;
+}
+.accountSecurity .container .securityMain .passwordInfo form #newPassword {
+  grid-area: newPassword;
+}
+.accountSecurity .container .securityMain .passwordInfo form #confirmNewPassword {
+  grid-area: confirmNewPassword;
+  margin-right: 5px;
+}
+.accountSecurity .container .securityMain .passwordInfo form .form-btn {
+  grid-area: btns;
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .accountSecurity .container .securityMain .passwordInfo form .form-btn {
+    justify-content: left;
+    align-items: flex-start;
+  }
+}
+.accountSecurity .container .securityMain .passwordInfo form .form-btn .btn-gray, .accountSecurity .container .securityMain .passwordInfo form .form-btn .btn-theme {
+  padding: 0;
+  margin: 5px;
+  width: 150px;
+  height: 50px;
+}
+.accountSecurity .container .securityMain .deleteAccount {
+  display: flex;
+  flex-direction: column;
+}
+.accountSecurity .container .securityMain .deleteAccount h5 {
+  color: #6366F1;
+}
+.accountSecurity .container .securityMain .deleteAccount .del-checkbox {
+  align-items: center;
+}
+.accountSecurity .container .securityMain .deleteAccount .btn-theme {
+  width: 100px;
+  background-color: red;
+  margin-top: 20px;
 }

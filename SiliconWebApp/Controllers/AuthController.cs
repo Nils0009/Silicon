@@ -61,7 +61,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
     #endregion
 
-
     #region SignIn
     [HttpGet]
     public IActionResult SignIn()
@@ -93,10 +92,12 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
     #endregion
 
+    #region SignOut
     [HttpGet]
     public new async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
+    #endregion
 }

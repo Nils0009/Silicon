@@ -1,0 +1,83 @@
+﻿@model AccountSecurityViewModel
+
+@{
+    ViewData["Title"] = "Account security";
+}
+
+<section class="accountSecurity">
+
+    <div class="container">
+
+        <div class="alert">
+            @Model.ErrorMessage
+        </div>
+        <div class="success">
+            @Model.ConfirmMessage
+        </div>
+
+        <div class="profileInfo">
+            <div class="userInfo">
+                <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
+                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                <p>@Model.ProfileInfo.Email</p>
+            </div>
+            <nav>
+                <a asp-controller="Account" asp-action="Details" class="menu-link"><i class="fa-solid fa-gear"></i> Account Details</a>
+                <a asp-controller="Account" asp-action="Security" class="btn-theme"><i class="fa-solid fa-lock"></i>Security</a>
+                <a asp-controller="Account" asp-action="SavedCourses" class="menu-link"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+            </nav>
+        </div>
+
+        <div class="securityMain">
+
+            <div class="passwordInfo">
+                <h1>Security</h1>
+                <h5>Password</h5>
+                <form id="passwordForm" method="post" asp-controller="Account" asp-action="Security" novalidate>
+
+                    <div id="currentPassword" class="accountFormBox">
+                        <label asp-for="@Model.SecurityInfo.CurrentPassword)"></label>
+                        <span asp-validation-for="@Model.SecurityInfo.CurrentPassword"></span>
+                        <input asp-for="@Model.SecurityInfo.CurrentPassword"/>
+                    </div>
+
+                    <div id="newPassword" class="accountFormBox">
+                        <label asp-for="@Model.SecurityInfo.NewPassword"></label>
+                        <span asp-validation-for="@Model.SecurityInfo.NewPassword"></span>
+                        <input asp-for="@Model.SecurityInfo.NewPassword" />
+                    </div>
+
+                    <div id="confirmNewPassword" class="accountFormBox">
+                        <label asp-for="@Model.SecurityInfo.ConfirmNewPassword"></label>
+                        <span asp-validation-for="@Model.SecurityInfo.ConfirmNewPassword"></span>
+                        <input asp-for="@Model.SecurityInfo.ConfirmNewPassword" />
+                    </div>
+
+                    <div class="form-btn">
+                        <button class="btn-gray" type="reset">Cancel</button>
+                        <button class="btn-theme" type="submit">Change password</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="deleteAccount">
+                <h5>Delete account</h5>
+                <p>
+                    When you delete your account, your public profile will be deactivated immediately. If you change your mind before
+                    the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.
+                </p>
+                <form id="deleteForm" method="post" asp-controller="Account" asp-action="Security" novalidate>
+                    <div class="del-checkbox">
+                        <input asp-for="@Model.SecurityDeleteInfo.DeleteAccount" />
+                        <label asp-for="@Model.SecurityDeleteInfo.DeleteAccount"></label>
+                    </div>
+                    <button class="btn-theme" type="submit">Delete</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -7,5 +7,6 @@ public class AccountDetailsViewModel
     public AccountProfileInfoViewModel ProfileInfo { get; set; } = null!;
     public AccountBasicInfoViewModel BasicInfo { get; set; } = null!;
     public AccountAddressInfoViewModel AddressInfo { get; set; } = null!;
-
+    public string? ConfirmMessage { get; set; }
+    public string? ErrorMessage { get; set; }
 }
