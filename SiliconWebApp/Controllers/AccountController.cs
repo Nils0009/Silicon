@@ -198,6 +198,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                     {
                         if (user != null)
                         {
+                            await _addressService.DeleteAddressAsync(user.Id);
                             await _userManager.DeleteAsync(user);
                             await _signInManager.SignOutAsync();
                             return RedirectToAction("Index", "Home");
