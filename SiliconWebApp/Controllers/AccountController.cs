@@ -246,18 +246,18 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
 
     #region HttpPost-SavedItems
     [HttpPost]
-    public async Task<IActionResult> SavedItems()
-    {
-        try
-        {
+    //public async Task<IActionResult> SavedItems()
+    //{
+    //    try
+    //    {
 
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex.Message);
-        }
-        return View();
-    }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Debug.WriteLine(ex.Message);
+    //    }
+    //    return View();
+    //}
     #endregion
     private async Task<AccountBasicInfoViewModel> PopulateBasicInfoAsync()
     {
