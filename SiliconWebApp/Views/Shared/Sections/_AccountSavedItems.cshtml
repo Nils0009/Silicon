@@ -1,0 +1,127 @@
+﻿@model AccountSavedItemsViewModel 
+
+@{
+    ViewData["Title"] = "Account Saved Items";
+}
+
+<section class="accountSavedItems">
+
+    <div class="container">
+
+        <div class="profileInfo">
+            <div class="userInfo">
+                <img src="Images/profile-header.svg" alt="">
+                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                <p>@Model.ProfileInfo.Email</p>
+            </div>
+            <nav>
+                <a asp-controller="Account" asp-action="Details" class="menu-link"><i class="fa-solid fa-gear"></i> Account Details</a>
+                <a asp-controller="Account" asp-action="Security" class="menu-link"><i class="fa-solid fa-lock"></i>Security</a>
+                <a asp-controller="Account" asp-action="SavedItems" class="btn-theme"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+            </nav>
+        </div>
+
+        <div class="accountSavedItems-main">
+
+            <div class="accountSavedItems-top">
+                <h3>@Model.SavedItemsSection.MainTitle</h3>
+                <button><i class="fa-solid fa-trash"></i>Delete all</button>
+            </div>
+
+            <div id="courses-box1" class="courses-box">
+                <div class="courses-box-top">
+                    <p>Best Seller</p>
+                    <div class="box-top-img">
+                        <img src="Images/courses-img-icon.svg" alt="">
+                    </div>
+                </div>
+
+                <a href="CourseDescription.html"><img src="Images/courses-image-1.svg" alt=""></a>
+
+                <div class="courses-text">
+                    <h5>Fullstack Web Developer Course from Scratch</h5>
+                    <p>By Robert Fox</p>
+                </div>
+                <div class="prices">
+                    <p>$12.50</p>
+                </div>
+                <div class="hour-rating">
+                    <p><i class="fa-regular fa-clock"></i>220 hours</p>
+                    <p><i class="fa-regular fa-thumbs-up"></i>94% (4.2K)</p>
+                </div>
+            </div>
+
+            <div id="courses-box2" class="courses-box">
+                <div class="courses-box-top">
+                    <p>Best Seller</p>
+                    <div class="box-top-img">
+                        <img src="Images/courses-img-icon.svg" alt="">
+                    </div>
+                </div>
+
+                <a href="CourseDescription.html"><img src="Images/courses-image-1.svg" alt=""></a>
+
+                <div class="courses-text">
+                    <h5>Fullstack Web Developer Course from Scratch</h5>
+                    <p>By Robert Fox</p>
+                </div>
+                <div class="prices">
+                    <p>$12.50</p>
+                </div>
+                <div class="hour-rating">
+                    <p><i class="fa-regular fa-clock"></i>220 hours</p>
+                    <p><i class="fa-regular fa-thumbs-up"></i>94% (4.2K)</p>
+                </div>
+            </div>
+
+            <div id="courses-box3" class="courses-box">
+                <div class="courses-box-top">
+                    <p>Best Seller</p>
+                    <div class="box-top-img">
+                        <img src="Images/courses-img-icon.svg" alt="">
+                    </div>
+                </div>
+
+                <a href="CourseDescription.html"><img src="Images/courses-image-1.svg" alt=""></a>
+
+                <div class="courses-text">
+                    <h5>Fullstack Web Developer Course from Scratch</h5>
+                    <p>By Robert Fox</p>
+                </div>
+                <div class="prices">
+                    <p>$12.50</p>
+                </div>
+                <div class="hour-rating">
+                    <p><i class="fa-regular fa-clock"></i>220 hours</p>
+                    <p><i class="fa-regular fa-thumbs-up"></i>94% (4.2K)</p>
+                </div>
+            </div>
+
+            <div id="courses-box4" class="courses-box">
+                <div class="courses-box-top">
+                    <p>Best Seller</p>
+                    <div class="box-top-img">
+                        <img src="Images/courses-img-icon.svg" alt="">
+                    </div>
+                </div>
+
+                <a href="CourseDescription.html"><img src="Images/courses-image-1.svg" alt=""></a>
+
+                <div class="courses-text">
+                    <h5>Fullstack Web Developer Course from Scratch</h5>
+                    <p>By Robert Fox</p>
+                </div>
+                <div class="prices">
+                    <p>$12.50</p>
+                </div>
+                <div class="hour-rating">
+                    <p><i class="fa-regular fa-clock"></i>220 hours</p>
+                    <p><i class="fa-regular fa-thumbs-up"></i>94% (4.2K)</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

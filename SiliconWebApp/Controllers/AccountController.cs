@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 namespace SiliconWebApp.Controllers;
 
 
@@ -133,6 +134,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     }
     #endregion
 
+
+
     #region HttpGet-Security
     [HttpGet]
     public async Task<IActionResult> Security()
@@ -221,6 +224,41 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     #endregion
 
 
+
+    #region HttpGet-SavedItems
+    [HttpGet]
+    public async Task<IActionResult> SavedItems()
+    {
+        try
+        {
+            var savedItemsViewModel = new AccountSavedItemsViewModel();
+            savedItemsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+            return View(savedItemsViewModel);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return View();
+    }
+    #endregion
+
+    #region HttpPost-SavedItems
+    [HttpPost]
+    public async Task<IActionResult> SavedItems()
+    {
+        try
+        {
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return View();
+    }
+    #endregion
     private async Task<AccountBasicInfoViewModel> PopulateBasicInfoAsync()
     {
         var existingUser = await _userManager.GetUserAsync(User);

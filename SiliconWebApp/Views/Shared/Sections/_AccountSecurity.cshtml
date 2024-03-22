@@ -8,12 +8,19 @@
 
     <div class="container">
 
-        <div class="alert">
-            @Model.ErrorMessage
-        </div>
-        <div class="success">
-            @Model.ConfirmMessage
-        </div>
+        @if (!string.IsNullOrEmpty(Model.ConfirmMessage))
+        {
+            <div class="success">
+                @Model.ConfirmMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert">
+                @Model.ErrorMessage
+            </div>
+        }
 
         <div class="profileInfo">
             <div class="userInfo">

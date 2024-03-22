@@ -6,10 +6,10 @@
 <section class="signIn-section">
     <div class="container">
 
-        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
             <div class="alert">
-                @ViewData["ErrorMessage"]
+                @Model.ErrorMessage
             </div>
         }
 
@@ -19,10 +19,7 @@
         </div>
 
         <form id="signInForm" method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
-            <div>
-                @Model.ErrorMessage
-            </div>
-
+            
             <label asp-for="@Model.Form.EmailAddress"></label>
             <span asp-validation-for="@Model.Form.EmailAddress"></span>
             <input asp-for="@Model.Form.EmailAddress" />

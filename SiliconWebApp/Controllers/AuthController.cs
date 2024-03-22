@@ -82,7 +82,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             if (signInResult.Succeeded)
             {
                 return RedirectToAction("Details", "Account");
-            }       
+            }
         }
 
         ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
