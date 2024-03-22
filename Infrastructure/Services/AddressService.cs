@@ -67,4 +67,23 @@ public class AddressService(AddressRepository addressRepository)
 		}
 		return false;
 	}
+
+    public async Task<bool> DeleteAddressAsync(string userId)
+    {
+        try
+        {
+			var result = await _addressRepository.GetOneAsync(x => x.UserId == userId);
+            if (result != null)
+			{
+                await _addressRepository.DeleteAsync(x => x.UserId == userId);
+                return true;
+            }
+				
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+        return false!;
+    }
 }

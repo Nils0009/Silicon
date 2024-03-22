@@ -6,6 +6,14 @@
 
 <section class="accountDetails">
     <div class="container">
+
+        @if (!string.IsNullOrEmpty(Model.ConfirmMessage))
+        {
+            <div class="success">
+                @Model.ConfirmMessage
+            </div>
+        }
+
         <div class="profileInfo">
             <div class="userInfo">
                 <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
@@ -60,7 +68,6 @@
                         <button class="btn-gray" type="reset">Cancel</button>
                         <button class="btn-theme" type="submit">Save changes</button>
                     </div>
-
                 </form>
             </div>
 
@@ -97,7 +104,6 @@
                             <button class="btn-gray" type="reset">Cancel</button>
                             <button class="btn-theme" type="submit">Save changes</button>
                         </div>
-
                     </form>
                 </div>
             </div>

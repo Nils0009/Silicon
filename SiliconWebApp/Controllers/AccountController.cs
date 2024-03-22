@@ -6,26 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 namespace SiliconWebApp.Controllers;
 
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressService addressService) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, SignInManager<UserEntity> signInManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressService _addressService = addressService;
 
+    #region HttpGet-Details
     [HttpGet]
     public async Task<IActionResult> Details()
     {
         try
         {
-            var viewModel = new AccountDetailsViewModel();
-            viewModel.BasicInfo = await PopulateBasicInfoAsync();
-            viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
-            viewModel.ProfileInfo ??= await PopulateProfileInfoAsync();
+            var detailsViewModel = new AccountDetailsViewModel();
+            detailsViewModel.BasicInfo = await PopulateBasicInfoAsync();
+            detailsViewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+            detailsViewModel.ProfileInfo ??= await PopulateProfileInfoAsync();
 
-            return View(viewModel);
+            return View(detailsViewModel);
         }
         catch (Exception ex)
         {
@@ -33,66 +36,83 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         }
         return View();
     }
+    #endregion
 
+    #region HttpPost-Details
     [HttpPost]
-    public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
+    public async Task<IActionResult> Details(AccountDetailsViewModel detailsViewModel)
     {
 
         try
         {
             var user = await _userManager.GetUserAsync(User);
 
-            if (viewModel.BasicInfo != null)
+            if (detailsViewModel.BasicInfo != null)
             {
-                if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+                if (detailsViewModel.BasicInfo.FirstName != null && detailsViewModel.BasicInfo.LastName != null && detailsViewModel.BasicInfo.Email != null)
                 {
                     if (user != null)
                     {
-                        if (viewModel.BasicInfo != null)
+                        if (detailsViewModel.BasicInfo != null)
                         {
-                            user.FirstName = viewModel.BasicInfo.FirstName;
-                            user.LastName = viewModel.BasicInfo.LastName;
-                            user.Email = viewModel.BasicInfo.Email;
-                            user.PhoneNumber = viewModel.BasicInfo.Phone;
-                            user.Bio = viewModel.BasicInfo.Bio;
+                            user.FirstName = detailsViewModel.BasicInfo.FirstName;
+                            user.LastName = detailsViewModel.BasicInfo.LastName;
+                            user.Email = detailsViewModel.BasicInfo.Email;
+                            user.PhoneNumber = detailsViewModel.BasicInfo.Phone;
+                            user.Bio = detailsViewModel.BasicInfo.Bio;
 
                             var result = await _userManager.UpdateAsync(user);
+
+                            if (result.Succeeded)
+                            {
+                                detailsViewModel.ConfirmMessage = "Basic information has been successfully updated";
+                            }
                         }
                     }
                 }
             }
 
-            if (viewModel.AddressInfo != null)
+            if (detailsViewModel.AddressInfo != null)
             {
-                if (viewModel.AddressInfo.AddressLine1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
+                if (detailsViewModel.AddressInfo.AddressLine1 != null && detailsViewModel.AddressInfo.PostalCode != null && detailsViewModel.AddressInfo.City != null)
                 {
                     if (user != null)
                     {
                         var existingAddress = await _addressService.GetAddressAsync(user.Id);
                         if (existingAddress != null)
                         {
-                            existingAddress.AddressLine1 = viewModel.AddressInfo.AddressLine1;
-                            existingAddress.AddressLine2 = viewModel.AddressInfo.AddressLine2;
-                            existingAddress.PostalCode = viewModel.AddressInfo.PostalCode;
-                            existingAddress.City = viewModel.AddressInfo.City;
+                            existingAddress.AddressLine1 = detailsViewModel.AddressInfo.AddressLine1;
+                            existingAddress.AddressLine2 = detailsViewModel.AddressInfo.AddressLine2;
+                            existingAddress.PostalCode = detailsViewModel.AddressInfo.PostalCode;
+                            existingAddress.City = detailsViewModel.AddressInfo.City;
 
-                            var result = await _addressService.UpdateAddressAsync(existingAddress);
+                            await _addressService.UpdateAddressAsync(existingAddress);
 
                             user.AddressId = existingAddress.Id;
-                            await _userManager.UpdateAsync(user);
+                            var result = await _userManager.UpdateAsync(user);
+
+                            if (result.Succeeded)
+                            {
+                                detailsViewModel.ConfirmMessage = "Address information has been successfully updated";
+                            }
                         }
                         else
                         {
                             var newAddress = new AddressEntity
                             {
-                                AddressLine1 = viewModel.AddressInfo.AddressLine1,
-                                AddressLine2 = viewModel.AddressInfo.AddressLine2!,
-                                PostalCode = viewModel.AddressInfo.PostalCode,
-                                City = viewModel.AddressInfo.City,
+                                AddressLine1 = detailsViewModel.AddressInfo.AddressLine1,
+                                AddressLine2 = detailsViewModel.AddressInfo.AddressLine2!,
+                                PostalCode = detailsViewModel.AddressInfo.PostalCode,
+                                City = detailsViewModel.AddressInfo.City,
                             };
                             newAddress = await _addressService.CreateAddressAsync(newAddress!.AddressLine1, newAddress.PostalCode, newAddress.City, user.Id);
                             user.AddressId = newAddress.Id;
-                            await _userManager.UpdateAsync(user);
+                            var result = await _userManager.UpdateAsync(user);
+
+                            if (result.Succeeded)
+                            {
+                                detailsViewModel.ConfirmMessage = "A new address has been added successfully";
+                            }
 
                         }
 
@@ -100,19 +120,145 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 }
             }
 
-            viewModel.ProfileInfo = await PopulateProfileInfoAsync();
-            viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
-            viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+            detailsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+            detailsViewModel.BasicInfo ??= await PopulateBasicInfoAsync();
+            detailsViewModel.AddressInfo ??= await PopulateAddressInfoAsync();
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
         }
 
-        return View(viewModel);
+        return View(detailsViewModel);
 
     }
+    #endregion
 
+
+
+    #region HttpGet-Security
+    [HttpGet]
+    public async Task<IActionResult> Security()
+    {
+        try
+        {
+            var securityViewModel = new AccountSecurityViewModel();
+            securityViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+            securityViewModel.SecurityInfo ??= await PopulateSecurityInfoAsync();
+            securityViewModel.SecurityDeleteInfo ??= await PopulateSecurityDeleteInfoAsync();
+
+            return View(securityViewModel);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+        return View();
+    }
+    #endregion
+
+    #region HttpPost-Security
+    [HttpPost]
+    public async Task<IActionResult> Security(AccountSecurityViewModel securityViewModel)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            securityViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+            if (securityViewModel.SecurityInfo != null)
+            {
+                if (securityViewModel.SecurityInfo.CurrentPassword != null &&
+                    securityViewModel.SecurityInfo.NewPassword != null &&
+                    securityViewModel.SecurityInfo.ConfirmNewPassword != null)
+                {
+                    if (user != null)
+                    {
+
+                        var result = await _userManager.ChangePasswordAsync(user, securityViewModel.SecurityInfo.CurrentPassword, securityViewModel.SecurityInfo.NewPassword);
+
+                        if (result.Succeeded)
+                        {
+                            securityViewModel.ConfirmMessage = "Password has been changed successfully";
+                        }
+
+
+                        else if (!result.Succeeded)
+                        {
+                            ModelState.AddModelError("IncorrectValues", "Incorrect values! Password has not been changed!");
+                            securityViewModel.ErrorMessage = "Incorrect values! Password has not been changed!";
+                            return View(securityViewModel);
+                        }
+                    }
+                }
+
+            }
+
+            if (securityViewModel.SecurityDeleteInfo != null)
+                {
+                    if (securityViewModel.SecurityDeleteInfo.DeleteAccount == true)
+                    {
+                        if (user != null)
+                        {
+                            await _addressService.DeleteAddressAsync(user.Id);
+                            await _userManager.DeleteAsync(user);
+                            await _signInManager.SignOutAsync();
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+            }
+
+            securityViewModel.SecurityInfo ??= await PopulateSecurityInfoAsync();
+            securityViewModel.SecurityDeleteInfo ??= await PopulateSecurityDeleteInfoAsync();
+        }
+
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+
+        return View(securityViewModel);
+    }
+
+    #endregion
+
+
+
+    #region HttpGet-SavedItems
+    [HttpGet]
+    public async Task<IActionResult> SavedItems()
+    {
+        try
+        {
+            var savedItemsViewModel = new AccountSavedItemsViewModel();
+            savedItemsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+            return View(savedItemsViewModel);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return View();
+    }
+    #endregion
+
+    #region HttpPost-SavedItems
+    [HttpPost]
+    //public async Task<IActionResult> SavedItems()
+    //{
+    //    try
+    //    {
+
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Debug.WriteLine(ex.Message);
+    //    }
+    //    return View();
+    //}
+    #endregion
     private async Task<AccountBasicInfoViewModel> PopulateBasicInfoAsync()
     {
         var existingUser = await _userManager.GetUserAsync(User);
@@ -165,6 +311,35 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             };
         }
         return new AccountProfileInfoViewModel();
+    }
+
+    private async Task<AccountSecurityInfoViewModel> PopulateSecurityInfoAsync()
+    {
+        var existingUser = await _userManager.GetUserAsync(User);
+        if (existingUser != null)
+        {
+            return new AccountSecurityInfoViewModel
+            {
+                CurrentPassword = existingUser.PasswordHash!,
+                NewPassword = existingUser.PasswordHash!,
+                ConfirmNewPassword = existingUser.PasswordHash!,
+
+            };
+        }
+        return new AccountSecurityInfoViewModel();
+    }
+
+    private async Task<AccountSecurityDeleteInfoViewModel> PopulateSecurityDeleteInfoAsync()
+    {
+        var existingUser = await _userManager.GetUserAsync(User);
+        if (existingUser != null)
+        {
+            return new AccountSecurityDeleteInfoViewModel
+            {
+                DeleteAccount = false
+            };
+        }
+        return new AccountSecurityDeleteInfoViewModel();
     }
 
 }
