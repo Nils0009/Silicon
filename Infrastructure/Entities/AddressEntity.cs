@@ -2,7 +2,7 @@
 
 public class AddressEntity
 {
-    public int Id { get; set; }
+    public string Id { get; set; } = null!;
     public string AddressLine1 { get; set; } = null!;
     public string? AddressLine2 { get; set; }
     public string City { get; set; } = null!;

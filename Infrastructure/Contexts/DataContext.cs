@@ -8,4 +8,17 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
 {
     public DbSet<AddressEntity> Addresses { get; set; }
     public DbSet<NewsletterEntity> Newsletters { get; set; }
+    public DbSet<CourseEntity> Courses { get; set; }
+    public DbSet<UserCourseRegistrationEntity> UserCourseRegistrations { get; set; }
+    public DbSet<UserNewsletterSubscription> UserNewsletterSubscriptions { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<UserCourseRegistrationEntity>()
+            .HasKey(ucr => new { ucr.UserId, ucr.CourseId });
+
+        modelBuilder.Entity<UserNewsletterSubscription>()
+            .HasKey(uns => new { uns.UserId, uns.NewsletterId });
+    }
 }

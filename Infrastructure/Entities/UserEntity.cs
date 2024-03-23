@@ -13,10 +13,9 @@ public class UserEntity : IdentityUser
     [ProtectedPersonalData]
     public string? Bio { get; set; }
 
-    public int? AddressId { get; set; }
+    public string AddressId { get; set; } = null!;
     public AddressEntity? Address { get; set; }
 
-    public int? NewsletterId { get; set; }
-    public NewsletterEntity? Newsletter { get; set; }
-
+    public ICollection<UserCourseRegistrationEntity> CourseRegistration { get; set; } = new List<UserCourseRegistrationEntity>();
+    public ICollection<UserNewsletterSubscription> NewsletterSubscriptions { get; set; } = new List<UserNewsletterSubscription>();
 }

@@ -1,14 +1,17 @@
-﻿namespace Infrastructure.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Infrastructure.Entities;
 
 public class NewsletterEntity
 {
-    public int Id { get; set; }
-    public bool DailyNewsletter { get; set; }
-    public bool AdvertisingUpdates { get; set; }
-    public bool WeekInReview { get; set; }
-    public bool EventUpdates { get; set; }
-    public bool StartupsWeekly { get; set; }
-    public bool Podcasts { get; set; }
+    public string Id { get; set; } = null!;
+    public string Email { get; set; } = null!;
+    public bool? DailyNewsletter { get; set; }
+    public bool? AdvertisingUpdates { get; set; }
+    public bool? WeekInReview { get; set; }
+    public bool? EventUpdates { get; set; }
+    public bool? StartupsWeekly { get; set; }
+    public bool? Podcasts { get; set; }
 
-    public ICollection<UserEntity> Users { get; set; } = [];
+    public ICollection<UserNewsletterSubscription> UserNewsletterSubscription { get; set; } = new List<UserNewsletterSubscription>();
 }

@@ -24,11 +24,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Infrastructure.Entities.AddressEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AddressLine1")
                         .IsRequired()
@@ -54,35 +51,89 @@ namespace Infrastructure.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiscountPrice")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsBestSeller")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LikesInNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LikesInProcent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.NewsletterEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("AdvertisingUpdates")
+                    b.Property<bool?>("AdvertisingUpdates")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("DailyNewsletter")
+                    b.Property<bool?>("DailyNewsletter")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("EventUpdates")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("EventUpdates")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Podcasts")
+                    b.Property<bool?>("Podcasts")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("StartupsWeekly")
+                    b.Property<bool?>("StartupsWeekly")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("WeekInReview")
+                    b.Property<bool?>("WeekInReview")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.ToTable("Newsletters");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.UserCourseRegistrationEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CourseId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("RegistationDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("UserCourseRegistrations");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
@@ -93,8 +144,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
+                    b.Property<string>("AddressId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
@@ -123,9 +175,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("NewsletterId")
-                        .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -158,8 +207,6 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("NewsletterId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -169,6 +216,21 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscription", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("NewsletterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "NewsletterId");
+
+                    b.HasIndex("NewsletterId");
+
+                    b.ToTable("UserNewsletterSubscriptions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -308,19 +370,53 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.UserCourseRegistrationEntity", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.CourseEntity", "Course")
+                        .WithMany("UserCourseRegistrations")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.Entities.UserEntity", "User")
+                        .WithMany("CourseRegistration")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
                 {
                     b.HasOne("Infrastructure.Entities.AddressEntity", "Address")
                         .WithMany("Users")
-                        .HasForeignKey("AddressId");
-
-                    b.HasOne("Infrastructure.Entities.NewsletterEntity", "Newsletter")
-                        .WithMany("Users")
-                        .HasForeignKey("NewsletterId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscription", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.NewsletterEntity", "Newsletter")
+                        .WithMany("UserNewsletterSubscription")
+                        .HasForeignKey("NewsletterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.Entities.UserEntity", "User")
+                        .WithMany("NewsletterSubscriptions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Newsletter");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -379,9 +475,21 @@ namespace Infrastructure.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
+                {
+                    b.Navigation("UserCourseRegistrations");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.NewsletterEntity", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("UserNewsletterSubscription");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
+                {
+                    b.Navigation("CourseRegistration");
+
+                    b.Navigation("NewsletterSubscriptions");
                 });
 #pragma warning restore 612, 618
         }
