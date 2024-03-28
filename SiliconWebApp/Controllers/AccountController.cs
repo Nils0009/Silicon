@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
 namespace SiliconWebApp.Controllers;
 
 
@@ -24,9 +23,9 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         try
         {
             var detailsViewModel = new AccountDetailsViewModel();
-            detailsViewModel.BasicInfo = await PopulateBasicInfoAsync();
+            detailsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+            detailsViewModel.BasicInfo ??= await PopulateBasicInfoAsync();
             detailsViewModel.AddressInfo ??= await PopulateAddressInfoAsync();
-            detailsViewModel.ProfileInfo ??= await PopulateProfileInfoAsync();
 
             return View(detailsViewModel);
         }
@@ -79,16 +78,17 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                     if (user != null)
                     {
                         var existingAddress = await _addressService.GetAddressAsync(user.Id);
+                        
                         if (existingAddress != null)
                         {
                             existingAddress.AddressLine1 = detailsViewModel.AddressInfo.AddressLine1;
                             existingAddress.AddressLine2 = detailsViewModel.AddressInfo.AddressLine2;
                             existingAddress.PostalCode = detailsViewModel.AddressInfo.PostalCode;
                             existingAddress.City = detailsViewModel.AddressInfo.City;
-
+                            
                             await _addressService.UpdateAddressAsync(existingAddress);
-
-                            user.AddressId = existingAddress.Id;
+                            user.AddressId = existingAddress.Id;        
+                            
                             var result = await _userManager.UpdateAsync(user);
 
                             if (result.Succeeded)
@@ -96,6 +96,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                                 detailsViewModel.ConfirmMessage = "Address information has been successfully updated";
                             }
                         }
+
                         else
                         {
                             var newAddress = new AddressEntity
@@ -104,9 +105,11 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                                 AddressLine2 = detailsViewModel.AddressInfo.AddressLine2!,
                                 PostalCode = detailsViewModel.AddressInfo.PostalCode,
                                 City = detailsViewModel.AddressInfo.City,
+                                UserId = user.Id
                             };
-                            newAddress = await _addressService.CreateAddressAsync(newAddress!.AddressLine1, newAddress.PostalCode, newAddress.City, user.Id);
-                            user.AddressId = newAddress.Id;
+
+                            var createdAddress = await _addressService.CreateAddressAsync(newAddress.AddressLine1, newAddress.PostalCode, newAddress.City, user.Id);
+                            user.AddressId = createdAddress.Id;
                             var result = await _userManager.UpdateAsync(user);
 
                             if (result.Succeeded)
@@ -119,6 +122,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                     }
                 }
             }
+
 
             detailsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
             detailsViewModel.BasicInfo ??= await PopulateBasicInfoAsync();
@@ -303,12 +307,13 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         var existingUser = await _userManager.GetUserAsync(User);
         if (existingUser != null)
         {
-            return new AccountProfileInfoViewModel
+            var newProfileInfo = new AccountProfileInfoViewModel
             {
                 FirstName = existingUser.FirstName,
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
             };
+            return newProfileInfo;         
         }
         return new AccountProfileInfoViewModel();
     }

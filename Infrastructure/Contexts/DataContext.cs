@@ -6,11 +6,11 @@ namespace Infrastructure.Contexts;
 
 public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<UserEntity>(options)
 {
-    public DbSet<AddressEntity> Addresses { get; set; }
-    public DbSet<NewsletterEntity> Newsletters { get; set; }
-    public DbSet<CourseEntity> Courses { get; set; }
-    public DbSet<UserCourseRegistrationEntity> UserCourseRegistrations { get; set; }
-    public DbSet<UserNewsletterSubscription> UserNewsletterSubscriptions { get; set; }
+    public DbSet<AddressEntity> AspNetAddresses { get; set; }
+    public DbSet<NewsletterEntity> AspNetNewsletters { get; set; }
+    public DbSet<CourseEntity> AspNetCourses { get; set; }
+    public DbSet<UserCourseRegistrationEntity> AspNetUserCourseRegistrations { get; set; }
+    public DbSet<UserNewsletterSubscriptionEntity> AspNetUserNewsletterSubscriptions { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -18,7 +18,7 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
         modelBuilder.Entity<UserCourseRegistrationEntity>()
             .HasKey(ucr => new { ucr.UserId, ucr.CourseId });
 
-        modelBuilder.Entity<UserNewsletterSubscription>()
+        modelBuilder.Entity<UserNewsletterSubscriptionEntity>()
             .HasKey(uns => new { uns.UserId, uns.NewsletterId });
     }
 }

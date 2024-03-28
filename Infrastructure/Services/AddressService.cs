@@ -18,6 +18,7 @@ public class AddressService(AddressRepository addressRepository)
 				
 				var newAddress = new AddressEntity 
 				{ 
+					Id = Guid.NewGuid().ToString(),
 					AddressLine1 = addressline1,
 					PostalCode = postalCode,
 					City = city,
@@ -31,7 +32,7 @@ public class AddressService(AddressRepository addressRepository)
         }
 		catch (Exception ex)
 		{
-			Debug.WriteLine(ex);
+			Debug.WriteLine(ex.Message);
 		}
 		return null!;
     }
@@ -46,7 +47,7 @@ public class AddressService(AddressRepository addressRepository)
 		}
 		catch (Exception ex)
 		{
-			Debug.WriteLine(ex);
+			Debug.WriteLine(ex.Message);
 		}
 		return null!;
 	}
@@ -63,7 +64,7 @@ public class AddressService(AddressRepository addressRepository)
 		}
 		catch (Exception ex)
 		{
-			Debug.WriteLine(ex);
+			Debug.WriteLine(ex.Message);
 		}
 		return false;
 	}

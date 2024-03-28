@@ -48,7 +48,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("AspNetAddresses");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
@@ -63,6 +63,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsBestSeller")
@@ -83,7 +86,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("AspNetCourses");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.NewsletterEntity", b =>
@@ -91,31 +94,13 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool?>("AdvertisingUpdates")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("DailyNewsletter")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("EventUpdates")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("Podcasts")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("StartupsWeekly")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("WeekInReview")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Newsletters");
+                    b.ToTable("AspNetNewsletters");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserCourseRegistrationEntity", b =>
@@ -133,7 +118,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("UserCourseRegistrations");
+                    b.ToTable("AspNetUserCourseRegistrations");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
@@ -145,7 +130,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AddressId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Bio")
@@ -218,7 +202,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscription", b =>
+            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscriptionEntity", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -230,7 +214,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("NewsletterId");
 
-                    b.ToTable("UserNewsletterSubscriptions");
+                    b.ToTable("AspNetUserNewsletterSubscriptions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -393,14 +377,12 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Infrastructure.Entities.AddressEntity", "Address")
                         .WithMany("Users")
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscription", b =>
+            modelBuilder.Entity("Infrastructure.Entities.UserNewsletterSubscriptionEntity", b =>
                 {
                     b.HasOne("Infrastructure.Entities.NewsletterEntity", "Newsletter")
                         .WithMany("UserNewsletterSubscription")

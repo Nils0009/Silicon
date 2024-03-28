@@ -10,29 +10,29 @@ html, body {
     font-size: 16px;
 
     .dark-mode {
-        background-color: $black;
-        border-color: gray;
+        background-color: var(--color-black);
+        border-color: var(--color-gray-100);
 
         h1, h2, h3, h4, h5, h6, p {
-            color: white;
+            color: var(--color-gray-000);
         }
 
         .benefits, .downloadApp, .subscribe, .managework {
-            background-color: $black;
-            color: white;
+            background-color: var(--color-black);
+            color: var(--color-gray-000);
         }
 
         header {
-            background-color: $black;
-            color: white;
+            background-color: var(--color-black);
+            color: var(--color-gray-000);
 
             label {
-                color: white;
+                color: var(--color-gray-000);
             }
 
             #menu {
-                background-color: $black;
-                color: white;
+                background-color: var(--color-black);
+                color: var(--color-gray-000);
 
                 .menu-link {
                     color: $dark-text !important;
@@ -40,7 +40,7 @@ html, body {
             }
 
             .mobile-menu-btn {
-                color: white
+                color: var(--color-gray-000)
             }
         }
     }

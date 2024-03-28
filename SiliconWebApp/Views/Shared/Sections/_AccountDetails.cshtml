@@ -16,9 +16,13 @@
 
         <div class="profileInfo">
             <div class="userInfo">
-                <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
-                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
-                <p>@Model.ProfileInfo.Email</p>
+                @if (Model.ProfileInfo != null)
+                {
+                    <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
+                    <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                    <p>@Model.ProfileInfo.Email</p>
+                }
+
             </div>
             <nav>
                 <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-solid fa-gear"></i> Account Details</a>

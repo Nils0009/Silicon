@@ -1,4 +1,6 @@
-﻿using SiliconWebApp.ViewModels.Sections;
+﻿using Infrastructure.Entities;
+using Infrastructure.Models;
+using SiliconWebApp.ViewModels.Sections;
 
 namespace SiliconWebApp.ViewModels.Views;
 
@@ -152,20 +154,6 @@ public class HomeViewModel
         ],
     };
 
-    public HomeSubscriptionViewModel Subscribe = new HomeSubscriptionViewModel
-    {
-        MainTitle = "Don't Want to Miss Anything?",
-        SubscriptionImage = new() { ImageUrl = "images/subscribe-img.svg", AltText = "" },
-        InnerTitle = "Sign up for Newsletters",
-        SubscriptionBox =
-        [
-            new() { BoxClassName = "ch-b1", InputType = "checkbox", InputName = "ch-b1", LabelFor = "ch-b1", LabelText = "Daily Newsletter" },
-            new() { BoxClassName = "ch-b2", InputType = "checkbox", InputName = "ch-b2", LabelFor = "ch-b2", LabelText = "Advertising Updates" },
-            new() { BoxClassName = "ch-b3", InputType = "checkbox", InputName = "ch-b3", LabelFor = "ch-b3", LabelText = "Week in Review" },
-            new() { BoxClassName = "ch-b4", InputType = "checkbox", InputName = "ch-b4", LabelFor = "ch-b4", LabelText = "Event Updates" },
-            new() { BoxClassName = "ch-b5", InputType = "checkbox", InputName = "ch-b5", LabelFor = "ch-b5", LabelText = "Startups Weekly" },
-            new() { BoxClassName = "ch-b6", InputType = "checkbox", InputName = "ch-b6", LabelFor = "ch-b6", LabelText = "Podcasts" }
-        ]
-    };
+    public NewsletterSubscriptionRegistrationModel NewsletterSubscriptionRegistrationModel { get; set; } = new NewsletterSubscriptionRegistrationModel();
 
 }
