@@ -2,57 +2,38 @@
 using Infrastructure.Models;
 using Infrastructure.Repositories;
 using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
+
 
 namespace Infrastructure.Services;
 
-public class SubscriberService(NewsletterRepository newsletterRepository, UserRepository userRepository, UserNewsletterSubscriptionRepository userNewsletterSubscriptionRepository)
+public class SubscriberService(NewsletterRepository newsletterRepository)
 {
     private readonly NewsletterRepository _newsletterRepository = newsletterRepository;
-    private readonly UserRepository _userRepository = userRepository;
-    private readonly UserNewsletterSubscriptionRepository _userNewsletterSubscriptionRepository = userNewsletterSubscriptionRepository;
     public async Task<NewsletterEntity> CreateNewsletterSubscriptionAsync(NewsletterSubscriptionRegistrationModel model)
     {
         try
         {
-            var existingSubscription = await _newsletterRepository.GetOneAsync(x => x.Email == model.Email);
-            
-            if (existingSubscription != null)
-            {
-                var existingSubscriptionUser = await _userNewsletterSubscriptionRepository.GetOneAsync(x => x.NewsletterId == existingSubscription.Id);
-                if (existingSubscriptionUser == null)
-                {
-                    existingSubscription.Id = existingSubscriptionUser!.NewsletterId;
+            var existingSubscriber = await _newsletterRepository.GetOneAsync(x => x.Email == model.Email);
 
-                }
-                return existingSubscription;
+            if (existingSubscriber != null)
+            {
+                return existingSubscriber;
             }
 
-            if (existingSubscription == null)
+            var newSubscriber = new NewsletterEntity
             {
-                var newSubscriber = new NewsletterEntity
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Email = model.Email,
-                };
+                Id = Guid.NewGuid().ToString(),
+                Email = model.Email,
+                DailyNewsletter = model.DailyNewsletter,
+                WeekInReview = model.WeekInReview,
+                StartupsWeekly = model.StartupsWeekly,
+                AdvertisingUpdates = model.AdvertisingUpdates,
+                EventUpdates = model.EventUpdates,
+                Podcasts = model.Podcasts,
+            };
+            await _newsletterRepository.CreateAsync(newSubscriber);
 
-                await _newsletterRepository.CreateAsync(newSubscriber);
-
-                var existingUser = await _userRepository.GetOneAsync(x => x.Email == model.Email);
-                if (existingUser != null) 
-                {
-                    var userSubscription = new UserNewsletterSubscriptionEntity
-                    {
-                        User = existingUser,
-                        UserId = existingUser.Id,
-                        NewsletterId = newSubscriber.Id
-                    };
-
-                    await _userNewsletterSubscriptionRepository.CreateAsync(userSubscription);
-                };
-
-                return newSubscriber;
-            }
+            return newSubscriber;
         }
         catch (Exception ex)
         {
@@ -67,7 +48,7 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
             var existingSubscribers = await _newsletterRepository.GetAllAsync();
 
             if (existingSubscribers != null)
-            {            
+            {
                 return existingSubscribers;
             }
         }
@@ -82,7 +63,7 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
         try
         {
             var existingNewsletterSubscriber = await _newsletterRepository.GetOneAsync(x => x.Email == email);
-           
+
             if (existingNewsletterSubscriber != null)
             {
                 return existingNewsletterSubscriber;

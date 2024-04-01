@@ -10,11 +10,12 @@ namespace SiliconWebApp.Controllers;
 
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, SignInManager<UserEntity> signInManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, SignInManager<UserEntity> signInManager, CourseService courseService) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressService _addressService = addressService;
+    private readonly CourseService _courseService = courseService;
 
     #region HttpGet-Details
     [HttpGet]
@@ -78,17 +79,17 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                     if (user != null)
                     {
                         var existingAddress = await _addressService.GetAddressAsync(user.Id);
-                        
+
                         if (existingAddress != null)
                         {
                             existingAddress.AddressLine1 = detailsViewModel.AddressInfo.AddressLine1;
                             existingAddress.AddressLine2 = detailsViewModel.AddressInfo.AddressLine2;
                             existingAddress.PostalCode = detailsViewModel.AddressInfo.PostalCode;
                             existingAddress.City = detailsViewModel.AddressInfo.City;
-                            
+
                             await _addressService.UpdateAddressAsync(existingAddress);
-                            user.AddressId = existingAddress.Id;        
-                            
+                            user.AddressId = existingAddress.Id;
+
                             var result = await _userManager.UpdateAsync(user);
 
                             if (result.Succeeded)
@@ -200,17 +201,17 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             }
 
             if (securityViewModel.SecurityDeleteInfo != null)
+            {
+                if (securityViewModel.SecurityDeleteInfo.DeleteAccount == true)
                 {
-                    if (securityViewModel.SecurityDeleteInfo.DeleteAccount == true)
+                    if (user != null)
                     {
-                        if (user != null)
-                        {
-                            await _addressService.DeleteAddressAsync(user.Id);
-                            await _userManager.DeleteAsync(user);
-                            await _signInManager.SignOutAsync();
-                            return RedirectToAction("Index", "Home");
-                        }
+                        await _addressService.DeleteAddressAsync(user.Id);
+                        await _userManager.DeleteAsync(user);
+                        await _signInManager.SignOutAsync();
+                        return RedirectToAction("Index", "Home");
                     }
+                }
             }
 
             securityViewModel.SecurityInfo ??= await PopulateSecurityInfoAsync();
@@ -237,6 +238,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         {
             var savedItemsViewModel = new AccountSavedItemsViewModel();
             savedItemsViewModel.ProfileInfo = await PopulateProfileInfoAsync();
+            savedItemsViewModel.UserCourses = await PopulateSavedItemsInfoAsync();
 
             return View(savedItemsViewModel);
         }
@@ -250,18 +252,38 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
 
     #region HttpPost-SavedItems
     [HttpPost]
-    //public async Task<IActionResult> SavedItems()
-    //{
-    //    try
-    //    {
+    public async Task<IActionResult> SavedItems(string courseId)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
 
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Debug.WriteLine(ex.Message);
-    //    }
-    //    return View();
-    //}
+            if (user != null)
+            {
+
+                var existingRegistration = user.CourseRegistration!.FirstOrDefault(cr => cr.CourseId == courseId);
+                if (existingRegistration == null)
+                {
+
+                    user.CourseRegistration!.Add(new UserCourseRegistrationEntity
+                    {
+                        UserId = user.Id,
+                        CourseId = courseId,
+                        RegistationDate = DateTime.Now,
+                    });
+                    await _userManager.UpdateAsync(user);
+                }
+
+                return RedirectToAction("SavedItems");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+
+        return RedirectToAction("SavedItems");
+    }
     #endregion
     private async Task<AccountBasicInfoViewModel> PopulateBasicInfoAsync()
     {
@@ -313,7 +335,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
             };
-            return newProfileInfo;         
+            return newProfileInfo;
         }
         return new AccountProfileInfoViewModel();
     }
@@ -345,6 +367,46 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             };
         }
         return new AccountSecurityDeleteInfoViewModel();
+    }
+
+    private async Task<IEnumerable<CourseEntity>> PopulateSavedItemsInfoAsync()
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                var courses = await _courseService.GetAllCoursesAsync();
+                var savedCourses = new List<CourseEntity>();
+
+                foreach (var course in courses)
+                {             
+                    if (course != null)
+                    {
+                       if(course.UserCourseRegistrations != null)
+                        {
+                            foreach(var userReg in course.UserCourseRegistrations)
+                            {
+                                if (userReg.UserId == user.Id)
+                                {
+                                    savedCourses.Add(userReg.Course);
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                return savedCourses;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+
+        return Enumerable.Empty<CourseEntity>();
     }
 
 }

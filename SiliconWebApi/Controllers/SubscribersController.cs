@@ -10,7 +10,7 @@ namespace SiliconWebApi.Controllers;
 public class SubscribersController(SubscriberService subscriberService) : ControllerBase
 {
     private readonly SubscriberService _subscriberService = subscriberService;
-
+    
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -38,7 +38,7 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
         try
         {
             var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
-            
+
             if (existingSubscriber != null)
             {
                 return Ok(existingSubscriber);
@@ -59,16 +59,15 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     {
         try
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (!string.IsNullOrEmpty(registrationModel.Email))
                 {
                     var alreadyExists = await _subscriberService.GetOneNewsletterSubscriberAsync(registrationModel.Email);
                     if (alreadyExists != null)
                     {
-                        return Ok("Subscriber already exists");
+                        return Conflict("Subscriber already exists");
                     }
-
 
                     var createdSubscriber = await _subscriberService.CreateNewsletterSubscriptionAsync(registrationModel);
 
@@ -90,7 +89,7 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateOne (NewsletterSubscriptionRegistrationModel model)
+    public async Task<IActionResult> UpdateOne(NewsletterSubscriptionRegistrationModel model)
     {
         try
         {
@@ -107,23 +106,23 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
                 }
                 return NotFound();
             }
-          
+
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
         }
-        return BadRequest();   
+        return BadRequest();
     }
 
     [HttpDelete("{email}")]
-    public async Task<IActionResult> DeleteOne (string email)
+    public async Task<IActionResult> DeleteOne(string email)
     {
         try
         {
-            var existingSubscriber = _subscriberService.GetOneNewsletterSubscriberAsync (email);
-                    
-            if(existingSubscriber != null)
+            var existingSubscriber = _subscriberService.GetOneNewsletterSubscriberAsync(email);
+
+            if (existingSubscriber != null)
             {
                 await _subscriberService.DeleteNewsletterSubscriberAsync(email);
 

@@ -89,15 +89,6 @@ html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn
   color: var(--color-gray-000);
 }
 html .alert, body .alert {
-  background: pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  border-radius: 8px;
-}
-html .success, body .success {
-  background: green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1124,13 +1115,11 @@ main .showcase .container .background-image {
 .courses-showcase .container .courses-showcase-content {
   display: grid;
   gap: 20px;
-  grid-template-columns: auto;
-  grid-template-areas: "courses-box-1" "courses-box-2" "courses-box-3" "courses-box-4" "courses-box-5" "courses-box-6" "courses-box-7" "courses-box-8" "courses-box-9";
+  grid-template-columns: repeat(auto-fill, minmax 250px, 1fr);
 }
 @media (min-width: 992px) {
   .courses-showcase .container .courses-showcase-content {
     grid-template-columns: auto auto auto;
-    grid-template-areas: "courses-box-1 courses-box-2 courses-box-3" "courses-box-4 courses-box-5 courses-box-6" "courses-box-7 courses-box-8 courses-box-9";
   }
 }
 .courses-showcase .container .courses-showcase-content .courses-box {
@@ -1166,6 +1155,7 @@ main .showcase .container .background-image {
 }
 .courses-showcase .container .courses-showcase-content .courses-box .prices {
   display: flex;
+  color: var(--color-theme);
 }
 .courses-showcase .container .courses-showcase-content .courses-box .prices p {
   margin-right: 20px;
@@ -1182,33 +1172,6 @@ main .showcase .container .background-image {
 }
 .courses-showcase .container .courses-showcase-content .courses-box .hour-rating p i {
   margin-right: 5px;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-1 {
-  grid-area: courses-box-1;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-2 {
-  grid-area: courses-box-2;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-3 {
-  grid-area: courses-box-3;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-4 {
-  grid-area: courses-box-4;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-5 {
-  grid-area: courses-box-5;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-6 {
-  grid-area: courses-box-6;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-7 {
-  grid-area: courses-box-7;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-8 {
-  grid-area: courses-box-8;
-}
-.courses-showcase .container .courses-showcase-content #courses-box-9 {
-  grid-area: courses-box-9;
 }
 .courses-showcase .container .courses-slide-btn {
   display: flex;
@@ -1920,4 +1883,144 @@ main .showcase .container .background-image {
   width: 100px;
   background-color: red;
   margin-top: 20px;
+}
+
+.accountSavedItems .container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .accountSavedItems .container {
+    justify-content: left;
+    flex-direction: row;
+  }
+}
+.accountSavedItems .container .profileInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+  .accountSavedItems .container .profileInfo {
+    flex-direction: column;
+    justify-content: left;
+  }
+}
+@media (min-width: 992px) {
+  .accountSavedItems .container .profileInfo {
+    width: 300px;
+    margin-right: 200px;
+    border-right: 1px solid gray;
+  }
+}
+.accountSavedItems .container .profileInfo nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.accountSavedItems .container .profileInfo nav a {
+  margin: 5px;
+  justify-content: left;
+}
+@media (min-width: 768px) {
+  .accountSavedItems .container .profileInfo nav {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .accountSavedItems .container .profileInfo nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .accountSavedItems .container .profileInfo nav a {
+    text-align: left;
+    width: 200px;
+  }
+}
+.accountSavedItems .container .profileInfo .userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.accountSavedItems .container .profileInfo .userInfo img {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+.accountSavedItems .container .profileInfo a {
+  margin-bottom: 20px;
+}
+.accountSavedItems .container .profileInfo a i {
+  margin-right: 5px;
+}
+.accountSavedItems .container .accountSavedItems-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax 250px, 1fr);
+}
+.accountSavedItems .container .accountSavedItems-main .accountSavedItems-top {
+  display: flex;
+  justify-content: space-between;
+}
+.accountSavedItems .container .accountSavedItems-main .accountSavedItems-top button {
+  background-color: transparent;
+  border-color: red;
+  border-radius: 10px;
+  color: red;
+  padding: 5px 25px;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box {
+  position: relative;
+  padding: 20px;
+  border-radius: 2%;
+  box-shadow: var(--box-theme-s-shadow);
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box img {
+  width: 100%;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top .box-top-img {
+  padding-top: 5px;
+  padding-right: 45px;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top p {
+  background-color: rgb(18, 196, 18);
+  padding: 5px;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .courses-text {
+  height: 120px;
+}
+@media (min-width: 768px) {
+  .accountSavedItems .container .accountSavedItems-main .courses-box .courses-text {
+    height: 100px;
+  }
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .prices {
+  display: flex;
+  color: var(--color-theme);
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .prices p {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .hour-rating {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid gray;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .hour-rating p {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box .hour-rating p i {
+  margin-right: 5px;
 }

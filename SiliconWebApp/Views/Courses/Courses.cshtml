@@ -37,15 +37,17 @@
             @foreach(var course in Model)
             {
                     <div class="courses-box">
-                        @if (course.IsBestSeller)
-                        {
+
                             <div class="courses-box-top">
+                               @if (course.IsBestSeller)
+                               {
                                 <p>Best seller</p>
+                               }
                                 <div class="box-top-img">
-                                    <img src="Images/courses-img-icon.svg" alt="">
+                                    <img src="~/images/courses-img-icon.svg" alt="">
                                 </div>
                             </div>
-                        }
+
 
                         <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
                             <img src="~/images/@course.ImgUrl" alt="">
@@ -58,14 +60,14 @@
                         @if (course.DiscountPrice != null)
                         {
                             <div class="prices">
-                                <p><s>@course.Price</s></p>
-                                <p>@course.DiscountPrice</p>
+                                <p><s>@course.Price $</s></p>
+                                <p>@course.DiscountPrice $</p>
                             </div>
                         }
                         else
                         {
                             <div class="prices">
-                                <p>@course.Price</p>
+                                <p>@course.Price $</p>
                             </div>
                         }
 

@@ -82,5 +82,6 @@ public class CourseService(CourseRepository courseRepository, UserCourseRegistra
             Debug.WriteLine(ex.Message);
         }
         return null!;
-    } 
+    }
+
 }

@@ -10,5 +10,4 @@ public class NewsletterEntity
     public bool EventUpdates { get; set; } = false;
     public bool StartupsWeekly { get; set; } = false;
     public bool Podcasts { get; set; } = false;
-    public ICollection<UserNewsletterSubscriptionEntity> UserNewsletterSubscription { get; set; } = null!;
 }

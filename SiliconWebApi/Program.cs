@@ -16,9 +16,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("LocalDatabase")));
+
 builder.Services.AddScoped<SubscriberService>();
 builder.Services.AddScoped<NewsletterRepository>();
-builder.Services.AddScoped<UserNewsletterSubscriptionRepository>();
 
 builder.Services.AddScoped<UserRepository>();
 

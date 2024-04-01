@@ -10,14 +10,14 @@
 
         @if (!string.IsNullOrEmpty(Model.ConfirmMessage))
         {
-            <div class="success">
+            <div class="alert alert-success" role="alert">
                 @Model.ConfirmMessage
             </div>
         }
 
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
-            <div class="alert">
+            <div class="alert alert-danger" role="alert">
                 @Model.ErrorMessage
             </div>
         }

@@ -131,12 +131,10 @@
         .courses-showcase-content {
             display: grid;
             gap: 20px;
-            grid-template-columns: auto;
-            grid-template-areas: "courses-box-1" "courses-box-2" "courses-box-3" "courses-box-4" "courses-box-5" "courses-box-6" "courses-box-7" "courses-box-8" "courses-box-9";
+            grid-template-columns: repeat(auto-fill, minmax (250px, 1fr));
 
             @media(min-width: 992px) {
                 grid-template-columns: auto auto auto;
-                grid-template-areas: "courses-box-1 courses-box-2 courses-box-3" "courses-box-4 courses-box-5 courses-box-6" "courses-box-7 courses-box-8 courses-box-9";
             }
 
             .courses-box {
@@ -176,7 +174,7 @@
 
                 .prices {
                     display: flex;
-
+                    color: var(--color-theme);
                     p {
                         margin-right: 20px;
                         margin-top: 10px;
@@ -199,41 +197,6 @@
                 }
             }
 
-            #courses-box-1 {
-                grid-area: courses-box-1;
-            }
-
-            #courses-box-2 {
-                grid-area: courses-box-2;
-            }
-
-            #courses-box-3 {
-                grid-area: courses-box-3;
-            }
-
-            #courses-box-4 {
-                grid-area: courses-box-4;
-            }
-
-            #courses-box-5 {
-                grid-area: courses-box-5;
-            }
-
-            #courses-box-6 {
-                grid-area: courses-box-6;
-            }
-
-            #courses-box-7 {
-                grid-area: courses-box-7;
-            }
-
-            #courses-box-8 {
-                grid-area: courses-box-8;
-            }
-
-            #courses-box-9 {
-                grid-area: courses-box-9;
-            }
         }
 
         .courses-slide-btn {

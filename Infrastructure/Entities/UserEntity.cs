@@ -17,5 +17,4 @@ public class UserEntity : IdentityUser
     public AddressEntity? Address { get; set; }
 
     public ICollection<UserCourseRegistrationEntity>? CourseRegistration { get; set; } = new List<UserCourseRegistrationEntity>();
-    public ICollection<UserNewsletterSubscriptionEntity>? NewsletterSubscriptions { get; set; } = new List<UserNewsletterSubscriptionEntity>();
 }

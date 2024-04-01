@@ -12,6 +12,9 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<CourseRepository>();
+builder.Services.AddScoped<UserCourseRegistrationRepository>();
+builder.Services.AddScoped<CourseService>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddDefaultIdentity<UserEntity>(x =>

@@ -35,7 +35,6 @@ public class HomeController(HttpClient httpClient) : Controller
         {
             try
             {
-                
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync("https://localhost:7277/api/Subscribers", content);
 

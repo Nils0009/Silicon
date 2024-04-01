@@ -42,7 +42,6 @@ html, body {
     }
 
     .alert {
-        background: pink;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -50,14 +49,6 @@ html, body {
         border-radius: 8px;
     }
 
-    .success {
-        background: green;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
-        border-radius: 8px;
-    }
 }
 
 .wrapper {

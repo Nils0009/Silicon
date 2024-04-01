@@ -86,8 +86,11 @@
                 <div class="price">
                     <p>@Model.Price</p>
                 </div>
-                            
-                <button class="btn-theme">Join course</button>
+                <form method="post" asp-action="SavedItems" asp-controller="Account">
+                    <input type="hidden" name="courseId" value="@Model.Id" />
+                    <button type="submit" class="btn-theme">Join course</button>
+                </form>            
+                
             </div>
         </div>
 
