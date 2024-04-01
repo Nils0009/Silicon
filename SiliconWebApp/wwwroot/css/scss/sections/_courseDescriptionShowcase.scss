@@ -1,39 +1,31 @@
 .courseDescription-showcase {
-
-    background-color: $gray-300;
+    background-color: var(--color-gray-300);
 
     .courseDescription-image {
+        width: 100%;
+        height: 500px;
 
         img {
-
-            display: none;
-
-            @include xl {
-                display: flex;
-                position: relative;
-                z-index: 1;
-                width: 100%;
-            }
-
+            display: block;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
     .container {
 
         .courseDescription-showcase-content {
+            position: absolute;
+            z-index: 2;
 
-            @include xl {
-                position: absolute;
-                z-index: 2;
-            }
             .courseDescription-showcase-top {
-                color: black;
+                color: white;
                 margin-top: 50px;
                 margin-bottom: 50px;
 
-                @include xl {
-                    color: white;
-                }
 
                 i {
                     margin-right: 10px;
@@ -41,9 +33,6 @@
                 }
 
                 a {
-                    @include xl {
-                        color: white;
-                    }
                     color: black;
                 }
             }
@@ -54,6 +43,7 @@
                 p {
                     padding: 5px;
                 }
+
                 .best-seller {
                     background-color: #22C55E;
                     margin-right: 10px;
@@ -68,13 +58,9 @@
             }
 
             h1, p {
-
-                color: black;
-
-                @include xl {
-                    color: white;
-                }               
+                color: white;
             }
+
             .courseDescription-showcase-rating {
                 display: flex;
                 flex-direction: column;
@@ -87,7 +73,7 @@
                     i {
                         margin-right: 5px;
                     }
-    
+
                     p {
                         margin-right: 20px;
                     }
@@ -97,11 +83,16 @@
                 .creator-info {
                     display: flex;
                     align-items: center;
-                    
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
                     p {
                         margin-bottom: 5px;
                     }
-    
+
                     .creator-text {
                         margin-left: 20px;
                     }
@@ -109,5 +100,4 @@
             }
         }
     }
-
 }

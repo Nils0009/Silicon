@@ -1,6 +1,6 @@
-main { 
+main {
     .showcase {
-        .container{
+        .container {
             margin-top: 30px;
             margin-bottom: 20px;
             justify-content: center;
@@ -8,20 +8,19 @@ main {
             grid-template-columns: auto;
             grid-template-areas: "showcase-content";
 
-            @include xl {
+            @media(min-width: 1200px) {
                 justify-content: start;
                 grid-template-columns: 1fr 1fr;
-                grid-template-areas: "showcase-content showcase-image"
-                                    "showcase-content showcase-image";
+                grid-template-areas: "showcase-content showcase-image" "showcase-content showcase-image";
             }
-   
+
             .content {
                 grid-area: showcase-content;
                 padding-top: 50px;
                 text-align: center;
 
 
-                @include xl {
+                @media(min-width: 1200px) {
                     text-align: left;
                     width: 400px;
                     margin-left: 100px;
@@ -34,24 +33,24 @@ main {
                 .btn-theme-s {
                     margin-top: 30px;
                     margin-bottom: 100px;
-                    
-                    @include xl{
+
+                    @media(min-width: 1200px) {
                         width: 200px;
                     }
                 }
-                
-                 h6 {
+
+                h6 {
                     display: none;
 
-                    @include xl {
+                    @media(min-width: 1200px) {
                         display: block;
                     }
-                 }
+                }
 
                 .brands {
                     display: none;
-                    
-                    @include xl {
+
+                    @media(min-width: 1200px) {
                         display: block;
                         margin-top: 20px;
                         margin-bottom: 100px;
@@ -64,13 +63,13 @@ main {
                 grid-area: showcase-image;
                 display: none;
 
-                @include xl {
+                @media(min-width: 1200px) {
                     display: block;
                     max-width: 600px;
                 }
 
-                @include xxl {
-                    max-width: 800px;          
+                @media(min-width: 1400px) {
+                    max-width: 800px;
                 }
             }
         }

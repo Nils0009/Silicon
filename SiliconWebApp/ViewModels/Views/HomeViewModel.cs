@@ -1,5 +1,4 @@
-﻿using Infrastructure.Entities;
-using Infrastructure.Models;
+﻿using Infrastructure.Models;
 using SiliconWebApp.ViewModels.Sections;
 
 namespace SiliconWebApp.ViewModels.Views;
@@ -154,6 +153,6 @@ public class HomeViewModel
         ],
     };
 
-    public NewsletterSubscriptionRegistrationModel NewsletterSubscriptionRegistrationModel { get; set; } = new NewsletterSubscriptionRegistrationModel();
+    public NewsletterSubscriptionRegistrationModel Subscriber = new NewsletterSubscriptionRegistrationModel();
 
 }

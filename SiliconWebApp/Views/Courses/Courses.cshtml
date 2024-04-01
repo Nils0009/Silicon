@@ -22,49 +22,70 @@
                     <a href="#">Category 2</a>
                     <a href="#">Category 3</a>
                 </div>
-                <div class="searchbar-content">
-                    <input type="text" placeholder="Search courses">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+
+                    <form class="searchbar-content" asp-controller="Courses" asp-action="Search" method="get">
+                        <div class="searchbar-wrapper">
+                            <input type="text" name="searchString" placeholder="Search course title">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+
             </div>
         </div>
         <div class="courses-showcase-content">
             
             @foreach(var course in Model)
             {
-                <div class="courses-box">
-                    <div class="courses-box-top">
-                        <p>@course.IsBestSeller</p>
-                        <div class="box-top-img">
-                            <img src="Images/courses-img-icon.svg" alt="">
+                    <div class="courses-box">
+                        @if (course.IsBestSeller)
+                        {
+                            <div class="courses-box-top">
+                                <p>Best seller</p>
+                                <div class="box-top-img">
+                                    <img src="Images/courses-img-icon.svg" alt="">
+                                </div>
+                            </div>
+                        }
+
+                        <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <img src="~/images/@course.ImgUrl" alt="">
+                        </a>
+                        <div class="courses-text">
+                            <h5>@course.Title</h5>
+                            <p>@course.Author</p>
+                        </div>
+
+                        @if (course.DiscountPrice != null)
+                        {
+                            <div class="prices">
+                                <p><s>@course.Price</s></p>
+                                <p>@course.DiscountPrice</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="prices">
+                                <p>@course.Price</p>
+                            </div>
+                        }
+
+                        <div class="hour-rating">
+                            <p><i class="fa-regular fa-clock"></i>@course.Hours</p>
+                            <p><i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent% (@course.LikesInNumber k)</p>
                         </div>
                     </div>
-
-                    <a href="CourseDescription.html"><img src="~/images/@course.ImgUrl" alt=""></a>
-
-                    <div class="courses-text">
-                        <h5>@course.Title</h5>
-                        <p>@course.Author</p>
-                    </div>
-                    <div class="prices">
-                        <p>@course.Price</p>
-                    </div>
-                    <div class="hour-rating">
-                        <p><i class="fa-regular fa-clock"></i>@course.Hours</p>
-                        <p><i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent</p>
-                    </div>
-                </div>
             }
 
         </div>
-        <div class="courses-showcase-content"></div>
-        <div class="courses-slide-btn">
-
-            <button class="slide-btn btn-gray" onclick="plusDivs(-1)">❮</button>
-            <button class="slide-btn btn-gray" onclick="currentDiv(2)">1</button>
-            <button class="slide-btn btn-gray" onclick="currentDiv(3)">2</button>
-            <button class="slide-btn btn-gray" onclick="currentDiv(4)">3</button>
-            <button class="slide-btn btn-gray" onclick="plusDivs(1)">❯</button>
-        </div>
     </div>
+    <section class="readyTo-section">
+        <div class="container">
+            <div class="readyTo-content">
+                <p>Ready to get started?</p>
+                <h1>Take Your Skills to the Next Level</h1>
+                <button class="btn-theme">Work with us</button>
+            </div>
+            <img src="~/images/readyTo-illustration.svg" alt="">
+        </div>
+    </section>
 </section>

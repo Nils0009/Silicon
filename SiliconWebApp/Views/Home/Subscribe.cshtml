@@ -1,59 +1,84 @@
 ﻿@using Infrastructure.Models
 @model NewsletterSubscriptionRegistrationModel
 
+
 <section class="subscribe">
     <div class="container">
         <div class="section-title">
             <h1>Don't Want to Miss Anything?</h1>
-            <img src="Images/subscribe-img.svg" alt="">
+            <img src="~/images/subscribe-img.svg" alt="">
         </div>
         <div class="signup-content">
             <h5>Sign up for Newsletters</h5>
-            <div class="checkbox-content">
+            <form asp-action="Subscribe" asp-controller="Home" method="post">
+                <div class="checkbox-content">
 
-                <form asp-action="Subscribe" asp-controller="Home" method="post">
+                    <div class="ch-b">
+                        <input asp-for="DailyNewsletter" />
+                        <label asp-for="DailyNewsletter"></label>
+                    </div>
+                    <div class="ch-b">
+                        <input asp-for="AdvertisingUpdates" />
+                        <label asp-for="AdvertisingUpdates"></label>
+                    </div>
 
-                        <div id="ch-b" class="ch-b1">
-                            <input type="checkbox" name="ch-b1">
-                            <label for="ch-b1">Daily Newsletter</label>
-                        </div>
+                    <div class="ch-b">
+                        <input asp-for="WeekInReview" />
+                        <label asp-for="WeekInReview"></label>
+                    </div>
 
-                        <div id="ch-b" class="ch-b2">
-                            <input type="checkbox" name="ch-b2">
-                            <label for="ch-b2">Advertising Updates</label>
-                        </div>
+                    <div class="ch-b">
+                        <input asp-for="EventUpdates" />
+                        <label asp-for="EventUpdates"></label>
+                    </div>
 
-                        <div id="ch-b" class="ch-b3">
-                            <input type="checkbox" name="ch-b3">
-                            <label for="ch-b3">Week in Review</label>
-                        </div>
+                    <div class="ch-b">
+                        <input asp-for="StartupsWeekly" />
+                        <label asp-for="StartupsWeekly"></label>
+                    </div>
 
-                        <div id="ch-b" class="ch-b4">
-                            <input type="checkbox" name="ch-b4">
-                            <label for="ch-b4">Event Updates</label>
-                        </div>
+                    <div class="ch-b">
+                        <input asp-for="Podcasts" />
+                        <label asp-for="Podcasts"></label>
+                    </div>
+                </div>
 
-                        <div id="ch-b" class="ch-b5">
-                            <input type="checkbox" name="ch-b5">
-                            <label for="ch-b5">Startups Weekly</label>
-                        </div>
+                <div class="signup-email">
+                    <input asp-for="Email" />
+                    <button type="submit" class="btn-theme">Subscribe *</button>
+                </div>
+                <p>* Yes, I agree to the terms and privacy policy.</p>
+                <span class="information">
+                    @if (ViewData["Status"]?.ToString() == "Success")
+                    {
+                        <span class="alert alert-success">
+                            You have been subscribed
+                        </span>
+                    }
 
-                        <div id="ch-b" class="ch-b6">
-                            <input type="checkbox" name="ch-b6">
-                            <label for="ch-b6">Podcasts</label>
-                        </div>
-                        <div>
-                            <div class="signup-email">
-                                <input asp-for="@Model.Email" type="text" placeholder="Your Email">
-                                <button typ="submit" class="btn-theme">Subscribe *</button>
-                            </div>
-                            <p>* Yes, I agree to the terms and privacy policy.</p>
-                        </div>
+                    @if (ViewData["Status"]?.ToString() == "AlreadyExists")
+                    {
+                        <span class="alert alert-warning">
+                            You have already subscribed
+                        </span>
+                    }
 
+                    @if (ViewData["Status"]?.ToString() == "Invalid")
+                    {
+                        <span class="alert alert-danger">
+                            You must enter a valid email address
+                        </span>
+                    }
 
-                </form>
-            </div>
+                    @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+                    {
+                        <span class="alert alert-danger">
+                            Unable to contact the server. Please try again later.
+                        </span>
+                    }
+                </span>
+            </form>
+
         </div>
-        <div>
-        </div>
+    </div>
 </section>

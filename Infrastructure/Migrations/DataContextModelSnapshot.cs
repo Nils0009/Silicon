@@ -68,7 +68,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ImgUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsBestSeller")
+                    b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 
                     b.Property<string>("LikesInNumber")
@@ -94,9 +94,27 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("AdvertisingUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DailyNewsletter")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EventUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Podcasts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("StartupsWeekly")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("WeekInReview")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

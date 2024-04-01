@@ -13,7 +13,7 @@
             text-align: left;
             width: 80%;
 
-            @include xl {
+            @media(min-width: 1200px) {
                 width: 50%;
             }
         }
@@ -53,8 +53,7 @@
                     position: relative;
 
                     &.field-validation-error {
-                        @include text-s;
-                        color: $danger;
+                        color: var(--color-danger);
 
                         &::after {
                             position: absolute;

@@ -14,10 +14,7 @@ public class CourseRepository(DataContext context) : GenericRepository<CourseEnt
     {
         try
         {
-            var entities = await _context.Set<CourseEntity>()
-                .Include(x => x.UserCourseRegistrations)
-                .ThenInclude(uns => uns.User)
-                .ToListAsync();
+            var entities = await _context.Set<CourseEntity>().ToListAsync();
             return entities;
         }
         catch (Exception ex)
@@ -31,10 +28,7 @@ public class CourseRepository(DataContext context) : GenericRepository<CourseEnt
     {
         try
         {
-            var result = await _context.Set<CourseEntity>()
-                .Include(x => x.UserCourseRegistrations)
-                .ThenInclude(uns => uns.User)
-                .FirstOrDefaultAsync(predicate);
+            var result = await _context.Set<CourseEntity>().FirstOrDefaultAsync(predicate);
             if (result != null)
                 return result;
         }

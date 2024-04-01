@@ -3,21 +3,21 @@
     .container {
         display: flex;
         justify-content: space-between;
-        background-color: $gray-100;
+        background-color: var(--color-gray-100);
         margin-top: 90px;
 
         .readyTo-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align:center;
+            text-align: center;
             padding: 10%;
 
             button {
                 margin-top: 20px;
             }
 
-            @include lg {
+            @media(min-width: 992px) {
                 text-align: left;
             }
         }
@@ -26,7 +26,7 @@
             display: none;
             width: 100%;
 
-            @include lg {
+            @media(min-width: 992px) {
                 display: block;
             }
         }

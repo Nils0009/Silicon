@@ -5,18 +5,66 @@ using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
 using System.Text;
 
+
 namespace SiliconWebApp.Controllers;
 
-public class HomeController : Controller
+public class HomeController(HttpClient httpClient) : Controller
 {
+    private readonly HttpClient _httpClient = httpClient;
+
     public IActionResult Index()
     {
         var viewModel = new HomeViewModel();
         @ViewData["Title"] = viewModel.Title;
-
         return View(viewModel);
     }
 
+    #region HttpGet-Subscribe
+    [HttpGet]
+    public IActionResult Subscribe()
+    {
+        return View(new NewsletterSubscriptionRegistrationModel());
+    }
+    #endregion
+
+    #region HttpPost-Subscribe
+    [HttpPost]
+    public async Task<IActionResult> Subscribe(NewsletterSubscriptionRegistrationModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("https://localhost:7277/api/Subscribers", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewData["Status"] = "Success";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    ViewData["Status"] = "AlreadyExists";
+                }
+            }
+
+            catch (Exception ex)
+            {
+                ViewData["Status"] = "ConnectionFailed";
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        else
+        {
+            ViewData["Status"] = "Invalid";
+        }
+
+        return View(viewModel);
+    }
+    #endregion
+
+    #region ErrorPage
     [Route("/error")]
     public IActionResult Error404()
     {
@@ -24,41 +72,5 @@ public class HomeController : Controller
         @ViewData["Title"] = viewModel.Title;
         return View(viewModel);
     }
-
-    [Route("/subscribe")]
-    [HttpGet]
-    public IActionResult Subscribe()
-    {
-        var viewModel = new HomeViewModel();
-        ViewData["Subscribed"] = false;
-        return View(viewModel);
-    }
-
-
-    [Route("/subscribe")]
-    [HttpPost]
-    public async Task<IActionResult> Subscribe(NewsletterSubscriptionRegistrationModel newsletter)
-    {
-        try
-        {
-            if (ModelState.IsValid)
-            {
-                using var http = new HttpClient();
-
-                var json = JsonConvert.SerializeObject(newsletter);
-                using var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await http.PostAsync("https://localhost:7277/api/Subscribers", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    ViewData["Subscribed"] = true;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex.Message);
-        }
-        return View();
-    }
+    #endregion
 }

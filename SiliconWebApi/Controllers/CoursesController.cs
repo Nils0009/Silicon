@@ -1,5 +1,5 @@
-﻿using Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Infrastructure.Models;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -11,7 +11,7 @@ public class CoursesController(CourseService courseService) : ControllerBase
 {
 	private readonly CourseService _courseService = courseService;
 
-
+    #region HttpGet-GetOne
     [HttpGet("{id}")]
     public async Task<IActionResult> GetOne(string id)
     {
@@ -31,8 +31,10 @@ public class CoursesController(CourseService courseService) : ControllerBase
 		}
 		return BadRequest();
     }
+    #endregion
 
-	[HttpGet]
+    #region HttpGet-GetAll
+    [HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
 		try
@@ -50,4 +52,29 @@ public class CoursesController(CourseService courseService) : ControllerBase
 		}
 		return BadRequest();
 	}
+	#endregion
+
+	#region HttpPost-Create
+	[HttpPost]
+	public async Task<IActionResult> Create(CourseRegistrationModel model)
+	{
+		try
+		{
+			if (ModelState.IsValid)
+			{
+				var newCourse = await _courseService.CreateCourseAsync(model);
+				if (newCourse != null)
+				{
+					return Ok();
+				}
+				return NotFound();
+			}
+		}
+		catch (Exception ex)
+		{
+			Debug.WriteLine(ex.Message);
+		}
+		return BadRequest();
+	}
+    #endregion
 }

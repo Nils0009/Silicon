@@ -17,8 +17,6 @@
     hideMobileMenu();
     window.addEventListener('resize', hideMobileMenu);
 });
-
-
 function toggleDarkMode() {
     var body = document.body;
     var isDarkMode = body.classList.toggle("dark-mode");
@@ -54,46 +52,6 @@ function toggleDarkMode() {
         googleplaydarkmode.style.display = "none";
     }
 }
-
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-    showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-    showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("courses-showcase-content");
-    var dots = document.getElementsByClassName("slide-btn");
-
-    if (n > x.length) {
-        slideIndex = 1
-    }
-
-    if (n < 1) {
-        slideIndex = x.length
-    }
-
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-
-    for (i = 0; i < dots.length; i++) {
-        dots[i].classList.remove("btn-theme");
-        dots[i].classList.add("btn-gray");
-    }
-
-    x[slideIndex - 1].style.display = "grid";
-    dots[slideIndex - 1].classList.remove("btn-gray");
-    dots[slideIndex - 1].classList.add("btn-theme");
-
-}
-
 function toggleDropdown() {
     var dropdown = document.getElementById("myDropdown");
     if (dropdown.style.display === "block") {
@@ -102,7 +60,6 @@ function toggleDropdown() {
         dropdown.style.display = "block";
     }
 }
-
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -114,3 +71,4 @@ window.onclick = function (event) {
         }
     }
 }
+

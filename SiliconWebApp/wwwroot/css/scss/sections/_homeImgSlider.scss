@@ -1,13 +1,13 @@
-.img-slider { 
-      display: none;
+.img-slider {
+    display: none;
 
-      @include md {
+    @media(min-width: 768px) {
         display: flex;
         justify-content: center;
 
         img {
-          max-width: 100%;
-          height: auto;
+            max-width: 100%;
+            height: auto;
         }
-      }   
+    }
 }

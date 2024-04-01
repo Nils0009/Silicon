@@ -2,6 +2,7 @@
 using Infrastructure.Models;
 using Infrastructure.Repositories;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Infrastructure.Services;
 
@@ -14,10 +15,19 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
     {
         try
         {
-            var existingUser = await _userRepository.GetOneAsync(x => x.Email == model.Email);
-            if (existingUser == null) { return null!; };
-
             var existingSubscription = await _newsletterRepository.GetOneAsync(x => x.Email == model.Email);
+            
+            if (existingSubscription != null)
+            {
+                var existingSubscriptionUser = await _userNewsletterSubscriptionRepository.GetOneAsync(x => x.NewsletterId == existingSubscription.Id);
+                if (existingSubscriptionUser == null)
+                {
+                    existingSubscription.Id = existingSubscriptionUser!.NewsletterId;
+
+                }
+                return existingSubscription;
+            }
+
             if (existingSubscription == null)
             {
                 var newSubscriber = new NewsletterEntity
@@ -28,29 +38,21 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
 
                 await _newsletterRepository.CreateAsync(newSubscriber);
 
-                var userSubscription = new UserNewsletterSubscriptionEntity
+                var existingUser = await _userRepository.GetOneAsync(x => x.Email == model.Email);
+                if (existingUser != null) 
                 {
-                    User = existingUser,
-                    UserId = existingUser.Id,
-                    NewsletterId = newSubscriber.Id
-                };
+                    var userSubscription = new UserNewsletterSubscriptionEntity
+                    {
+                        User = existingUser,
+                        UserId = existingUser.Id,
+                        NewsletterId = newSubscriber.Id
+                    };
 
-                await _userNewsletterSubscriptionRepository.CreateAsync(userSubscription);
+                    await _userNewsletterSubscriptionRepository.CreateAsync(userSubscription);
+                };
 
                 return newSubscriber;
             }
-
-            if (existingSubscription != null)
-            {
-                var existingSubscriptionUser = await _userNewsletterSubscriptionRepository.GetOneAsync(x => x.NewsletterId == existingSubscription.Id);
-                if (existingSubscriptionUser == null) 
-                {
-                    existingSubscription.Id = existingSubscriptionUser!.NewsletterId;
-                    
-                }
-                return existingSubscription;
-            }
-
         }
         catch (Exception ex)
         {
@@ -92,14 +94,14 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
         }
         return null!;
     }
-    public async Task<bool> UpdateNewsletterSubscriberAsync(NewsletterEntity newsletterEntity)
+    public async Task<bool> UpdateNewsletterSubscriberAsync(NewsletterEntity entity)
     {
         try
         {
-            var existingSubscriber = await _newsletterRepository.GetOneAsync(x => x.Email == newsletterEntity.Email);
+            var existingSubscriber = await _newsletterRepository.GetOneAsync(x => x.Email == entity.Email);
             if (existingSubscriber != null!)
             {
-                await _newsletterRepository.UpdateAsync(x => x.Email == newsletterEntity.Email, newsletterEntity);
+                await _newsletterRepository.UpdateAsync(x => x.Email == entity.Email, existingSubscriber);
                 return true;
             }
         }
@@ -113,13 +115,10 @@ public class SubscriberService(NewsletterRepository newsletterRepository, UserRe
     {
         try
         {
-            var existingUser = await _userRepository.GetOneAsync(x => x.Email == email);
-            if (existingUser == null) { return false; }
-
             var existingSubscriber = await _newsletterRepository.GetOneAsync(x => x.Email == email);
             if (existingSubscriber != null!)
             {
-                await _newsletterRepository.DeleteAsync(x => x.Email == email && x.UserNewsletterSubscription.Any(sub => sub.UserId == existingUser.Id));
+                await _newsletterRepository.DeleteAsync(x => x.Id == existingSubscriber.Id);
                 return true;
             }
         }

@@ -1,8 +1,5 @@
-@import '../core/_typography.scss';
-
 a {
-    @include standard-text;
-    color: $theme;
+    color: var(--color-theme);
     text-decoration: none;
     transition: all 0.25s ease-in-out;
 
@@ -12,7 +9,6 @@ a {
 }
 
 .menu-link {
-    @include text-nav;
     text-decoration: none;
     transition: color 0.25s ease-in-out;
 
@@ -20,7 +16,7 @@ a {
     &:active,
     &:focus,
     .active {
-        color: $theme;
+        color: var(--color-theme);
         text-decoration: none;
     }
 }

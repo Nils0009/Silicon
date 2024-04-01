@@ -1,5 +1,5 @@
 .benefits {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
     padding-bottom: 100px;
     justify-content: center;
     align-items: center;
@@ -7,50 +7,47 @@
     .container {
         display: grid;
         grid-template-columns: auto;
-        grid-template-areas:"section-title"
-                            "benefits-f-2"
-                            "benefits-s-2"
-                            "benefits-t-2";
-        @include md {
+        grid-template-areas: "section-title" "benefits-f-2" "benefits-s-2" "benefits-t-2";
+
+        @media(min-width: 768px) {
             grid-template-columns: auto auto;
-            grid-template-areas:"section-title section-title"
-                                "benefits-f-2 benefits-f-2"
-                                "benefits-s-2 benefits-s-2"
-                                "benefits-t-2 benefits-t-2";
+            grid-template-areas: "section-title section-title" "benefits-f-2 benefits-f-2" "benefits-s-2 benefits-s-2" "benefits-t-2 benefits-t-2";
         }
 
-        @include xl {
-            grid-template-columns:  auto auto auto;
-            grid-template-areas:"section-title section-title section-title"
-                                "benefits-f-2 benefits-s-2 benefits-t-2"
-                                "benefits-f-2 benefits-s-2 benefits-t-2";
+        @media(min-width: 1200px) {
+            grid-template-columns: auto auto auto;
+            grid-template-areas: "section-title section-title section-title" "benefits-f-2 benefits-s-2 benefits-t-2" "benefits-f-2 benefits-s-2 benefits-t-2";
         }
 
 
         #b-box {
             grid-area: b-box;
-            text-align: center;           
+            text-align: center;
             padding: 40px;
 
-            @include md {
+            @media(min-width: 768px) {
                 width: 370px;
             }
 
-            @include xxl {
+            @media(min-width: 1400px) {
                 width: 450px;
             }
+
             &:hover {
-                background-color: $white;
+                background-color: white;
             }
+
             a {
                 text-decoration: none;
-                color:$black;
+                color: black;
             }
+
             h6 {
                 margin-top: 20px;
                 margin-bottom: 10px;
             }
         }
+
         .section-title {
             grid-area: section-title;
             text-align: center;
@@ -59,29 +56,28 @@
         }
 
         .benefits-f-2 {
-            grid-area: benefits-f-2;          
+            grid-area: benefits-f-2;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
 
-            @include md {
+            @media(min-width: 768px) {
                 flex-direction: row;
             }
 
-            @include xl {
+            @media(min-width: 1200px) {
                 display: block;
-                border-right: 1px solid $gray-300;
-            }
-                      
-            .comments-on-tasks {
-                @include xl {
-                border-bottom: 1px solid $gray-300;
-                }
+                border-right: 1px solid var(--color-gray-300);
             }
 
+            .comments-on-tasks {
+                @media(min-width: 1200px) {
+                    border-bottom: 1px solid var(--color-gray-300);
+                }
+            }
         }
-        
+
         .benefits-s-2 {
             grid-area: benefits-s-2;
             display: flex;
@@ -89,21 +85,22 @@
             align-items: center;
             justify-content: center;
 
-            @include md {
+            @media(min-width: 768px) {
                 flex-direction: row;
             }
 
-            @include xl {
+            @media(min-width: 1200px) {
                 display: block;
-                border-right: 1px solid $gray-300;
+                border-right: 1px solid var(--color-gray-300);
             }
 
             .tasks-analytics {
-                @include xl {
-                    border-bottom: 1px solid $gray-300;
+                @media(min-width: 1200px) {
+                    border-bottom: 1px solid var(--color-gray-300);
                 }
             }
         }
+
         .benefits-t-2 {
             grid-area: benefits-t-2;
             display: flex;
@@ -111,18 +108,18 @@
             align-items: center;
             justify-content: center;
 
-            @include md {
+            @media(min-width: 768px) {
                 flex-direction: row;
             }
 
-            @include xl {
+            @media(min-width: 1200px) {
                 display: block;
             }
 
             .multiple-assignees {
 
-                @include xl {
-                    border-bottom: 1px solid $gray-300;
+                @media(min-width: 1200px) {
+                    border-bottom: 1px solid var(--color-gray-300);
                 }
             }
         }

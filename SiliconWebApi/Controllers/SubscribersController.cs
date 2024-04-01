@@ -37,7 +37,7 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     {
         try
         {
-            var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email!);
+            var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
             
             if (existingSubscriber != null)
             {
@@ -59,16 +59,26 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     {
         try
         {
-
-            if (!string.IsNullOrEmpty(registrationModel.Email))
+            if(ModelState.IsValid)
             {
-                var existingSubscriber = await _subscriberService.CreateNewsletterSubscriptionAsync(registrationModel);
-                if (existingSubscriber != null)
+                if (!string.IsNullOrEmpty(registrationModel.Email))
                 {
-                    return Ok();
-                }
+                    var alreadyExists = await _subscriberService.GetOneNewsletterSubscriberAsync(registrationModel.Email);
+                    if (alreadyExists != null)
+                    {
+                        return Ok("Subscriber already exists");
+                    }
 
-                return Problem("Unable to create subscription.");
+
+                    var createdSubscriber = await _subscriberService.CreateNewsletterSubscriptionAsync(registrationModel);
+
+                    if (createdSubscriber != null)
+                    {
+                        return Created("Subscriber was created", createdSubscriber.Email);
+                    }
+
+                    return Problem("Unable to create subscription.");
+                }
             }
         }
 
@@ -79,25 +89,25 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
         return BadRequest();
     }
 
-    [HttpPut("{email}")]
-    public async Task<IActionResult> UpdateOne (string email)
+    [HttpPut]
+    public async Task<IActionResult> UpdateOne (NewsletterSubscriptionRegistrationModel model)
     {
         try
         {
-
-            var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
-
-            if (existingSubscriber != null)
+            if (ModelState.IsValid)
             {
-                var updateSubscriber = await _subscriberService.UpdateNewsletterSubscriberAsync(existingSubscriber);
+                var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(model.Email);
 
-                if (updateSubscriber)
-                    return Ok(updateSubscriber);
+                if (existingSubscriber != null)
+                {
+                    var updateSubscriber = await _subscriberService.UpdateNewsletterSubscriberAsync(existingSubscriber);
+                    if (updateSubscriber)
+                        return Ok("Subscribers was updated");
+
+                }
+                return NotFound();
             }
-            return NotFound();                   
-                
-            
-            
+          
         }
         catch (Exception ex)
         {
@@ -117,7 +127,7 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
             {
                 await _subscriberService.DeleteNewsletterSubscriberAsync(email);
 
-                return NoContent();
+                return Ok("Subscriber was deleted");
             }
             return NotFound();
 

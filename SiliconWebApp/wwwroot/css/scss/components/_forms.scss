@@ -1,12 +1,10 @@
-@import '../core/_colors.scss';
-@import '../core/_media.scss';
 
 form {
     display: flex;
     flex-direction: column;
     width: 80%;
 
-    @include xl {
+    @media(min-width: 1200px) {
         width: 50%;
     }
 
@@ -18,7 +16,7 @@ form {
     input {
         padding: 10px;
         border-radius: 5px;
-        border: 1px solid $gray-400;
+        border: 1px solid var(--color-gray-100);
         font-size: 16px;
     }
 
@@ -49,13 +47,12 @@ form {
         position: relative;
 
         &.field-validation-error {
-            @include text-s;
-            color: $danger;
+            color: var(--color-danger);
 
             &::after {
                 position: absolute;
                 right: 10px;
-                top: 40px;
+                top: 25px;
                 z-index: 10;
                 font-size: 2em;
                 display: block;

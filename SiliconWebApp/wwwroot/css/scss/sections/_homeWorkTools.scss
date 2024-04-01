@@ -8,48 +8,41 @@
         justify-content: center;
         gap: 40px;
 
-        @include md{
+        @media(min-width: 768px) {
             display: grid;
             gap: 30px;
             grid-template-columns: auto auto;
-            grid-template-areas: "section-title section-title"
-                                 "google-box zoom-box"
-                                 "stack-box gmail-box"
-                                 "trello-box mailchimp-box"
-                                 "dropbox-box evernote-box";
+            grid-template-areas: "section-title section-title" "google-box zoom-box" "stack-box gmail-box" "trello-box mailchimp-box" "dropbox-box evernote-box";
         }
 
-        @include xl {
+        @media(min-width: 1200px) {
             grid-template-columns: auto auto auto auto;
-            grid-template-areas:"section-title section-title section-title section-title"
-                                "google-box zoom-box stack-box gmail-box"
-                                "trello-box mailchimp-box dropbox-box evernote-box";
+            grid-template-areas: "section-title section-title section-title section-title" "google-box zoom-box stack-box gmail-box" "trello-box mailchimp-box dropbox-box evernote-box";
         }
 
-        
+
         .section-title {
             grid-area: section-title;
             text-align: center;
-            padding: auto;
             margin-bottom: 50px;
         }
 
-        #icon-box {         
+        #icon-box {
             text-align: center;
 
-            @include md {
+            @media(min-width: 768px) {
                 width: 300px;
             }
 
-            @include lg {
+            @media(min-width: 992px) {
                 width: 400px;
             }
-            
-            @include xl{
+
+            @media(min-width: 1200px) {
                 width: 250px;
             }
 
-            @include xxl{
+            @media(min-width: 1400px) {
                 width: 300px;
             }
 
@@ -58,7 +51,7 @@
             }
         }
 
-        .google-box{
+        .google-box {
             grid-area: google-box;
         }
 

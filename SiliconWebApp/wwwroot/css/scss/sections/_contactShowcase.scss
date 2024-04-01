@@ -1,5 +1,5 @@
 .contactShowcase {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
 
     .container {
         display: flex;
@@ -7,7 +7,7 @@
         justify-content: center;
         align-items: center;
 
-        @include lg {
+        @media(min-width: 992px) {
             flex-direction: row;
             justify-content: left;
             align-items: start;
@@ -24,7 +24,7 @@
                 }
 
                 .active {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
             }
 
@@ -62,20 +62,20 @@
 
         .contactForm {
 
-            @include lg {
+            @media(min-width: 992px) {
                 position: absolute;
                 top: 150px;
                 right: 200px;
             }
 
-            @include xl {
+            @media(min-width: 1200px) {
                 right: 400px;
             }
 
             padding: 40px;
             color: black;
             background-color: white;
-            @include shadow-l;
+            box-shadow: var(--box-shadow-l); 
             border-radius: 5px;
 
             form {

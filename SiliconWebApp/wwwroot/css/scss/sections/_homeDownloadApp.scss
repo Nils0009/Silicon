@@ -1,5 +1,5 @@
 .downloadApp {
-    background-color: $gray-200;
+    background-color: var(--color-gray-200);
 
     .container {
         display: flex;
@@ -11,14 +11,14 @@
         .downloadApp-image {
             display: none;
 
-            @include xl {
+            @media(min-width: 1200px) {
                 display: block;
                 max-width: 600px;
                 margin-right: 100px;
             }
 
-            @include xxl {
-                max-width: 800px;          
+            @media(min-width: 1400px) {
+                max-width: 800px;
             }
         }
 
@@ -27,14 +27,14 @@
             padding-top: 50px;
             text-align: center;
 
-            @include xl {
+            @media(min-width: 1200px) {
                 text-align: left;
             }
 
-            h1 {        
+            h1 {
                 padding-bottom: 50px;
 
-                @include xl {
+                @media(min-width: 1200px) {
                     padding-right: 20%;
                 }
             }
@@ -54,11 +54,11 @@
                 justify-content: center;
                 margin-bottom: 40px;
 
-                @include md {
+                @media(min-width: 768px) {
                     flex-direction: row;
                 }
 
-                @include xl{
+                @media(min-width: 1200px) {
                     justify-content: left;
                 }
 
@@ -66,11 +66,12 @@
                     margin: auto;
                     margin-top: 20px;
 
-                    @include md {
+                    @media(min-width: 768px) {
                         padding-top: 30px;
                         margin: 30px;
                     }
                 }
+
                 #appstore-darkmode {
                     display: none;
                 }
@@ -83,11 +84,11 @@
                 margin-bottom: 40px;
 
 
-                @include md {
+                @media(min-width: 768px) {
                     flex-direction: row;
                 }
 
-                @include xl{
+                @media(min-width: 1200px) {
                     justify-content: left;
                 }
 
@@ -95,17 +96,16 @@
                     margin: auto;
                     margin-top: 20px;
 
-                    @include md {
+                    @media(min-width: 768px) {
                         padding-top: 30px;
                         margin: 30px;
                     }
                 }
-                
+
                 #googleplay-darkmode {
                     display: none;
                 }
             }
         }
-
     }
 }

@@ -3,107 +3,109 @@
 
     .container {
 
-      .content-top {
-        display: flex;
-        flex-direction: column;
+        .content-top {
+            display: flex;
+            flex-direction: column;
 
-        @include lg {
-            flex-direction: row;
-        }
-        .content-top-text {
-            margin-right: 50px;
+            @media(min-width: 992px) {
+                flex-direction: row;
+            }
 
-            ul {
-                padding: 0;
+            .content-top-text {
+                margin-right: 50px;
 
-                list-style: none;
-                 
+                ul {
+                    padding: 0;
+                    list-style: none;
+
+                    i {
+                        margin-right: 5px;
+                        color: var(--color-theme);
+                    }
+                }
+            }
+
+            .content-top-right {
+                width: 50%;
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 10px;
+
+                @media(min-width: 992px) {
+                    width: 100%;
+                }
+
                 i {
                     margin-right: 5px;
-                    color: $theme;
-                 }
-            }
-        }
+                }
 
-        .content-top-right {
-            width: 50%;
-            border: 1px solid gray;
-            border-radius: 5px;
-            padding: 10px;
+                .price {
+                    display: flex;
 
-            @include lg {
-                width: 100%;
-            }
-            i {
-                margin-right: 5px;
-            }
-
-            .price {
-                display: flex;
-            
-                p {
-                    margin-right: 5px;
-                    margin-left: 5px;
+                    p {
+                        margin-right: 5px;
+                        margin-left: 5px;
+                    }
                 }
             }
         }
-      }  
 
-      .content-mid {
-        margin-top: 100px;
-        
-        h1 {
-            margin-bottom: 50px;
-        }
-
-        img {
-            margin-right: 20px;
-        }
-
-        #content-mid-box {
-            display: flex;
-        }
-
-        #content-mid-box-text {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-      }
-
-      .content-bottom {
-        display: flex;
-        flex-direction: column;
-        margin-top: 50px;
-        margin-bottom: 50px;
-
-        @include lg {
-            flex-direction: row;
-        }
-        
-
-        .content-bottom-text {
-            display: flex;
-            flex-direction: column;
-            color: white;
-            background-color: black;
-            padding: 50px;
-
-            @include lg {
-                width: 500px;
-            }
+        .content-mid {
+            margin-top: 100px;
 
             h1 {
-                color: white;
+                margin-bottom: 50px;
             }
 
-            #yt {
-                background-color: red;
+            img {
+                margin-right: 20px;
             }
-            #fb {
-                background-color: blue;
+
+            #content-mid-box {
+                display: flex;
+            }
+
+            #content-mid-box-text {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
             }
         }
-      }
+
+        .content-bottom {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            margin-bottom: 50px;
+
+            @media(min-width: 992px) {
+                flex-direction: row;
+            }
+
+
+            .content-bottom-text {
+                display: flex;
+                flex-direction: column;
+                color: white;
+                background-color: black;
+                padding: 50px;
+
+                @media(min-width: 992px) {
+                    width: 500px;
+                }
+
+                h1 {
+                    color: white;
+                }
+
+                #yt {
+                    background-color: red;
+                }
+
+                #fb {
+                    background-color: blue;
+                }
+            }
+        }
     }
 }
