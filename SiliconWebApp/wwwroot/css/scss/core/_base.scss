@@ -4,42 +4,8 @@ $dark-text: #ffffff;
 
 html, body {
     font-size: 16px;
-
-    .dark-mode {
-        background-color: var(--color-black);
-        border-color: var(--color-gray-100);
-
-        h1, h2, h3, h4, h5, h6, p {
-            color: var(--color-gray-000);
-        }
-
-        .benefits, .downloadApp, .subscribe, .managework {
-            background-color: var(--color-black);
-            color: var(--color-gray-000);
-        }
-
-        header {
-            background-color: var(--color-black);
-            color: var(--color-gray-000);
-
-            label {
-                color: var(--color-gray-000);
-            }
-
-            #menu {
-                background-color: var(--color-black);
-                color: var(--color-gray-000);
-
-                .menu-link {
-                    color: $dark-text !important;
-                }
-            }
-
-            .mobile-menu-btn {
-                color: var(--color-gray-000)
-            }
-        }
-    }
+    background-color: var(--color-gray-000);
+    color: var(--color-gray-800);
 
     .alert {
         display: flex;
@@ -49,6 +15,23 @@ html, body {
         border-radius: 8px;
     }
 
+    .alert-gray {
+        background-color: var(--color-gray-200);
+        color: var(--color-gray-800);
+    }
+
+    #cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 }
 
 .wrapper {

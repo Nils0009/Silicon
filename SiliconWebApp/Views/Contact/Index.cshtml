@@ -1,0 +1,25 @@
+﻿@model ContactViewModel
+
+<section class="contactShowcase">
+    <div class="container">
+        <div class="top-text">
+            <ul class="breadcrumb">
+                <li><i class="fa-solid fa-house"></i><a href="index.html">Home</a></li>
+                <li><i class="fa-solid fa-angles-right"></i><a href="Contact.html"></a>Contact</li>
+            </ul>
+        </div>
+        <h1>@Model.Title</h1>
+        <div class="contactUs">
+            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactEmailUs.cshtml", Model.EmailUs)
+            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactCareers.cshtml", Model.Careers)
+        </div>
+
+        <div class="contactForm">
+            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactMainForm.cshtml", Model.MainForm)
+        </div>
+    </div>
+    <div class="contactMap">
+        <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText">
+    </div>
+
+</section>

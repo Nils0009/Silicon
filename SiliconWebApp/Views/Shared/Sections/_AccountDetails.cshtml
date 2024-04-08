@@ -5,15 +5,13 @@
 }
 
 <section class="accountDetails">
+    @if (!string.IsNullOrEmpty(Model.ConfirmMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.ConfirmMessage
+        </div>
+    }
     <div class="container">
-
-        @if (!string.IsNullOrEmpty(Model.ConfirmMessage))
-        {
-            <div class="alert alert-success" role="alert" >
-                @Model.ConfirmMessage
-            </div>
-        }
-
         <div class="profileInfo">
             <div class="userInfo">
                 @if (Model.ProfileInfo != null)

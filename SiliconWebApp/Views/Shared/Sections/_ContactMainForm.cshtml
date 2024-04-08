@@ -1,0 +1,29 @@
+﻿@model ContactMainFormViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<h2>Get In Contact With Us</h2>
+<form method="post" asp-controller="Contact" asp-action="ContactMainForm" novalidate>
+    <label asp-for="@Model.FullName"></label>
+    <span asp-validation-for="@Model.FullName"></span>
+    <input asp-for="@Model.FullName" />
+
+    <label asp-for="@Model.EmailAddress"></label>
+    <span asp-validation-for="@Model.EmailAddress"></span>
+    <input asp-for="@Model.EmailAddress" />
+
+    <label asp-for="@Model.Service"></label>
+    <input asp-for="@Model.Service" />
+
+    <label asp-for="@Model.Message"></label>
+    <span asp-validation-for="@Model.Message"></span>
+    <input asp-for="@Model.Message" />
+
+    <button type="submit" class="btn-theme">Send Contact Request</button>
+</form>
+
+
+
+
+
+

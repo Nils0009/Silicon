@@ -51,6 +51,33 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetAddresses");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.ContactEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("AspNetContacts");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
                 {
                     b.Property<string>("Id")
@@ -119,6 +146,26 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AspNetNewsletters");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.ServiceEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ContactId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("Order")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("Support")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetServices");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserCourseRegistrationEntity", b =>
@@ -357,6 +404,15 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.ContactEntity", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.ServiceEntity", "Service")
+                        .WithMany("Contacts")
+                        .HasForeignKey("ServiceId");
+
+                    b.Navigation("Service");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.UserCourseRegistrationEntity", b =>
                 {
                     b.HasOne("Infrastructure.Entities.CourseEntity", "Course")
@@ -444,6 +500,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
                 {
                     b.Navigation("UserCourseRegistrations");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.ServiceEntity", b =>
+                {
+                    b.Navigation("Contacts");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>

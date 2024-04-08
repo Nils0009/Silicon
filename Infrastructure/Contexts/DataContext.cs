@@ -10,6 +10,8 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<NewsletterEntity> AspNetNewsletters { get; set; }
     public DbSet<CourseEntity> AspNetCourses { get; set; }
     public DbSet<UserCourseRegistrationEntity> AspNetUserCourseRegistrations { get; set; }
+    public DbSet<ContactEntity> AspNetContacts { get; set; }
+    public DbSet<ServiceEntity> AspNetServices { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -18,3 +20,4 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
             .HasKey(ucr => new { ucr.UserId, ucr.CourseId });
     }
 }
+ 

@@ -59,34 +59,8 @@
 
 html, body {
   font-size: 16px;
-}
-html .dark-mode, body .dark-mode {
-  background-color: var(--color-black);
-  border-color: var(--color-gray-100);
-}
-html .dark-mode h1, html .dark-mode h2, html .dark-mode h3, html .dark-mode h4, html .dark-mode h5, html .dark-mode h6, html .dark-mode p, body .dark-mode h1, body .dark-mode h2, body .dark-mode h3, body .dark-mode h4, body .dark-mode h5, body .dark-mode h6, body .dark-mode p {
-  color: var(--color-gray-000);
-}
-html .dark-mode .benefits, html .dark-mode .downloadApp, html .dark-mode .subscribe, html .dark-mode .managework, body .dark-mode .benefits, body .dark-mode .downloadApp, body .dark-mode .subscribe, body .dark-mode .managework {
-  background-color: var(--color-black);
-  color: var(--color-gray-000);
-}
-html .dark-mode header, body .dark-mode header {
-  background-color: var(--color-black);
-  color: var(--color-gray-000);
-}
-html .dark-mode header label, body .dark-mode header label {
-  color: var(--color-gray-000);
-}
-html .dark-mode header #menu, body .dark-mode header #menu {
-  background-color: var(--color-black);
-  color: var(--color-gray-000);
-}
-html .dark-mode header #menu .menu-link, body .dark-mode header #menu .menu-link {
-  color: #ffffff !important;
-}
-html .dark-mode header .mobile-menu-btn, body .dark-mode header .mobile-menu-btn {
-  color: var(--color-gray-000);
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-800);
 }
 html .alert, body .alert {
   display: flex;
@@ -94,6 +68,21 @@ html .alert, body .alert {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+}
+html .alert-gray, body .alert-gray {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+html #cookie-consent, body #cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+html #cookie-consent .container, body #cookie-consent .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .wrapper {
@@ -624,7 +613,7 @@ main .showcase .container .background-image {
 }
 @media (min-width: 768px) {
   .img-slider {
-    display: flex;
+    display: block;
     justify-content: center;
   }
   .img-slider img {
@@ -1362,50 +1351,92 @@ main .showcase .container .background-image {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
+}
+.contactShowcase .container h1 {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 @media (min-width: 992px) {
   .contactShowcase .container {
-    flex-direction: row;
-    justify-content: left;
     align-items: start;
   }
 }
-.contactShowcase .container .contactUs .top-text {
+.contactShowcase .container .top-text {
   margin-top: 50px;
 }
-.contactShowcase .container .contactUs .top-text i {
+.contactShowcase .container .top-text i {
   margin-left: 10px;
   margin-right: 10px;
 }
-.contactShowcase .container .contactUs .top-text .active {
+.contactShowcase .container .top-text .active {
   color: var(--color-theme);
+}
+.contactShowcase .container .contactUs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 992px) {
+  .contactShowcase .container .contactUs {
+    flex-direction: row;
+  }
 }
 .contactShowcase .container .contactUs .email-info {
   display: flex;
-  margin-top: 30px;
-  width: 300px;
-}
-.contactShowcase .container .contactUs .email-info img {
-  margin-right: 20px;
-  margin-bottom: 40px;
-}
-.contactShowcase .container .contactUs .email-info .email-info-text {
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  width: 200px;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactUs .email-info {
+    text-align: left;
+    flex-direction: row;
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactUs .email-info img {
+    flex-direction: row;
+    margin-right: 20px;
+    margin-bottom: 40px;
+  }
+}
+.contactShowcase .container .contactUs .email-info .email-info-text i {
+  margin-left: 10px;
 }
 .contactShowcase .container .contactUs .career-info {
   display: flex;
-  margin-top: 30px;
-  margin-bottom: 100px;
-  width: 300px;
-}
-.contactShowcase .container .contactUs .career-info img {
-  margin-right: 20px;
-  margin-bottom: 40px;
-}
-.contactShowcase .container .contactUs .career-info .career-info-text {
   flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 30px;
+  align-items: center;
+  width: 200px;
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactUs .career-info {
+    text-align: left;
+    flex-direction: row;
+    margin-left: 0;
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .contactShowcase .container .contactUs .career-info img {
+    flex-direction: row;
+    margin-right: 20px;
+    margin-bottom: 40px;
+  }
+}
+.contactShowcase .container .contactUs .career-info .career-info-text i {
+  margin-left: 10px;
 }
 .contactShowcase .container .contactForm {
+  margin-top: 30px;
   padding: 40px;
   color: black;
   background-color: white;
@@ -1416,15 +1447,16 @@ main .showcase .container .background-image {
   .contactShowcase .container .contactForm {
     position: absolute;
     top: 150px;
-    right: 200px;
+    right: 100px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .contactShowcase .container .contactForm {
     right: 400px;
   }
 }
 .contactShowcase .container .contactForm form {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
