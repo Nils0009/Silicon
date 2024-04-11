@@ -27,41 +27,7 @@
     hideMobileMenu();
     window.addEventListener('resize', hideMobileMenu);
 });
-//function toggleDarkMode() {
-//    var body = document.body;
-//    var isDarkMode = body.classList.toggle("dark-mode");
 
-//    var lightLogo = document.getElementById("lightmode-logo");
-//    var darkModeLogo = document.getElementById("darkmode-logo");
-
-//    var appstorelightmode = document.getElementById('appstore-lightmode')
-//    var appstoredarkmode = document.getElementById('appstore-darkmode')
-
-//    var googleplaylightmode = document.getElementById('googleplay-lightmode')
-//    var googleplaydarkmode = document.getElementById('googleplay-darkmode')
-
-//    if (isDarkMode) {
-//        lightLogo.style.display = "none";
-//        darkModeLogo.style.display = "block";
-
-//        appstorelightmode.style.display = "none";
-//        appstoredarkmode.style.display = "block";
-
-//        googleplaylightmode.style.display = "none";
-//        googleplaydarkmode.style.display = "block";
-//    }
-
-//    else {
-//        lightLogo.style.display = "block";
-//        darkModeLogo.style.display = "none";
-
-//        appstorelightmode.style.display = "block";
-//        appstoredarkmode.style.display = "none";
-
-//        googleplaylightmode.style.display = "block";
-//        googleplaydarkmode.style.display = "none";
-//    }
-//}
 function toggleDropdown() {
     var dropdown = document.getElementById("myDropdown");
     if (dropdown.style.display === "block") {
@@ -81,4 +47,3 @@ window.onclick = function (event) {
         }
     }
 }
-

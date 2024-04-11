@@ -2,6 +2,7 @@ using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using SiliconWebApp.Helpers.Middlewares;
 
@@ -15,6 +16,9 @@ builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<UserCourseRegistrationRepository>();
 builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<ContactService>();
+builder.Services.AddScoped<ContactRepository>();
+builder.Services.AddScoped<ServiceRepository>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
@@ -36,6 +40,20 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     x.SlidingExpiration = true;
 });
+
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "1199911974753399";
+    x.AppSecret = "9ab9a88d9cd2c14754d7d4c8d13d48f4";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+})
+    .AddGoogle(GoogleOptions =>
+{
+    GoogleOptions.ClientId = "522712166664-b53jdb2a3vhve2gs5rkrq5v7rds17vv7.apps.googleusercontent.com";
+    GoogleOptions.ClientSecret = "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";
+});
+
 
 var app = builder.Build();
 app.UseHsts();

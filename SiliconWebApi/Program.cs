@@ -26,6 +26,10 @@ builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<UserCourseRegistrationRepository>();
 
+builder.Services.AddScoped<ContactService>();
+builder.Services.AddScoped<ContactRepository>();
+builder.Services.AddScoped<ServiceRepository>();
+
 
 var app = builder.Build();
 app.UseSwagger();

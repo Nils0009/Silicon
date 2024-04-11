@@ -17,4 +17,6 @@ public class UserEntity : IdentityUser
     public AddressEntity? Address { get; set; }
 
     public ICollection<UserCourseRegistrationEntity>? CourseRegistration { get; set; } = new List<UserCourseRegistrationEntity>();
+
+    public bool IsExternalAccount { get; set; }
 }

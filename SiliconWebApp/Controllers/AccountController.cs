@@ -297,7 +297,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
                 Phone = existingUser.PhoneNumber!,
-                Bio = existingUser.Bio,
+                Bio = existingUser.Bio,            
             };
         }
         return new AccountBasicInfoViewModel();
@@ -334,6 +334,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 FirstName = existingUser.FirstName,
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
+                IsExternalAccount = existingUser.IsExternalAccount,
             };
             return newProfileInfo;
         }

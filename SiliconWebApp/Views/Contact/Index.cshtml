@@ -1,6 +1,20 @@
 ﻿@model ContactViewModel
-
+@{
+    ViewData["Title"] = "Contact";
+}
 <section class="contactShowcase">
+    @if (TempData["ConfirmMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["ConfirmMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
     <div class="container">
         <div class="top-text">
             <ul class="breadcrumb">
@@ -15,11 +29,11 @@
         </div>
 
         <div class="contactForm">
-            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactMainForm.cshtml", Model.MainForm)
+            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactMainForm.cshtml", Model.ContactServiceForm)
         </div>
     </div>
     <div class="contactMap">
         <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText">
     </div>
-
+    
 </section>

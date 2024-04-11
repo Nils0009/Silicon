@@ -7,5 +7,5 @@ public class ServiceEntity
     public bool? Support { get; set; }
 
     public string ContactId { get; set; } = null!;
-    public IEnumerable<ContactEntity> Contacts { get; set; } = [];
+    public List<ContactEntity> Contacts { get; set; } = [];
 }

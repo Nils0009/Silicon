@@ -44,21 +44,45 @@
                 <form id="passwordForm" method="post" asp-controller="Account" asp-action="Security" novalidate>
 
                     <div id="currentPassword" class="accountFormBox">
-                        <label asp-for="@Model.SecurityInfo.CurrentPassword)"></label>
-                        <span asp-validation-for="@Model.SecurityInfo.CurrentPassword"></span>
-                        <input asp-for="@Model.SecurityInfo.CurrentPassword"/>
+                        @if(Model.ProfileInfo.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.SecurityInfo.CurrentPassword" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.SecurityInfo.CurrentPassword)"></label>
+                            <span asp-validation-for="@Model.SecurityInfo.CurrentPassword"></span>
+                            <input asp-for="@Model.SecurityInfo.CurrentPassword" />
+                        }
+
                     </div>
 
                     <div id="newPassword" class="accountFormBox">
-                        <label asp-for="@Model.SecurityInfo.NewPassword"></label>
-                        <span asp-validation-for="@Model.SecurityInfo.NewPassword"></span>
-                        <input asp-for="@Model.SecurityInfo.NewPassword" />
+                        @if (Model.ProfileInfo.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.SecurityInfo.NewPassword" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.SecurityInfo.NewPassword"></label>
+                            <span asp-validation-for="@Model.SecurityInfo.NewPassword"></span>
+                            <input asp-for="@Model.SecurityInfo.NewPassword" />
+                        }
+
                     </div>
 
                     <div id="confirmNewPassword" class="accountFormBox">
-                        <label asp-for="@Model.SecurityInfo.ConfirmNewPassword"></label>
-                        <span asp-validation-for="@Model.SecurityInfo.ConfirmNewPassword"></span>
-                        <input asp-for="@Model.SecurityInfo.ConfirmNewPassword" />
+                        @if (Model.ProfileInfo.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.SecurityInfo.ConfirmNewPassword" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.SecurityInfo.ConfirmNewPassword"></label>
+                            <span asp-validation-for="@Model.SecurityInfo.ConfirmNewPassword"></span>
+                            <input asp-for="@Model.SecurityInfo.ConfirmNewPassword" />
+                        }
+ 
                     </div>
 
                     <div class="form-btn">

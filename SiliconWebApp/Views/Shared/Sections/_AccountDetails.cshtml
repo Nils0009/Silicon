@@ -37,33 +37,73 @@
                 <form id="basicInfoForm" method="post" asp-controller="Account" asp-action="Details" novalidate>
 
                     <div id="firstName" class="accountFormBox">
-                        <label asp-for="@Model.BasicInfo.FirstName"></label>
-                        <input asp-for="@Model.BasicInfo.FirstName" />
-                        <span asp-validation-for="@Model.BasicInfo.FirstName"></span>
+                        @if(Model.ProfileInfo!.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.BasicInfo.FirstName" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.BasicInfo.FirstName"></label>
+                            <input asp-for="@Model.BasicInfo.FirstName" />
+                            <span asp-validation-for="@Model.BasicInfo.FirstName"></span>
+                        }
+
                     </div>
 
                     <div id="lastName" class="accountFormBox">
-                        <label asp-for="@Model.BasicInfo.LastName"></label>
-                        <input asp-for="@Model.BasicInfo.LastName" />
-                        <span asp-validation-for="@Model.BasicInfo.LastName"></span>
+                        @if (Model.ProfileInfo!.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.BasicInfo.LastName" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.BasicInfo.LastName"></label>
+                            <input asp-for="@Model.BasicInfo.LastName" />
+                            <span asp-validation-for="@Model.BasicInfo.LastName"></span>
+                        }
+
                     </div>
 
                     <div id="emailAddress" class="accountFormBox">
-                        <label asp-for="@Model.BasicInfo.Email"></label>
-                        <input asp-for="@Model.BasicInfo.Email" />
-                        <span asp-validation-for="@Model.BasicInfo.Email"></span>
+                        @if (Model.ProfileInfo!.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.BasicInfo.Email" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.BasicInfo.Email"></label>
+                            <input asp-for="@Model.BasicInfo.Email" />
+                            <span asp-validation-for="@Model.BasicInfo.Email"></span>
+                        }
+ 
                     </div>
 
                     <div id="phoneNumber" class="accountFormBox">
-                        <label asp-for="@Model.BasicInfo.Phone"></label>
-                        <input asp-for="@Model.BasicInfo.Phone" />
-                        <span asp-validation-for="@Model.BasicInfo.Phone"></span>
+                        @if (Model.ProfileInfo!.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.BasicInfo.Phone" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.BasicInfo.Phone"></label>
+                            <input asp-for="@Model.BasicInfo.Phone" />
+                            <span asp-validation-for="@Model.BasicInfo.Phone"></span>
+                        }
+
                     </div>
 
                     <div id="bioInfo" class="accountFormBox">
-                        <label asp-for="@Model.BasicInfo.Bio"></label>
-                        <input asp-for="@Model.BasicInfo.Bio" />
-                        <span asp-validation-for="@Model.BasicInfo.Bio"></span>
+                        @if (Model.ProfileInfo!.IsExternalAccount)
+                        {
+                            <input asp-for="@Model.BasicInfo.Bio" disabled/>
+                        }
+                        else
+                        {
+                            <label asp-for="@Model.BasicInfo.Bio"></label>
+                            <input asp-for="@Model.BasicInfo.Bio" />
+                            <span asp-validation-for="@Model.BasicInfo.Bio"></span>
+                        }
+    
                     </div>
 
                     <div class="form-btn">
@@ -79,27 +119,59 @@
                     <form id="addressInfoForm" method="post" asp-controller="Account" asp-action="Details" novalidate>
 
                         <div id="addressline1" class="accountFormBox">
-                            <label asp-for="@Model.AddressInfo.AddressLine1"></label>
-                            <input asp-for="@Model.AddressInfo.AddressLine1" />
-                            <span asp-validation-for="@Model.AddressInfo.AddressLine1"></span>
+                            @if (Model.ProfileInfo!.IsExternalAccount)
+                            {
+                                <input asp-for="@Model.AddressInfo.AddressLine1" disabled/>
+                            }
+                            else
+                            {
+                                <label asp-for="@Model.AddressInfo.AddressLine1"></label>
+                                <input asp-for="@Model.AddressInfo.AddressLine1" />
+                                <span asp-validation-for="@Model.AddressInfo.AddressLine1"></span>
+                            }
+  
                         </div>
 
                         <div id="addressline2" class="accountFormBox">
-                            <label asp-for="@Model.AddressInfo.AddressLine2"></label>
-                            <input asp-for="@Model.AddressInfo.AddressLine2" />
-                            <span asp-validation-for="@Model.AddressInfo.AddressLine2"></span>
+                            @if (Model.ProfileInfo!.IsExternalAccount)
+                            {
+                                <input asp-for="@Model.AddressInfo.AddressLine2" disabled/>
+                            }
+                            else
+                            {
+                                <label asp-for="@Model.AddressInfo.AddressLine2"></label>
+                                <input asp-for="@Model.AddressInfo.AddressLine2" />
+                                <span asp-validation-for="@Model.AddressInfo.AddressLine2"></span>
+                            }
+
                         </div>
 
                         <div id="postalCode" class="accountFormBox">
-                            <label asp-for="@Model.AddressInfo.PostalCode"></label>
-                            <input asp-for="@Model.AddressInfo.PostalCode" />
-                            <span asp-validation-for="@Model.AddressInfo.PostalCode"></span>
+                            @if (Model.ProfileInfo!.IsExternalAccount)
+                            {
+                                <input asp-for="@Model.AddressInfo.PostalCode" disabled/>
+                            }
+                            else
+                            {
+                                <label asp-for="@Model.AddressInfo.PostalCode"></label>
+                                <input asp-for="@Model.AddressInfo.PostalCode" />
+                                <span asp-validation-for="@Model.AddressInfo.PostalCode"></span>
+                            }
+                            
                         </div>
 
                         <div id="city" class="accountFormBox">
-                            <label asp-for="@Model.AddressInfo.City"></label>
-                            <input asp-for="@Model.AddressInfo.City" />
-                            <span asp-validation-for="@Model.AddressInfo.City"></span>
+                            @if (Model.ProfileInfo!.IsExternalAccount)
+                            {
+                                <input asp-for="@Model.AddressInfo.City" disabled/>
+                            }
+                            else
+                            {
+                                <label asp-for="@Model.AddressInfo.City"></label>
+                                <input asp-for="@Model.AddressInfo.City" />
+                                <span asp-validation-for="@Model.AddressInfo.City"></span>
+                            }
+
                         </div>
 
                         <div class="form-btn">

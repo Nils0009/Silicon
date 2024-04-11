@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SiliconWebApp.ViewModels.Views;
+using System.Security.Claims;
 
 namespace SiliconWebApp.Controllers;
 
@@ -98,6 +99,74 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
+    }
+    #endregion
+
+    #region Facebook-SignIn
+    [HttpGet]
+    public IActionResult Facebook()
+    {
+        var externalAuthOptions = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("Callback"));
+        return new ChallengeResult("Facebook", externalAuthOptions);
+    }
+    #endregion
+
+    #region Google-SignIn
+    [HttpGet]
+    public IActionResult Google()
+    {
+        var externalAuthOptions = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("Callback"));
+        return new ChallengeResult("Google", externalAuthOptions);
+    }
+    #endregion
+
+    #region ExternalSignIn-Callback
+    [HttpGet]
+    public async Task<IActionResult> Callback()
+    {
+        var info = await _signInManager.GetExternalLoginInfoAsync();
+        if (info != null) 
+        {
+            var userEntity = new UserEntity
+            {
+                FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                IsExternalAccount = true,
+            };
+
+            var user = await _userManager.FindByEmailAsync(userEntity.Email);
+            if (user == null) 
+            {              
+                var result = await _userManager.CreateAsync(userEntity);
+                if (result.Succeeded)
+                    user = await _userManager.FindByEmailAsync(userEntity.Email);
+            }
+
+            if (user != null)
+            {
+                if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email) 
+                { 
+                    user.FirstName = userEntity.FirstName;
+                    user.LastName = userEntity.LastName;
+                    user.Email = userEntity.Email;
+                    user.IsExternalAccount = userEntity.IsExternalAccount;
+                    await _userManager.UpdateAsync(user);
+                }
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                if (HttpContext.User != null)
+                {
+                    return RedirectToAction("Details", "Account");
+                }
+            }
+        }
+        var viewModel = new SignInViewModel();
+        ModelState.AddModelError("InvalidAuthentication", "Failed to authenticate with external sign in");
+        viewModel.ErrorMessage = "Failed to authenticate with external sign in";
+        return RedirectToAction("SignIn", "Account");
     }
     #endregion
 }

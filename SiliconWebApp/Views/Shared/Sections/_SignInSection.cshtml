@@ -8,7 +8,7 @@
 
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
         {
-            <div class="alert">
+            <div class="alert alert-danger">
                 @Model.ErrorMessage
             </div>
         }
@@ -43,8 +43,8 @@
 
         <p>Or sign in with your social network</p>
         <div class="altSignIn">
-            <button class="btn-gray">Google</button>
-            <button class="btn-gray">Facebook</button>
+            <a asp-action="Google" asp-controller="Auth" class="btn-gray">Google</a>
+            <a asp-action="Facebook" asp-controller="Auth" class="btn-gray">Facebook</a>
         </div>
 
     </div>
