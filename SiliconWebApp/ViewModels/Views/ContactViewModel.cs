@@ -1,5 +1,4 @@
-﻿using Infrastructure.Models;
-using SiliconWebApp.Models.Components;
+﻿using SiliconWebApp.Models.Components;
 using SiliconWebApp.ViewModels.Sections;
 
 namespace SiliconWebApp.ViewModels.Views
@@ -8,7 +7,7 @@ namespace SiliconWebApp.ViewModels.Views
     {
         public string Title { get; set; } = "Contact Us";
         public ImageModel Image { get; set; } = new ImageModel { ImageUrl="/images/ContactMapImage.svg", AltText="Image of map"};
-        public ContactReqistrationModel ContactServiceForm { get; set; } = new ContactReqistrationModel();
+        public ContactRegistrationViewModel ContactServiceForm { get; set; } = new ContactRegistrationViewModel();
         public ContactEmailViewModel EmailUs { get; set; } = new ContactEmailViewModel() 
         {
             Title = "Email us",

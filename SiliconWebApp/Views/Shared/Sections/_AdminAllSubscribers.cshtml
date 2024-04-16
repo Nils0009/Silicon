@@ -1,0 +1,22 @@
+﻿@model AdminViewModel
+
+<div class="adminDetails">
+    <h1>Subscribers</h1>
+
+    @foreach (var subscriber in Model.newsletter)
+    {
+        <div class="details-box">
+            <ul>
+                <li>
+                    <div class="AdminBtn">
+                        <a class="btn-theme" asp-controller="Admin" asp-action="DeleteSubscriber" asp-route-id="@subscriber.Email">Delete Subscriber</a>
+                    </div>
+                    
+                    <div class="details-text">
+                        <h5>@subscriber.Email</h5><h5>@subscriber.Id</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

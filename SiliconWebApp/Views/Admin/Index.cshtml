@@ -1,0 +1,38 @@
+﻿@model AdminViewModel
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<section class="adminDetails">
+
+    <div class="container">
+        <div class="profileInfo">
+            <div class="userInfo">
+                @if (Model.ProfileInfo != null)
+                {
+                    <div class="image-container">
+                        <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                            <input id="fileUploader" type="file" name="file" hidden />
+                            <label for="fileUploader" class="btn btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
+                        </form>
+                        <img src="~/uploads/@Model.ProfileInfo.ProfileImgUrl" alt="profile image">
+                    </div>
+                    <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                    <p>@Model.ProfileInfo.Email</p>
+                }
+
+            </div>
+            <nav>
+                <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-solid fa-gear"></i>All courses</a>
+                <a asp-controller="Account" asp-action="Security" class="menu-link"><i class="fa-solid fa-lock"></i>All subscribers</a>
+                <a asp-controller="Account" asp-action="SavedItems" class="menu-link"><i class="fa-regular fa-bookmark"></i>Create course</a>
+                <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+            </nav>
+        </div>
+        </div>
+
+        @await Html.PartialAsync("~/Views/Shared/Sections/_AdminAllCourses.cshtml")
+        @await Html.PartialAsync("~/Views/Shared/Sections/_AdminAllSubscribers.cshtml")
+    </div>
+</section>

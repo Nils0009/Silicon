@@ -329,6 +329,11 @@ header .container #logo #darkmode-logo {
 header .container .profile-img {
   grid-area: profile-img;
 }
+header .container .profile-img a img {
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+}
 header .container #menu {
   grid-area: menu;
   display: none;
@@ -999,6 +1004,7 @@ main .showcase .container .background-image {
   flex-direction: column;
   text-align: center;
   margin-top: 50px;
+  justify-content: space-between;
 }
 @media (min-width: 768px) {
   .courses-showcase .container .courses-showcase-top {
@@ -1043,63 +1049,36 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 @media (min-width: 768px) {
   .courses-showcase .container .courses-showcase-top .courses-showcase-search {
     flex-direction: row;
   }
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .searchbar-content {
-  color: black;
-  margin-top: 10px;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .courses-showcase .container .courses-showcase-top .courses-showcase-search .searchbar-content {
-    margin-top: 0;
-  }
-}
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .searchbar-content button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: transparent;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .searchbar-content button i {
-  position: absolute;
-  top: 0;
-  right: 25px;
-}
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .dropbtn {
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .selected {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px 15px;
-  margin-right: 10px;
-  color: black;
-  background-color: transparent;
-  border: 1px solid gray;
-  border-radius: 1px;
+  flex-direction: column;
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .dropbtn i {
-  margin-left: 25px;
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select-options {
+  display: flex;
+  flex-direction: column;
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .dropdown-content {
-  display: none;
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group {
+  position: relative;
+  margin-top: 10px;
+}
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group .fa-regular.fa-search {
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }
 .courses-showcase .container .courses-showcase-content {
   display: grid;
@@ -1641,12 +1620,30 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
-.accountDetails .container .profileInfo .userInfo img {
+.accountDetails .container .profileInfo .userInfo .image-container {
+  position: relative;
   width: 100px;
   height: 100px;
-  align-self: center;
+}
+.accountDetails .container .profileInfo .userInfo .image-container img {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+.accountDetails .container .profileInfo .userInfo .image-container .btn {
+  position: absolute;
+  bottom: 0;
+  right: -15px;
+}
+.accountDetails .container .profileInfo .userInfo .image-container .btn i {
+  border: 1px solid var(--color-gray-300);
+  border-radius: 25px;
+  padding: 5px;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-800);
 }
 .accountDetails .container .profileInfo a {
   margin-bottom: 20px;
@@ -1837,12 +1834,30 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
-.accountSecurity .container .profileInfo .userInfo img {
+.accountSecurity .container .profileInfo .userInfo .image-container {
+  position: relative;
   width: 100px;
   height: 100px;
-  align-self: center;
+}
+.accountSecurity .container .profileInfo .userInfo .image-container img {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+.accountSecurity .container .profileInfo .userInfo .image-container .btn {
+  position: absolute;
+  bottom: 0;
+  right: -15px;
+}
+.accountSecurity .container .profileInfo .userInfo .image-container .btn i {
+  border: 1px solid var(--color-gray-300);
+  border-radius: 25px;
+  padding: 5px;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-800);
 }
 .accountSecurity .container .profileInfo a {
   margin-bottom: 20px;
@@ -1977,12 +1992,30 @@ main .showcase .container .background-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
-.accountSavedItems .container .profileInfo .userInfo img {
+.accountSavedItems .container .profileInfo .userInfo .image-container {
+  position: relative;
   width: 100px;
   height: 100px;
-  align-self: center;
+}
+.accountSavedItems .container .profileInfo .userInfo .image-container img {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+.accountSavedItems .container .profileInfo .userInfo .image-container .btn {
+  position: absolute;
+  bottom: 0;
+  right: -15px;
+}
+.accountSavedItems .container .profileInfo .userInfo .image-container .btn i {
+  border: 1px solid var(--color-gray-300);
+  border-radius: 25px;
+  padding: 5px;
+  background-color: var(--color-gray-000);
+  color: var(--color-gray-800);
 }
 .accountSavedItems .container .profileInfo a {
   margin-bottom: 20px;
@@ -2054,5 +2087,79 @@ main .showcase .container .background-image {
   margin-top: 10px;
 }
 .accountSavedItems .container .accountSavedItems-main .courses-box .hour-rating p i {
+  margin-right: 5px;
+}
+
+.adminDetails .container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .adminDetails .container {
+    justify-content: left;
+    flex-direction: row;
+  }
+}
+.adminDetails .container .profileInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+  .adminDetails .container .profileInfo {
+    flex-direction: column;
+    justify-content: left;
+  }
+}
+@media (min-width: 992px) {
+  .adminDetails .container .profileInfo {
+    width: 300px;
+    margin-right: 200px;
+    border-right: 1px solid gray;
+  }
+}
+.adminDetails .container .profileInfo nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.adminDetails .container .profileInfo nav a {
+  margin: 5px;
+  justify-content: left;
+}
+@media (min-width: 768px) {
+  .adminDetails .container .profileInfo nav {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .adminDetails .container .profileInfo nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .adminDetails .container .profileInfo nav a {
+    text-align: left;
+    width: 200px;
+  }
+}
+.adminDetails .container .profileInfo .userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.adminDetails .container .profileInfo .userInfo img {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
+.adminDetails .container .profileInfo a {
+  margin-bottom: 20px;
+}
+.adminDetails .container .profileInfo a i {
   margin-right: 5px;
 }

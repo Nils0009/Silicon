@@ -51,6 +51,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 var createResult = await _userManager.CreateAsync(newUser, viewModel.Form.Password);
                 if (createResult.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(newUser, "User");
                     return RedirectToAction("SignIn", "Auth");
                 }
             }

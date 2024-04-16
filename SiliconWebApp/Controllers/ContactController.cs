@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
 
@@ -19,19 +20,19 @@ public class ContactController(HttpClient http) : Controller
 
     #region HttpPost-ContactService
     [HttpPost]
-    public async Task<IActionResult> ContactServiceForm(ContactReqistrationModel contactReqistrationModel)
+    public async Task<IActionResult> ContactServiceForm(ContactRegistrationViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                contactReqistrationModel.ContactServiceReg = new ContactServiceRegistrationModel
+                viewModel.ContactServiceReg = new ContactServiceRegistrationModel
                 {
-                    Order = contactReqistrationModel.SelectedService == "Order",
-                    Support = contactReqistrationModel.SelectedService == "Support"
+                    Order = viewModel.SelectedService == "Order",
+                    Support = viewModel.SelectedService == "Support"
                 };
 
-                var content = new StringContent(JsonConvert.SerializeObject(contactReqistrationModel), Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _http.PostAsync("https://localhost:7277/api/Contact", content);
 
                 if (response.IsSuccessStatusCode)

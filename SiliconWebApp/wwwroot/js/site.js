@@ -26,6 +26,10 @@
 
     hideMobileMenu();
     window.addEventListener('resize', hideMobileMenu);
+
+    handleProfileImageUpload();
+
+    select()
 });
 
 function toggleDropdown() {
@@ -45,5 +49,57 @@ window.onclick = function (event) {
                 openDropdown.style.display = "none";
             }
         }
+    }
+}
+
+function handleProfileImageUpload() {
+    try {
+
+        let fileUploader = document.querySelector('#fileUploader')
+
+        if (fileUploader != undefined) {
+            fileUploader.addEventListener('change', function () {
+                if (this.files.length > 0)
+                    this.form.submit()
+            })
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+} 
+
+function select() {
+    try {
+        let selectOptions = document.getElementById('myDropdown');
+        let selected = document.querySelectorAll('.selected');
+
+        // Visa eller dölj dropdown-menyn när du klickar på någon av "All categories"-elementen
+        selected.forEach(function (element) {
+            element.addEventListener('click', function () {
+                selectOptions.classList.toggle('show');
+                this.classList.toggle('hide'); // Dölj det klickade "All categories"-elementet
+            });
+        });
+
+        // Lyssna på klickhändelser för varje kategori
+        let options = selectOptions.querySelectorAll('.option');
+        options.forEach(function (option) {
+            option.addEventListener('click', function () {
+                // Uppdatera texten för den valda kategorin i "All categories"
+                selected.forEach(function (element) {
+                    element.textContent = this.textContent;
+                    element.classList.remove('hide'); // Visa det andra "All categories"-elementet igen
+                }.bind(this));
+                // Dölj dropdown-menyn när du väljer en kategori
+                selectOptions.classList.remove('show');
+
+                let category = this.getAttribute('data-value');
+                // Använd kategorin på önskat sätt, t.ex. för att filtrera kurser
+                console.log(category);
+            });
+        });
+    } catch (e) {
+        console.log(e);
     }
 }

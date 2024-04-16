@@ -1,15 +1,14 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Factories;
 using Infrastructure.Models;
 using Infrastructure.Repositories;
 using System.Diagnostics;
 
 namespace Infrastructure.Services;
 
-public class CourseService(CourseRepository courseRepository, UserCourseRegistrationRepository userCourseRegistrationRepository, UserRepository userRepository)
+public class CourseService(CourseRepository courseRepository)
 {
     private readonly CourseRepository _courseRepository = courseRepository;
-    private readonly UserCourseRegistrationRepository _userCourseRegistrationRepository = userCourseRegistrationRepository;
-    private readonly UserRepository _userRepository = userRepository;
 
     public async Task<CourseEntity> CreateCourseAsync(CourseRegistrationModel model)
     {
@@ -31,6 +30,10 @@ public class CourseService(CourseRepository courseRepository, UserCourseRegistra
                     LikesInProcent = model.LikesInProcent,
                     Author = model.Author,
                     ImgUrl = model.ImgUrl,
+                    Category = new CategoryEntity
+                    {
+                        CategoryName = model.Category!
+                    }
                 };
                     await _courseRepository.CreateAsync(newCourse);
                     return newCourse;
@@ -49,14 +52,16 @@ public class CourseService(CourseRepository courseRepository, UserCourseRegistra
         }
         return null!;
     }
-    public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync()
+    public async Task<IEnumerable<CourseRegistrationModel>> GetAllCoursesAsync()
     {
         try
         {
             var existingCourses = await _courseRepository.GetAllAsync();
+            existingCourses = existingCourses.OrderByDescending(x => x.LastUpdated);
+           
             if (existingCourses != null)
             {
-                return existingCourses;
+                return CourseFactory.Create(existingCourses);
             }
 
         }

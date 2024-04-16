@@ -1,0 +1,22 @@
+﻿@model AdminViewModel
+
+<div class="adminDetails">
+    <h1>Courses</h1>
+
+    @foreach (var course in Model.courses)
+    {
+        <div class="details-box">
+            <ul>
+                <li>
+                    <div class="AdminBtn">
+                    <a class="btn-theme" asp-controller="Admin" asp-action="UpdateCourse" asp-route-id="@course.Id">Update Course</a>
+                    <a class="btn-theme" asp-controller="Admin" asp-action="DeleteCourse" asp-route-id="@course.Id">Delete Course</a>
+                    </div>
+                    <div class="details-text">
+                        <h5>@course.Title</h5><h5>@course.Author</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

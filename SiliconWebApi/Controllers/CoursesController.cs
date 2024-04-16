@@ -42,7 +42,12 @@ public class CoursesController(CourseService courseService) : ControllerBase
 			var courses = await _courseService.GetAllCoursesAsync();
 			if (courses != null)
 			{
-				return Ok(courses);
+				var respone = new CourseResult
+				{
+					Succeeded = true,
+					Courses = courses,
+				};
+				return Ok(respone);
 			}
 			return NotFound();
 		}

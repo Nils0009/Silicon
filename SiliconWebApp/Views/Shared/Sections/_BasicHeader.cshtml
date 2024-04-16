@@ -1,6 +1,8 @@
 ﻿@inject SignInManager<UserEntity> _signInManager;
+@inject UserManager<UserEntity> _userInManager;
 
 @{
+    var user = await _userInManager.GetUserAsync(User);
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
     var isDark = (themeMode == "dark") ? true : false;
 }
@@ -15,7 +17,7 @@
                 @if (_signInManager.IsSignedIn(User))
                 {
                     <a class="menu-link" asp-controller="Account" asp-action="Details">Overview</a>
-                    <a class="menu-link" asp-controller="Courses" asp-action="Courses">Courses</a>
+                    <a class="menu-link" asp-controller="Courses" asp-action="Index">Courses</a>
                     <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
 
                 }
@@ -26,6 +28,10 @@
                     <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
                 }
 
+                @if(User.IsInRole("Admin"))
+                {
+                    <a class="menu-link" asp-controller="Admin" asp-action="Index">Admin</a>
+                }
             </nav>
         </div>
 
@@ -53,15 +59,20 @@
         @if (_signInManager.IsSignedIn(User))
         {
             <div class="profile-img">
-                <a asp-controller="Account" asp-action="Details"><img id="" src="~/Images/profile-header.svg" alt=""></a>
+                <a asp-controller="Account" asp-action="Details"><img id="" src="~/uploads/@user?.ProfileImage" alt="profile image"></a>
             </div>
 
             <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
             <div class="mobile-menu">
                 <nav>
                     <a class="btn-gray" asp-controller="Account" asp-action="Details">Overview</a>
-                    <a class="btn-gray" asp-controller="Courses" asp-action="Courses">Courses</a>
+                    <a class="btn-gray" asp-controller="Courses" asp-action="Index">Courses</a>
                     <a class="btn-gray" asp-controller="Contact" asp-action="Index">Contact</a>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn-gray" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
                 </nav>
             </div>
         }

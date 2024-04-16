@@ -29,4 +29,8 @@
     <ProjectReference Include="..\SiliconWebApi\SiliconWebApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

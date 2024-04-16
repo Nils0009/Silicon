@@ -9,6 +9,7 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<AddressEntity> AspNetAddresses { get; set; }
     public DbSet<NewsletterEntity> AspNetNewsletters { get; set; }
     public DbSet<CourseEntity> AspNetCourses { get; set; }
+    public DbSet<CategoryEntity> AspNetCategories { get; set; }
     public DbSet<UserCourseRegistrationEntity> AspNetUserCourseRegistrations { get; set; }
     public DbSet<ContactEntity> AspNetContacts { get; set; }
     public DbSet<ServiceEntity> AspNetServices { get; set; }

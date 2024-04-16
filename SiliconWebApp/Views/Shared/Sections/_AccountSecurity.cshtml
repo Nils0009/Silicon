@@ -24,19 +24,27 @@
 
         <div class="profileInfo">
             <div class="userInfo">
-                <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
-                <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
-                <p>@Model.ProfileInfo.Email</p>
+                @if (Model.ProfileInfo != null)
+                {
+                    <div class="image-container">
+                        <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                            <input id="fileUploader" type="file" name="file" hidden />
+                            <label for="fileUploader" class="btn btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
+                        </form>
+                        <img src="~/uploads/@Model.ProfileInfo.ProfileImgUrl" alt="profile image">
+                    </div>
+                    <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
+                    <p>@Model.ProfileInfo.Email</p>
+                }
+                <nav>
+                    <a asp-controller="Account" asp-action="Details" class="menu-link"><i class="fa-solid fa-gear"></i> Account Details</a>
+                    <a asp-controller="Account" asp-action="Security" class="btn-theme"><i class="fa-solid fa-lock"></i>Security</a>
+                    <a asp-controller="Account" asp-action="SavedItems" class="menu-link"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                    <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+                </nav>
             </div>
-            <nav>
-                <a asp-controller="Account" asp-action="Details" class="menu-link"><i class="fa-solid fa-gear"></i> Account Details</a>
-                <a asp-controller="Account" asp-action="Security" class="btn-theme"><i class="fa-solid fa-lock"></i>Security</a>
-                <a asp-controller="Account" asp-action="SavedItems" class="menu-link"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
-                <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
-            </nav>
         </div>
-
-        <div class="securityMain">
+    <div class="securityMain">
 
             <div class="passwordInfo">
                 <h1>Security</h1>
@@ -108,7 +116,7 @@
                 </form>
 
             </div>
-        </div>
-
     </div>
+
+</div>
 </section>

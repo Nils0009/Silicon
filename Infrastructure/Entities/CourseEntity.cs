@@ -12,6 +12,9 @@ public class CourseEntity
     public string? LikesInProcent { get; set; }
     public string? Author { get; set; }
     public string? ImgUrl { get; set; }
-
+    public DateTime Created { get; set; }
+    public DateTime LastUpdated { get; set; }
+    public int? CategoryId { get; set; }
+    public CategoryEntity? Category { get; set; }
     public ICollection<UserCourseRegistrationEntity>? UserCourseRegistrations { get; set; } = new List<UserCourseRegistrationEntity>();
 }

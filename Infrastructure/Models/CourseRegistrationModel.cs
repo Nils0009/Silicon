@@ -1,7 +1,10 @@
-﻿namespace Infrastructure.Models;
+﻿using Infrastructure.Entities;
+
+namespace Infrastructure.Models;
 
 public class CourseRegistrationModel
 {
+    public string Id { get; set; } = null!;
     public string Title { get; set; } = null!;
     public string? Price { get; set; }
     public string? DiscountPrice { get; set; }
@@ -11,4 +14,8 @@ public class CourseRegistrationModel
     public string? LikesInProcent { get; set; }
     public string? Author { get; set; }
     public string? ImgUrl { get; set; }
+
+    public string Category { get; set; } = null!;
+
+    public IEnumerable<UserCourseRegistrationEntity> UserCourseRegistrations { get; set; } = null!;
 }

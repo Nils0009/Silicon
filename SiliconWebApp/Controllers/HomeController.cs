@@ -1,6 +1,6 @@
-﻿using Infrastructure.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
 using System.Text;
@@ -12,24 +12,16 @@ public class HomeController(HttpClient httpClient) : Controller
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public IActionResult Index()
+    public IActionResult Index(HomeViewModel viewModel)
     {
-        var viewModel = new HomeViewModel();
-        @ViewData["Title"] = viewModel.Title;
+        ViewData["Title"] = viewModel.Title;
+        ViewData["Status"] = TempData["Status"];
         return View(viewModel);
     }
 
-    #region HttpGet-Subscribe
-    [HttpGet]
-    public IActionResult Subscribe()
-    {
-        return View(new NewsletterSubscriptionRegistrationModel());
-    }
-    #endregion
-
     #region HttpPost-Subscribe
     [HttpPost]
-    public async Task<IActionResult> Subscribe(NewsletterSubscriptionRegistrationModel viewModel)
+    public async Task<IActionResult> Subscribe(HomeSubscriberViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
@@ -40,26 +32,26 @@ public class HomeController(HttpClient httpClient) : Controller
 
                 if (response.IsSuccessStatusCode)
                 {
-                    ViewData["Status"] = "Success";
+                    TempData["Status"] = "Success";
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
-                    ViewData["Status"] = "AlreadyExists";
+                    TempData["Status"] = "AlreadyExists";
                 }
             }
 
             catch (Exception ex)
             {
-                ViewData["Status"] = "ConnectionFailed";
+                TempData["Status"] = "ConnectionFailed";
                 Debug.WriteLine(ex.Message);
             }
         }
         else
         {
-            ViewData["Status"] = "Invalid";
+            TempData["Status"] = "Invalid";
         }
 
-        return View(viewModel);
+        return Redirect("/Home/Index#subscribe-section");
     }
     #endregion
 

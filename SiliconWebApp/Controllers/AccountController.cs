@@ -3,6 +3,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SiliconWebApp.Services;
 using SiliconWebApp.ViewModels.Sections;
 using SiliconWebApp.ViewModels.Views;
 using System.Diagnostics;
@@ -10,12 +11,13 @@ namespace SiliconWebApp.Controllers;
 
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, SignInManager<UserEntity> signInManager, CourseService courseService) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, SignInManager<UserEntity> signInManager, CourseHttpService courseService, AccountService accountService) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressService _addressService = addressService;
-    private readonly CourseService _courseService = courseService;
+    private readonly CourseHttpService _courseService = courseService;
+    private readonly AccountService _accountService = accountService;
 
     #region HttpGet-Details
     [HttpGet]
@@ -285,6 +287,21 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         return RedirectToAction("SavedItems");
     }
     #endregion
+
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        try
+        {
+            var result = await _accountService.UploadUserProfileImageAsync(User, file);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return RedirectToAction("Details", "Account");
+    }
+
     private async Task<AccountBasicInfoViewModel> PopulateBasicInfoAsync()
     {
         var existingUser = await _userManager.GetUserAsync(User);
@@ -297,7 +314,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
                 Phone = existingUser.PhoneNumber!,
-                Bio = existingUser.Bio,            
+                Bio = existingUser.Bio,
             };
         }
         return new AccountBasicInfoViewModel();
@@ -334,6 +351,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 FirstName = existingUser.FirstName,
                 LastName = existingUser.LastName,
                 Email = existingUser.Email!,
+                ProfileImgUrl = existingUser.ProfileImage,
                 IsExternalAccount = existingUser.IsExternalAccount,
             };
             return newProfileInfo;
@@ -382,12 +400,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 var savedCourses = new List<CourseEntity>();
 
                 foreach (var course in courses)
-                {             
+                {
                     if (course != null)
                     {
-                       if(course.UserCourseRegistrations != null)
+                        if (course.UserCourseRegistrations != null)
                         {
-                            foreach(var userReg in course.UserCourseRegistrations)
+                            foreach (var userReg in course.UserCourseRegistrations)
                             {
                                 if (userReg.UserId == user.Id)
                                 {

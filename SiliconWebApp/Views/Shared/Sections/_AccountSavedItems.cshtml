@@ -12,7 +12,13 @@
             <div class="userInfo">
                 @if (Model.ProfileInfo != null)
                 {
-                    <img src="~/images/@Model.ProfileInfo.ProfileImgUrl" alt="">
+                    <div class="image-container">
+                        <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                            <input id="fileUploader" type="file" name="file" hidden />
+                            <label for="fileUploader" class="btn btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
+                        </form>
+                        <img src="~/uploads/@Model.ProfileInfo.ProfileImgUrl" alt="profile image">
+                    </div>
                     <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
                     <p>@Model.ProfileInfo.Email</p>
                 }

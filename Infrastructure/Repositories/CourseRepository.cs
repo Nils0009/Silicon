@@ -3,7 +3,6 @@ using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq.Expressions;
-using System.Xml.Linq;
 
 namespace Infrastructure.Repositories;
 
@@ -16,7 +15,8 @@ public class CourseRepository(DataContext context) : GenericRepository<CourseEnt
         try
         {
             var entities = await _context.Set<CourseEntity>()
-                .Include(x => x.UserCourseRegistrations).ToListAsync();
+                .Include(x => x.Category).AsQueryable()
+                .Include(x => x.UserCourseRegistrations).ToListAsync();            
             return entities;
         }
         catch (Exception ex)
@@ -31,6 +31,7 @@ public class CourseRepository(DataContext context) : GenericRepository<CourseEnt
         try
         {
             var result = await _context.Set<CourseEntity>()
+                .Include(x => x.Category)
                 .Include(x => x.UserCourseRegistrations)
                 .FirstOrDefaultAsync(predicate);
             if (result != null)

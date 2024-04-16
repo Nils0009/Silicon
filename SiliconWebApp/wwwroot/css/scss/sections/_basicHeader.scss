@@ -38,6 +38,15 @@ header {
 
         .profile-img {
             grid-area: profile-img;
+
+            a {
+
+                img {
+                    border-radius: 25px;
+                    height: 50px;
+                    width: 50px;
+                }
+            }
         }
 
         #menu {

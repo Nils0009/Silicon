@@ -3,8 +3,10 @@ using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiliconWebApp.Helpers.Middlewares;
+using SiliconWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -15,10 +17,15 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<UserCourseRegistrationRepository>();
-builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<CourseHttpService>();
+builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<CategoryHttpService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ContactRepository>();
 builder.Services.AddScoped<ServiceRepository>();
+builder.Services.AddScoped<NewsletterRepository>();
+builder.Services.AddScoped<SubscriberService>();
+builder.Services.AddScoped<AccountService>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
@@ -26,7 +33,9 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.User.RequireUniqueEmail = true;
     x.SignIn.RequireConfirmedAccount = false;
     x.Password.RequiredLength = 8;
-}).AddEntityFrameworkStores<DataContext>();
+})  
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DataContext>();
 
 builder.Services.ConfigureApplicationCookie(x =>
 {
@@ -64,8 +73,23 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseUserSessionValidation();
 app.UseAuthorization();
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    string[] roles = ["Admin", "User"];
+    foreach(var role in roles)
+    {
+        if(!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }      
+    }
+}
+
+
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,0 +1,89 @@
+.adminDetails {
+    .container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+
+        @media(min-width: 992px) {
+            justify-content: left;
+            flex-direction: row;
+        }
+
+
+        .profileInfo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+
+            @media(min-width: 768px) {
+                flex-direction: column;
+                justify-content: left;
+            }
+
+            @media(min-width: 992px) {
+                width: 300px;
+                margin-right: 200px;
+                border-right: 1px solid gray;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+
+
+                a {
+                    margin: 5px;
+                    justify-content: left;
+                }
+
+                @media(min-width: 768px) {
+                    flex-direction: row;
+                    text-align: center;
+                }
+
+                @media(min-width: 992px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    a {
+                        text-align: left;
+                        width: 200px;
+                    }
+                }
+            }
+
+            .userInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    align-self: center;
+                }
+            }
+
+            a {
+                margin-bottom: 20px;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .details-box {
+
+            ul {
+                li {
+
+                }
+            }
+        }
+    }
+}

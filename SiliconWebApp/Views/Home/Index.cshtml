@@ -2,9 +2,9 @@
 
 @await Html.PartialAsync("~/Views/Shared/Sections/_HomeShowcase.cshtml", Model.Showcase)
 @await Html.PartialAsync("~/Views/Shared/Sections/_HomeBenefits.cshtml", Model.Benefits)
+@await Html.PartialAsync("~/Views/Shared/Sections/_HomeImgSlider.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/_HomeManageWork.cshtml", Model.ManageWork)
 @await Html.PartialAsync("~/Views/Shared/Sections/_HomeDownloadApp.cshtml", Model.DownloadApp)
 @await Html.PartialAsync("~/Views/Shared/Sections/_HomeWorkTools.cshtml", Model.WorkTools)
-@await Html.PartialAsync("~/Views/Home/Subscribe.cshtml", Model.Subscriber)
-
+@await Html.PartialAsync("~/Views/Home/Subscribe.cshtml", Model.Subscriber);
 
