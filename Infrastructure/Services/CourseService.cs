@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Entities;
-using Infrastructure.Factories;
 using Infrastructure.Models;
 using Infrastructure.Repositories;
 using System.Diagnostics;
@@ -52,16 +51,22 @@ public class CourseService(CourseRepository courseRepository)
         }
         return null!;
     }
-    public async Task<IEnumerable<CourseRegistrationModel>> GetAllCoursesAsync()
+    public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync(string category = "", string searchQuery = "")
     {
         try
         {
             var existingCourses = await _courseRepository.GetAllAsync();
+            if (!string.IsNullOrWhiteSpace(category) && category != "all")
+                existingCourses = existingCourses.Where(x => x.Category!.CategoryName == category);
+
+            if (!string.IsNullOrEmpty(searchQuery))
+                existingCourses = existingCourses.Where(x => x.Title.ToLower().Contains(searchQuery) || x.Author!.ToLower().Contains(searchQuery));
+
             existingCourses = existingCourses.OrderByDescending(x => x.LastUpdated);
            
             if (existingCourses != null)
             {
-                return CourseFactory.Create(existingCourses);
+                return existingCourses;
             }
 
         }
@@ -87,6 +92,40 @@ public class CourseService(CourseRepository courseRepository)
             Debug.WriteLine(ex.Message);
         }
         return null!;
+    }
+    public async Task<bool> UpdateCourseAsync(CourseEntity courseEntity)
+    {
+        try
+        {
+            var existingAddress = await _courseRepository.UpdateAsync(x => x.Id == courseEntity.Id, courseEntity);
+            if (existingAddress != null)
+            {
+                return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return false;
+    }
+    public async Task<bool> DeleteOneCourseAsync(string courseId)
+    {
+        try
+        {
+            var result = await _courseRepository.GetOneAsync(x => x.Id == courseId);
+            if (result != null)
+            {
+                await _courseRepository.DeleteAsync(x => x.Id == courseId);
+                return true;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
+        return false!;
     }
 
 }

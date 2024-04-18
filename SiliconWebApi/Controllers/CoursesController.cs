@@ -1,4 +1,5 @@
-﻿using Infrastructure.Models;
+﻿using Infrastructure.Factories;
+using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -35,32 +36,39 @@ public class CoursesController(CourseService courseService) : ControllerBase
 
     #region HttpGet-GetAll
     [HttpGet]
-	public async Task<IActionResult> GetAll()
-	{
-		try
-		{
-			var courses = await _courseService.GetAllCoursesAsync();
-			if (courses != null)
-			{
-				var respone = new CourseResult
-				{
-					Succeeded = true,
-					Courses = courses,
-				};
-				return Ok(respone);
-			}
-			return NotFound();
-		}
-		catch (Exception ex)
-		{
-			Debug.WriteLine(ex.Message);
-		}
-		return BadRequest();
-	}
-	#endregion
+    public async Task<IActionResult> GetAll(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
+    {
+        try
+        {
+            var courses = await _courseService.GetAllCoursesAsync(category, searchQuery);
 
-	#region HttpPost-Create
-	[HttpPost]
+            if (courses != null)
+            {
+                var totalItems = courses.Count();
+                var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+                var response = new CourseResult
+                {
+                    Succeeded = true,
+                    TotalItems = totalItems,
+                    TotalPages = totalPages,
+                    Courses = CourseFactory.Create(courses.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList())
+                };
+
+                return Ok(response);
+            }
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return BadRequest();
+        }
+    }
+    #endregion
+
+    #region HttpPost-Create
+    [HttpPost]
 	public async Task<IActionResult> Create(CourseRegistrationModel model)
 	{
 		try
@@ -81,5 +89,29 @@ public class CoursesController(CourseService courseService) : ControllerBase
 		}
 		return BadRequest();
 	}
+    #endregion
+
+    #region HttpDelete-DeleteOne
+    [HttpDelete]
+    public async Task<IActionResult> DeleteOne(string courseId)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+				var existingCourse = await _courseService.DeleteOneCourseAsync(courseId);
+                if (existingCourse)
+                {
+                    return Ok();
+                }
+                return NotFound();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return BadRequest();
+    }
     #endregion
 }

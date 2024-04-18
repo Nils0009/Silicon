@@ -30,6 +30,7 @@
     handleProfileImageUpload();
 
     select()
+    searchQuery()
 });
 
 function toggleDropdown() {
@@ -68,38 +69,70 @@ function handleProfileImageUpload() {
         console.log(e)
     }
 } 
-
 function select() {
     try {
-        let selectOptions = document.getElementById('myDropdown');
-        let selected = document.querySelectorAll('.selected');
+        let select = document.querySelector('.select')
+        let selected = select.querySelector('.selected')
+        let selectOptions = select.querySelector('.select-options')
 
-        // Visa eller dölj dropdown-menyn när du klickar på någon av "All categories"-elementen
-        selected.forEach(function (element) {
-            element.addEventListener('click', function () {
-                selectOptions.classList.toggle('show');
-                this.classList.toggle('hide'); // Dölj det klickade "All categories"-elementet
-            });
-        });
+        selected.addEventListener('click', function () {
+            console.log("Clicked on 'All categories'")
+            selectOptions.style.display = (selectOptions.style.display === 'block') ? 'none' : 'block'
+        })
 
-        // Lyssna på klickhändelser för varje kategori
         let options = selectOptions.querySelectorAll('.option');
         options.forEach(function (option) {
             option.addEventListener('click', function () {
-                // Uppdatera texten för den valda kategorin i "All categories"
-                selected.forEach(function (element) {
-                    element.textContent = this.textContent;
-                    element.classList.remove('hide'); // Visa det andra "All categories"-elementet igen
-                }.bind(this));
-                // Dölj dropdown-menyn när du väljer en kategori
-                selectOptions.classList.remove('show');
 
-                let category = this.getAttribute('data-value');
-                // Använd kategorin på önskat sätt, t.ex. för att filtrera kurser
-                console.log(category);
-            });
+                selected.innerHTML = this.textContent
+
+                selectOptions.style.display = 'none'
+                let category = this.getAttribute('data-value')
+                selected.setAttribute('data-value', category)
+                console.log(category)
+                updateCourseByFilter();
+            })
+        })
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function searchQuery() {
+    try {
+        const searchField = document.querySelector('#searchQuery');
+
+        searchField.addEventListener('keyup', function () {
+            updateCourseByFilter();
         });
     } catch (e) {
         console.log(e);
     }
 }
+function updateCourseByFilter() {
+    console.log('Update course by filter function called.');
+    const category = document.querySelector('.select .selected').getAttribute('data-value') || 'all';
+    const searchQuery = document.querySelector('#searchQuery').value.toLowerCase();
+
+    const url = `/courses/index?category=${encodeURIComponent(category)}&searchQuery=${encodeURIComponent(searchQuery)}`;
+    console.log('Fetching courses from:', url);
+    console.log(category);
+
+    fetch(url)
+        .then(res => res.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const dom = parser.parseFromString(data, 'text/html');
+            console.log('Parsed DOM:', dom);
+            const showcaseContent = document.querySelector('.courses-showcase-content');
+            showcaseContent.innerHTML = dom.querySelector('.courses-showcase-content').innerHTML;
+
+            const pagination = dom.querySelector('.pagination') ? dom.querySelector('.pagination').innerHTML : '';
+            document.querySelector('.pagination').innerHTML = pagination
+        })
+        .catch(error => {
+            console.error('Error fetching courses:', error);
+        });
+}
+
+

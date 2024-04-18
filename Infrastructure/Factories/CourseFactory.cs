@@ -10,19 +10,25 @@ public class CourseFactory
     {
 		try
 		{
-			return new CourseRegistrationModel
+			if (courseEntity != null!)
 			{
-				Title = courseEntity.Title,
-				Author = courseEntity.Author,
-				Price = courseEntity.Price,
-				DiscountPrice = courseEntity.DiscountPrice,
-				Hours = courseEntity.Hours,
-				IsBestSeller = courseEntity.IsBestSeller,
-				LikesInNumber = courseEntity.LikesInNumber,
-				LikesInProcent = courseEntity.LikesInProcent,
-				ImgUrl = courseEntity.ImgUrl,
-				Category = courseEntity.Category?.CategoryName
-			};
+                return new CourseRegistrationModel
+                {
+                    Id = courseEntity.Id,
+                    Title = courseEntity.Title,
+                    Author = courseEntity.Author,
+                    Price = courseEntity.Price,
+                    DiscountPrice = courseEntity.DiscountPrice,
+                    Hours = courseEntity.Hours,
+                    IsBestSeller = courseEntity.IsBestSeller,
+                    LikesInNumber = courseEntity.LikesInNumber,
+                    LikesInProcent = courseEntity.LikesInProcent,
+                    ImgUrl = courseEntity.ImgUrl,
+                    Category = courseEntity.Category!.CategoryName,
+                    UserCourseRegistration = courseEntity.UserCourseRegistrations!,
+                };
+            }
+
 		}
 		catch (Exception ex)
 		{

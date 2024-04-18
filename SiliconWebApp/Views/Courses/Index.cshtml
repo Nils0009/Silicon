@@ -7,30 +7,36 @@
     <div class="container">
         <div class="courses-showcase-top">
             <div class="top-text">
+
                 <ul class="breadcrumb">
-                    <li><i class="fa-solid fa-house"></i><a href="index.html">Home</a></li>
+                    <li><i class="fa-solid fa-house"></i><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li class="active"><i class="fa-solid fa-angles-right"></i>Courses</li>
                 </ul>
                 <h1>Courses</h1>
             </div>
-            <form>
+
+            <form class="filters">
                 <div class="courses-showcase-search">
-                    <div class="select">
-                        <div class="selected" onclick="toggleDropdown()">All categories</div>
-                        <div class="select-options" id="myDropdown" style="display: none;">
+
+                    <div class="select">                       
+                        <div class="selected">All categories</div>
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="select-options" style="display:none">
+                            
                             <div class="option" data-value="all">All categories</div>
                             @if (Model.Categories != null)
                             {
                                 foreach (var category in Model.Categories)
                                 {
-                                    <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                                    <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>                              
                                 }
                             }
                         </div>
                     </div>
+
                     <div class="input-search-group">
-                        <input id="searchQuery" name="searchQuery" placeholder="Search courses" />
-                        <i class="fa-reqular fa-search"></i>
+                        <input id="searchQuery" name="searchQuery" placeholder="Search courses"/>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
             </form>
@@ -44,7 +50,7 @@
 
                 @foreach (var course in Model.Courses)
                 {
-                    <div class="course" onclick="location.href='@Url.Action("Details", "Courses", new { id = course})'">
+                    <div class="course" onclick="location.href='@Url.Action("Details", "Courses", new { id = course.Id })'">
                         <div class="courses-box">
 
                             <div class="courses-box-top">
@@ -52,13 +58,15 @@
                                 {
                                     <p>Best seller</p>
                                 }
-                                <div class="box-top-img">
-                                    <img src="~/images/courses-img-icon.svg" alt="">
-                                </div>
                             </div>
 
+                            <form method="post" asp-action="SavedItems" asp-controller="Account">
+                                <input type="hidden" name="courseId" value="@course.Id" />
+                                <button type="submit"><i class="fa-regular fa-bookmark"></i></button>
+                            </form>
 
-                            <a asp-controller="Courses" asp-action="Join" asp-route-id="@course.Id" class="btn btn-circle bookmark"><i class="fa-regular fa-bookmark"></i></a>
+                            
+                         
                             <img src="~/images/@course.ImgUrl" alt="@course.Title">
 
                             <div class="courses-text">
@@ -90,14 +98,32 @@
             </div>
         }
     </div>
-    <section class="readyTo-section">
-        <div class="container">
-            <div class="readyTo-content">
-                <p>Ready to get started?</p>
-                <h1>Take Your Skills to the Next Level</h1>
-                <button class="btn-theme">Work with us</button>
-            </div>
-            <img src="~/images/readyTo-illustration.svg" alt="">
+
+    @if(Model.Pagination != null && Model.Pagination.TotalPages > 1)
+    {
+        <div class="pagination">
+            @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+            {
+                if (i == Model.Pagination.CurrentPage)
+                {
+                    <span class="number active">@i</span>
+                }
+                else
+                {
+                    <a class="number" href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
+                }
+            }
         </div>
-    </section>
+    }
+</section>
+
+<section class="readyTo-section">
+    <div class="container">
+        <div class="readyTo-content">
+            <p>Ready to get started?</p>
+            <h1>Take Your Skills to the Next Level</h1>
+            <button class="btn-theme">Work with us</button>
+        </div>
+        <div><img src="~/images/readyTo-illustration.svg" alt=""></div>
+    </div>
 </section>

@@ -2,21 +2,35 @@ a {
     color: var(--color-theme);
     text-decoration: none;
     transition: all 0.25s ease-in-out;
+    padding: 5px;
 
     &:hover {
         text-decoration: underline;
     }
 }
+.active {
+    color: var(--color-gray-000);
+    background-color: var(--color-theme);
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
 
+    &:hover {
+        text-decoration: none;
+    }
+}
 .menu-link {
     text-decoration: none;
+    color: var(--color-gray-800);
     transition: color 0.25s ease-in-out;
 
     &:hover,
     &:active,
     &:focus,
     .active {
-        color: var(--color-theme);
+        color: var(--color-gray-000);
+        background-color: var(--color-theme);
         text-decoration: none;
+        border-radius: 10px;
     }
 }

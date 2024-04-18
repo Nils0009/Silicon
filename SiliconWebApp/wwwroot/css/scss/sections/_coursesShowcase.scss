@@ -1,33 +1,39 @@
 .courses-showcase {
-
     .container {
+        display: flex;
+        flex-direction: column;
 
         .courses-showcase-top {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             flex-direction: column;
             text-align: center;
             margin-top: 50px;
-            justify-content: space-between;
 
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 flex-direction: row;
-                justify-content: space-between;
+            }
+
+            @media (max-width: 992px) {
+                flex-direction: column;
             }
 
             .top-text {
-
-                h1 {
-                    @media(min-width: 768px) {
-                        padding-left: 20px;
-                    }
-                }
+                justify-content: center;
 
                 .breadcrumb {
-                    padding-left: 20px;
+                    display: flex;
+                    margin-bottom: 50px;
+                    justify-content: center;
+
+                    @media (min-width: 768px) {
+                        flex-direction: row;
+                        justify-content: flex-start;
+                    }
 
                     a {
                         display: inline-block;
-                        color: #191919;
                         text-decoration: none;
                         margin-right: 10px;
                         position: relative;
@@ -51,7 +57,6 @@
                     }
 
                     li {
-
                         i {
                             margin-right: 5px;
                         }
@@ -60,29 +65,60 @@
             }
 
             .courses-showcase-search {
-                position: relative;
+                margin-left: auto;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
 
-                @media(min-width: 768px) {
-                    flex-direction: row;
+                @media (max-width: 992px) {
+                    margin-right: auto;
                 }
 
-                .selected {
-                    display: flex;
-                    flex-direction: column;
-                }
+                .select {
+                    width: 200px;
+                    height: 46px;
+                    position: relative;
+                    margin-right: 5px;
 
-                .select-options {
-                    display: flex;
-                    flex-direction: column;
+                    i {
+                        position: absolute;
+                        top: 17px;
+                        right: 10px;
+                    }
+
+                    .selected {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding-right: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                    }
+
+                    .select-options {
+                        position: absolute;
+                        z-index: 1;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
+                        margin: 10px;
+                        background-color: var(--color-gray-600);
+                        color: var(--color-gray-000);
+                        border-radius: 5px;
+
+                        .option {
+
+                            &:hover {
+                                background-color: var(--color-theme-s);
+                            }
+                        }
+                    }
                 }
 
                 .input-search-group {
                     position: relative;
-                    margin-top: 10px;
+                    display: flex;
 
                     input {
                         padding: 10px;
@@ -91,11 +127,11 @@
                         border-radius: 5px;
                     }
 
-                    .fa-regular.fa-search {
+                    i {
+                        color: var(--color-gray-500);
                         position: absolute;
-                        top: 50%;
-                        right: 10px;
-                        transform: translateY(-50%);
+                        top: 18px;
+                        right: 8px;
                     }
                 }
             }
@@ -104,14 +140,16 @@
         .courses-showcase-content {
             display: grid;
             gap: 20px;
-            grid-template-columns: repeat(auto-fill, minmax (250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
-            @media(min-width: 992px) {
+            @media (min-width: 992px) {
                 grid-template-columns: auto auto auto;
             }
 
             .courses-box {
                 position: relative;
+                width: 100%;
+                height: 100%;
                 padding: 20px;
                 border-radius: 2%;
                 box-shadow: var(--box-theme-s-shadow);
@@ -120,18 +158,38 @@
                     width: 100%;
                 }
 
+                form {
+                    position: absolute;
+                    top: 10px;
+                    right: 25px;
+                    align-items: flex-end;
+
+                    button {
+                        width: 35px;
+                        height: 35px;
+                        background-color: var(--color-gray-100);
+                        color: var(--color-gray-800);
+                        border-radius: 25px;
+                        border: 1px solid var(--color-gray-400);
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+
+                        &:hover {
+                            background-color: var(--color-gray-800);
+                            color: var(--color-gray-100);
+                            border: 1px solid var(--color-gray-100);
+                        }
+                    }
+                }
+
                 .courses-box-top {
                     position: absolute;
                     display: flex;
                     justify-content: space-between;
                     width: 100%;
 
-                    .box-top-img {
-                        padding-top: 5px;
-                        padding-right: 45px;
-                    }
-
                     p {
+                        align-self: flex-start;
                         background-color: rgb(18, 196, 18);
                         padding: 5px;
                     }
@@ -140,7 +198,7 @@
                 .courses-text {
                     height: 120px;
 
-                    @media(min-width: 768px) {
+                    @media (min-width: 768px) {
                         height: 100px;
                     }
                 }
@@ -176,6 +234,29 @@
             display: flex;
             justify-content: center;
             margin-top: 30px;
+        }
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+
+        span {
+            padding: 20px;
+            margin: 5px;
+        }
+    }
+}
+.readyTo-section {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+
+        .readyTo-content {
+            flex-direction: column;
         }
     }
 }

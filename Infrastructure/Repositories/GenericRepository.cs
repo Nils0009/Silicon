@@ -73,7 +73,6 @@ public abstract class GenericRepository<TEntity>(DataContext context) where TEnt
         return null!;
     }
 
-
     public virtual async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
 	{
 		try
@@ -93,7 +92,7 @@ public abstract class GenericRepository<TEntity>(DataContext context) where TEnt
 		return false;
 	}
 
-	public virtual async Task<bool> ExistingAsync(Expression<Func<TEntity, bool>> predicate)
+    public virtual async Task<bool> ExistingAsync(Expression<Func<TEntity, bool>> predicate)
 	{
 		try
 		{

@@ -65,13 +65,13 @@
             <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
             <div class="mobile-menu">
                 <nav>
-                    <a class="btn-gray" asp-controller="Account" asp-action="Details">Overview</a>
-                    <a class="btn-gray" asp-controller="Courses" asp-action="Index">Courses</a>
-                    <a class="btn-gray" asp-controller="Contact" asp-action="Index">Contact</a>
-
+                    <a class="menu-link" asp-controller="Account" asp-action="Details">Overview</a>
+                    <a class="menu-link" asp-controller="Courses" asp-action="Index">Courses</a>
+                    <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+                    <a class="menu-link" asp-controller="Auth" asp-action="SignOut">Sign out</a>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a class="btn-gray" asp-controller="Admin" asp-action="Index">Admin</a>
+                        <a class="menu-link" asp-controller="Admin" asp-action="Index">Admin</a>
                     }
                 </nav>
             </div>
@@ -81,11 +81,11 @@
             <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
             <div class="mobile-menu">
                 <nav>
-                    <a class="btn-gray" asp-controller="Home" asp-action="Index" asp-fragment="showcase">Showcase</a>
-                    <a class="btn-gray" asp-controller="Home" asp-action="Index" asp-fragment="benefits">Features</a>
-                    <a class="btn-gray" asp-controller="Contact" asp-action="Index">Contact</a>
-                    <a class="btn-gray" asp-controller="Auth" asp-action="SignIn">Sign in</a>
-                    <a class="btn-gray" asp-controller="Auth" asp-action="SignUp">Sign up</a>
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="showcase">Showcase</a>
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="benefits">Features</a>
+                    <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+                    <a class="menu-link" asp-controller="Auth" asp-action="SignIn">Sign in</a>
+                    <a class="menu-link" asp-controller="Auth" asp-action="SignUp">Sign up</a>
                 </nav>
             </div>
         }

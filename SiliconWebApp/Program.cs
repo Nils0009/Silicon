@@ -6,20 +6,20 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiliconWebApp.Helpers.Middlewares;
-using SiliconWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("LocalDatabase")));
 builder.Services.AddScoped<AddressRepository>();
-builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<UserRepository>();
+
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<UserCourseRegistrationRepository>();
-builder.Services.AddScoped<CourseHttpService>();
+builder.Services.AddScoped<CourseService>();
+
 builder.Services.AddScoped<CategoryRepository>();
-builder.Services.AddScoped<CategoryHttpService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ContactRepository>();
 builder.Services.AddScoped<ServiceRepository>();

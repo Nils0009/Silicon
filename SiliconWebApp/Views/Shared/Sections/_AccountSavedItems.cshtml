@@ -17,81 +17,79 @@
                             <input id="fileUploader" type="file" name="file" hidden />
                             <label for="fileUploader" class="btn btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
                         </form>
-                        <img src="~/uploads/@Model.ProfileInfo.ProfileImgUrl" alt="profile image">
+                        <img src="~/uploads/@(Model.ProfileInfo.ProfileImgUrl ?? "")" alt="profile image">
                     </div>
-                    <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
-                    <p>@Model.ProfileInfo.Email</p>
+                    <h5>@(Model.ProfileInfo.FirstName ?? "") @(Model.ProfileInfo.LastName ?? "")</h5>
+                    <p>@(Model.ProfileInfo.Email ?? "")</p>
                 }
 
             </div>
             <nav>
                 <a asp-controller="Account" asp-action="Details" class="menu-link"><i class="fa-solid fa-gear"></i> Account Details</a>
                 <a asp-controller="Account" asp-action="Security" class="menu-link"><i class="fa-solid fa-lock"></i>Security</a>
-                <a asp-controller="Account" asp-action="SavedItems" class="btn-theme"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a asp-controller="Account" asp-action="SavedItems" class="active"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
                 <a asp-controller="Auth" asp-action="SignOut" class="menu-link"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
             </nav>
         </div>
 
         <div class="accountSavedItems-main">
-
             <div class="accountSavedItems-top">
-                <h3>Saved Items</h3>          
+                <h3>Saved Items</h3>
                 <button><i class="fa-solid fa-trash"></i>Delete all</button>
             </div>
 
-            @if(Model.UserCourses != null)
+            @if (Model.UserCourses != null)
             {
                 @foreach (var course in Model.UserCourses)
                 {
-                    <div class="courses-box">
-
+                    if (course != null)
+                    {
+                        <div class="courses-box">
                             <div class="courses-box-top">
-                            @if (course.IsBestSeller)
+                                @if (course.IsBestSeller)
+                                {
+                                    <p>Best seller</p>
+                                }
+
+                            </div>
+                            <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/images/@(course.ImgUrl ?? "")" alt="">
+                            </a>
+
+                            <form method="post" asp-action="DeleteSavedCourse" asp-controller="Account">
+                                <input type="hidden" name="courseId" value="@course.Id" />
+                                
+                                <button type="submit"><i class="fa-regular fa-bookmark"></i>
+                                    <p class="deleteText">Delete</p>
+                                </button>
+                            </form>
+
+                            <div class="courses-text">
+                                <h5>@(course.Title ?? "")</h5>
+                                <p>@(course.Author ?? "")</p>
+                            </div>
+                            @if (course.DiscountPrice != null)
                             {
-                                <p>Best seller</p>
-                            }
-                                <div class="box-top-img">
-                                    <img src="~/images/courses-img-icon.svg" alt="">
+                                <div class="prices">
+                                    <p><s>@course.Price $</s></p>
+                                    <p>@course.DiscountPrice $</p>
                                 </div>
+                            }
+                            else
+                            {
+                                <div class="prices">
+                                    <p>@course.Price $</p>
+                                </div>
+                            }
+                            <div class="hour-rating">
+                                <p><i class="fa-regular fa-clock"></i>@(course.Hours ?? "")</p>
+                                <p><i class="fa-regular fa-thumbs-up"></i>@(course.LikesInProcent ?? "")% (@(course.LikesInNumber ?? "") k)</p>
                             </div>
-
-
-
-                        <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/images/@course.ImgUrl" alt="">
-                        </a>
-
-                        <div class="courses-text">
-                            <h5>@course.Title</h5>
-                            <p>@course.Author</p>
                         </div>
-
-                        @if (course.DiscountPrice != null)
-                        {
-                            <div class="prices">
-                                <p><s>@course.Price $</s></p>
-                                <p>@course.DiscountPrice $</p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="prices">
-                                <p>@course.Price $</p>
-                            </div>
-                        }
-
-                        <div class="hour-rating">
-                            <p><i class="fa-regular fa-clock"></i>@course.Hours</p>
-                            <p><i class="fa-regular fa-thumbs-up"></i>@course.LikesInProcent% (@course.LikesInNumber k)</p>
-                        </div>
-                    </div>
+                    }
                 }
             }
-           
-
-
-
         </div>
-
     </div>
 </section>
+

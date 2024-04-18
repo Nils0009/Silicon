@@ -21,10 +21,9 @@ public class AccountBasicInfoViewModel
     [Display(Name = "Email address", Prompt = "Enter your email address")]
     public string Email { get; set; } = null!;
 
-    [Required(ErrorMessage = "Enter a valid phone")]
     [DataType(DataType.PhoneNumber)]
     [Display(Name = "Phone", Prompt = "Enter your phone")]
-    public string Phone { get; set; } = null!;
+    public string? Phone { get; set; }
 
     [DataType(DataType.MultilineText)]
     [Display(Name = "Bio", Prompt = "Add a short bio..")]

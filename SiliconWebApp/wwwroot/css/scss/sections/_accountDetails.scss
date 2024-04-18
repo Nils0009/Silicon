@@ -33,10 +33,11 @@
                 justify-content: center;
                 align-items: center;
                 padding: 10px;
-
+                gap: 5px;
 
                 a {
                     margin: 5px;
+                    padding: 5px;
                     justify-content: left;
                 }
 
@@ -126,7 +127,23 @@
                     grid-template-areas: "firstName lastName" "emailAddress phoneNumber" "bioInfo bioInfo" "btns btns";
 
 
+                    span {
+                        position: relative;
 
+                        &.field-validation-error {
+                            color: var(--color-danger);
+
+                            &::after {
+                                position: absolute;
+                                right: 10px;
+                                top: -10px;
+                                z-index: 10;
+                                font-size: 2em;
+                                display: block;
+                                content: '\2BBF';
+                            }
+                        }
+                    }
 
                     .accountFormBox {
                         display: flex;

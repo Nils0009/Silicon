@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Models;
 using SiliconWebApp.ViewModels.Sections;
 
 namespace SiliconWebApp.ViewModels.Views;

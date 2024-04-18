@@ -95,19 +95,34 @@ a {
   color: var(--color-theme);
   text-decoration: none;
   transition: all 0.25s ease-in-out;
+  padding: 5px;
 }
 a:hover {
   text-decoration: underline;
 }
 
+.active {
+  color: var(--color-gray-000);
+  background-color: var(--color-theme);
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.active:hover {
+  text-decoration: none;
+}
+
 .menu-link {
   text-decoration: none;
+  color: var(--color-gray-800);
   transition: color 0.25s ease-in-out;
 }
 .menu-link:hover, .menu-link:active, .menu-link:focus,
 .menu-link .active {
-  color: var(--color-theme);
+  color: var(--color-gray-000);
+  background-color: var(--color-theme);
   text-decoration: none;
+  border-radius: 10px;
 }
 
 .btn-theme {
@@ -327,6 +342,7 @@ header .container #logo #darkmode-logo {
   display: block;
 }
 header .container .profile-img {
+  z-index: 9999;
   grid-area: profile-img;
 }
 header .container .profile-img a img {
@@ -365,8 +381,10 @@ header .container .account-buttons {
   }
 }
 header .container .mobile-menu-btn {
-  grid-area: mobile;
   position: relative;
+  z-index: 9999;
+  grid-area: mobile;
+  color: var(--color-gray-800);
   background: none;
   border: none;
   font-size: 1.5em;
@@ -379,10 +397,13 @@ header .container .mobile-menu-btn {
 }
 header .container .mobile-menu {
   position: absolute;
-  top: 10%;
-  right: 10%;
-  width: 20%;
+  z-index: 9998;
+  width: 80%;
+  right: 11%;
+  top: 20px;
+  background-color: var(--color-gray-000);
   text-align: center;
+  align-self: center;
   justify-content: center;
 }
 header .container .mobile-menu nav {
@@ -390,9 +411,22 @@ header .container .mobile-menu nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 header .container .mobile-menu nav a {
-  width: 100%;
+  width: 70%;
+  margin: 5px 0px 5px 0px;
+  padding: 5px;
+  border-radius: 25px;
+  background-color: var(--color-gray-200);
+  border: 1px solid var(--color-gray-700);
+  box-shadow: var(--box-shadow-s);
+}
+header .container .mobile-menu nav a:hover {
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-000);
+  box-shadow: var(--box-shadow-l);
 }
 @media (min-width: 1200px) {
   header .container .mobile-menu {
@@ -999,30 +1033,44 @@ main .showcase .container .background-image {
   }
 }
 
+.courses-showcase .container {
+  display: flex;
+  flex-direction: column;
+}
 .courses-showcase .container .courses-showcase-top {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   text-align: center;
   margin-top: 50px;
-  justify-content: space-between;
 }
 @media (min-width: 768px) {
   .courses-showcase .container .courses-showcase-top {
     flex-direction: row;
-    justify-content: space-between;
   }
 }
-@media (min-width: 768px) {
-  .courses-showcase .container .courses-showcase-top .top-text h1 {
-    padding-left: 20px;
+@media (max-width: 992px) {
+  .courses-showcase .container .courses-showcase-top {
+    flex-direction: column;
   }
+}
+.courses-showcase .container .courses-showcase-top .top-text {
+  justify-content: center;
 }
 .courses-showcase .container .courses-showcase-top .top-text .breadcrumb {
-  padding-left: 20px;
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .courses-showcase .container .courses-showcase-top .top-text .breadcrumb {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }
 .courses-showcase .container .courses-showcase-top .top-text .breadcrumb a {
   display: inline-block;
-  color: #191919;
   text-decoration: none;
   margin-right: 10px;
   position: relative;
@@ -1045,28 +1093,53 @@ main .showcase .container .background-image {
   margin-right: 5px;
 }
 .courses-showcase .container .courses-showcase-top .courses-showcase-search {
-  position: relative;
+  margin-left: auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
-@media (min-width: 768px) {
+@media (max-width: 992px) {
   .courses-showcase .container .courses-showcase-top .courses-showcase-search {
-    flex-direction: row;
+    margin-right: auto;
   }
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .selected {
-  display: flex;
-  flex-direction: column;
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select {
+  width: 200px;
+  height: 46px;
+  position: relative;
+  margin-right: 5px;
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .select-options {
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select i {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+}
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select .selected {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select .select-options {
+  position: absolute;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--color-gray-600);
+  color: var(--color-gray-000);
+  border-radius: 5px;
+}
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .select .select-options .option:hover {
+  background-color: var(--color-theme-s);
 }
 .courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group {
   position: relative;
-  margin-top: 10px;
+  display: flex;
 }
 .courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group input {
   padding: 10px;
@@ -1074,16 +1147,16 @@ main .showcase .container .background-image {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group .fa-regular.fa-search {
+.courses-showcase .container .courses-showcase-top .courses-showcase-search .input-search-group i {
+  color: var(--color-gray-500);
   position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  top: 18px;
+  right: 8px;
 }
 .courses-showcase .container .courses-showcase-content {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax 250px, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 @media (min-width: 992px) {
   .courses-showcase .container .courses-showcase-content {
@@ -1092,6 +1165,8 @@ main .showcase .container .background-image {
 }
 .courses-showcase .container .courses-showcase-content .courses-box {
   position: relative;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   border-radius: 2%;
   box-shadow: var(--box-theme-s-shadow);
@@ -1099,17 +1174,35 @@ main .showcase .container .background-image {
 .courses-showcase .container .courses-showcase-content .courses-box img {
   width: 100%;
 }
+.courses-showcase .container .courses-showcase-content .courses-box form {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  align-items: flex-end;
+}
+.courses-showcase .container .courses-showcase-content .courses-box form button {
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  border-radius: 25px;
+  border: 1px solid var(--color-gray-400);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.courses-showcase .container .courses-showcase-content .courses-box form button:hover {
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-100);
+}
 .courses-showcase .container .courses-showcase-content .courses-box .courses-box-top {
   position: absolute;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.courses-showcase .container .courses-showcase-content .courses-box .courses-box-top .box-top-img {
-  padding-top: 5px;
-  padding-right: 45px;
-}
 .courses-showcase .container .courses-showcase-content .courses-box .courses-box-top p {
+  align-self: flex-start;
   background-color: rgb(18, 196, 18);
   padding: 5px;
 }
@@ -1145,6 +1238,24 @@ main .showcase .container .background-image {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+.courses-showcase .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.courses-showcase .pagination span {
+  padding: 20px;
+  margin: 5px;
+}
+
+.readyTo-section .container {
+  display: flex;
+  flex-direction: row;
+}
+.readyTo-section .container .readyTo-content {
+  flex-direction: column;
 }
 
 .courseDescription-showcase {
@@ -1595,9 +1706,11 @@ main .showcase .container .background-image {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  gap: 5px;
 }
 .accountDetails .container .profileInfo nav a {
   margin: 5px;
+  padding: 5px;
   justify-content: left;
 }
 @media (min-width: 768px) {
@@ -1675,6 +1788,21 @@ main .showcase .container .background-image {
   text-align: left;
   grid-template-columns: auto auto;
   grid-template-areas: "firstName lastName" "emailAddress phoneNumber" "bioInfo bioInfo" "btns btns";
+}
+.accountDetails .container .accountDetailsForms .basicInfo form span {
+  position: relative;
+}
+.accountDetails .container .accountDetailsForms .basicInfo form span.field-validation-error {
+  color: var(--color-danger);
+}
+.accountDetails .container .accountDetailsForms .basicInfo form span.field-validation-error::after {
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  z-index: 10;
+  font-size: 2em;
+  display: block;
+  content: "⮿";
 }
 .accountDetails .container .accountDetailsForms .basicInfo form .accountFormBox {
   display: flex;
@@ -1812,6 +1940,7 @@ main .showcase .container .background-image {
 }
 .accountSecurity .container .profileInfo nav a {
   margin: 5px;
+  padding: 5px;
   justify-content: left;
 }
 @media (min-width: 768px) {
@@ -1970,6 +2099,7 @@ main .showcase .container .background-image {
 }
 .accountSavedItems .container .profileInfo nav a {
   margin: 5px;
+  padding: 5px;
   justify-content: left;
 }
 @media (min-width: 768px) {
@@ -2026,40 +2156,71 @@ main .showcase .container .background-image {
 .accountSavedItems .container .accountSavedItems-main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax 250px, 1fr);
+  justify-content: center;
 }
 .accountSavedItems .container .accountSavedItems-main .accountSavedItems-top {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  align-self: center;
+  margin-left: auto;
 }
 .accountSavedItems .container .accountSavedItems-main .accountSavedItems-top button {
+  width: 100px;
+  height: 40px;
   background-color: transparent;
   border-color: red;
   border-radius: 10px;
   color: red;
-  padding: 5px 25px;
+}
+.accountSavedItems .container .accountSavedItems-main .accountSavedItems-top h3 {
+  padding-top: 2px;
+  margin-right: 10px;
 }
 .accountSavedItems .container .accountSavedItems-main .courses-box {
   position: relative;
   padding: 20px;
   border-radius: 2%;
   box-shadow: var(--box-theme-s-shadow);
+  margin: 10px;
 }
 .accountSavedItems .container .accountSavedItems-main .courses-box img {
   width: 100%;
 }
-.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top {
+.accountSavedItems .container .accountSavedItems-main .courses-box form {
   position: absolute;
-  display: flex;
-  justify-content: space-between;
+  top: 10px;
+  align-items: flex-end;
   width: 100%;
 }
-.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top .box-top-img {
-  padding-top: 5px;
-  padding-right: 45px;
+.accountSavedItems .container .accountSavedItems-main .courses-box form button {
+  position: absolute;
+  right: 50px;
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  border-radius: 25px;
+  border: 1px solid var(--color-gray-400);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.accountSavedItems .container .accountSavedItems-main .courses-box .courses-box-top p {
-  background-color: rgb(18, 196, 18);
-  padding: 5px;
+.accountSavedItems .container .accountSavedItems-main .courses-box form button .deleteText {
+  display: none;
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box form button:hover {
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-100);
+}
+.accountSavedItems .container .accountSavedItems-main .courses-box form button:hover .deleteText {
+  position: absolute;
+  display: block;
+  bottom: 25px;
+  right: -17px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
 }
 .accountSavedItems .container .accountSavedItems-main .courses-box .courses-text {
   height: 120px;

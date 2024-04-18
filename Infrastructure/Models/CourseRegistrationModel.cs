@@ -17,5 +17,5 @@ public class CourseRegistrationModel
 
     public string Category { get; set; } = null!;
 
-    public IEnumerable<UserCourseRegistrationEntity> UserCourseRegistrations { get; set; } = null!;
+    public ICollection<UserCourseRegistrationEntity> UserCourseRegistration { get; set; } = [];
 }
