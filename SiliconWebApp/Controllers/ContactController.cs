@@ -13,6 +13,7 @@ public class ContactController(HttpClient http) : Controller
 {
     private readonly HttpClient _http = http;
 
+    [HttpGet]
     public IActionResult Index()
     {
         return View(new ContactViewModel());
@@ -20,35 +21,40 @@ public class ContactController(HttpClient http) : Controller
 
     #region HttpPost-ContactService
     [HttpPost]
-    public async Task<IActionResult> ContactServiceForm(ContactRegistrationViewModel viewModel)
+    public async Task<IActionResult> ContactService(ContactRegistrationViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                viewModel.ContactServiceReg = new ContactServiceRegistrationModel
-                {
-                    Order = viewModel.SelectedService == "Order",
-                    Support = viewModel.SelectedService == "Support"
-                };
+                viewModel.ContactServiceReg = new ContactServiceRegistrationModel()
+                    {
+                        Order = viewModel.SelectedService == "Order",
+                        Support = viewModel.SelectedService == "Support"
+                    };
 
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _http.PostAsync("https://localhost:7277/api/Contact", content);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["ConfirmMessage"] = "Your message has been sent";
+                    viewModel.ConfirmMessage = "Your message has been sent";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    viewModel.ErrorMessage = "Something went wrong, please try again later";
                 }
             }
-
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Something went wrong please try agen later";
                 Debug.WriteLine(ex.Message);
+                viewModel.ErrorMessage = "Something went wrong, please try again later";
             }
         }
-
-        return RedirectToAction("Index");
+        viewModel.ErrorMessage = "Something went wrong please try again later";
+        return View("Index", new ContactViewModel { ContactServiceForm = viewModel });
     }
+
     #endregion
 }

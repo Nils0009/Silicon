@@ -15,6 +15,7 @@
     background: var(--color-theme);
     color: white;
     border: none;
+    box-shadow: var(--box-theme-shadow);
 
     &:hover {
         text-decoration: none;
@@ -44,6 +45,7 @@
     background: var(--color-gray-200);
     color: var(--color-gray-800);
     border: none;
+    box-shadow: var(--box-theme-shadow);
 
     &:hover {
         text-decoration: none;
@@ -63,6 +65,7 @@
         display: inline-block;
         width: 36px;
         height: 25px;
+        box-shadow: var(--box-theme-shadow);
 
         & input {
             opacity: 0;

@@ -43,6 +43,7 @@
             .btn-theme {
                 margin-top: 30px;
                 width: 100%;
+                box-shadow: var(--box-theme-shadow);
 
                 @media(min-width: 1200px) {
                     width: 50%;

@@ -18,13 +18,17 @@ public class CoursesController(CourseService courseService) : ControllerBase
     {
 		try
 		{
-			var course = await _courseService.GetOneCourseAsync(id);
-			if (course != null) 
-			{
-				return Ok(course);
-			}
+            if(ModelState.IsValid)
+            {
+                var course = await _courseService.GetOneCourseAsync(id);
+                if (course != null)
+                {
+                    return Ok(course);
+                }
 
-			return NotFound();
+                return NotFound();
+            }
+
 		}
 		catch (Exception ex)
 		{

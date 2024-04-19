@@ -37,14 +37,17 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     {
         try
         {
-            var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
-
-            if (existingSubscriber != null)
+            if(ModelState.IsValid)
             {
-                return Ok(existingSubscriber);
-            }
+                var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
 
-            return NotFound();
+                if (existingSubscriber != null)
+                {
+                    return Ok(existingSubscriber);
+                }
+
+                return NotFound();
+            }
 
         }
         catch (Exception ex)
@@ -120,16 +123,18 @@ public class SubscribersController(SubscriberService subscriberService) : Contro
     {
         try
         {
-            var existingSubscriber = _subscriberService.GetOneNewsletterSubscriberAsync(email);
-
-            if (existingSubscriber != null)
+            if (ModelState.IsValid)
             {
-                await _subscriberService.DeleteNewsletterSubscriberAsync(email);
+                var existingSubscriber = await _subscriberService.GetOneNewsletterSubscriberAsync(email);
 
-                return Ok("Subscriber was deleted");
+                if (existingSubscriber != null)
+                {
+                    await _subscriberService.DeleteNewsletterSubscriberAsync(email);
+
+                    return Ok("Subscriber was deleted");
+                }
+                return NotFound();
             }
-            return NotFound();
-
         }
         catch (Exception ex)
         {

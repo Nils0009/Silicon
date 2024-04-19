@@ -1,0 +1,36 @@
+﻿@model ContactRegistrationViewModel
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.ConfirmMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.ConfirmMessage
+    </div>
+}
+<form method="post" asp-controller="Contact" asp-action="ContactService" novalidate>
+    <label asp-for="@Model.FullName"></label>
+    <span asp-validation-for="@Model.FullName"></span>
+    <input asp-for="@Model.FullName" name="FullName" />
+
+    <label asp-for="@Model.EmailAddress"></label>
+    <span asp-validation-for="@Model.EmailAddress"></span>
+    <input asp-for="@Model.EmailAddress" name="EmailAddress" />
+
+    <label asp-for="@Model.SelectedService">Select a service:</label>
+    <select asp-for="@Model.SelectedService" class="form-control" id="SelectedService" name="SelectedService">
+        <option value="Order">Order</option>
+        <option value="Support">Support</option>
+    </select>
+
+    <label asp-for="@Model.Message"></label>
+    <span asp-validation-for="@Model.Message"></span>
+    <input asp-for="@Model.Message" name="Message" />
+    <button type="submit" class="btn-theme">Send Contact Request</button>
+</form>
+
+@await Html.PartialAsync("/Views/Shared/_ValidationScript.cshtml")

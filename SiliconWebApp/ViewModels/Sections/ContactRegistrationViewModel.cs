@@ -25,7 +25,6 @@ public class ContactRegistrationViewModel
     [Display(Name = "Select a service")]
     public string? SelectedService { get; set; }
     public ContactServiceRegistrationModel ContactServiceReg { get; set; } = new ContactServiceRegistrationModel();
-
     public string? ConfirmMessage { get; set; }
     public string? ErrorMessage { get; set; }
 }

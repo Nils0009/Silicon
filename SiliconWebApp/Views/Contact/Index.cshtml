@@ -1,39 +1,44 @@
 ﻿@model ContactViewModel
+
 @{
     ViewData["Title"] = "Contact";
 }
 <section class="contactShowcase">
-    @if (TempData["ConfirmMessage"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            @TempData["ConfirmMessage"]
-        </div>
-    }
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @TempData["ErrorMessage"]
-        </div>
-    }
     <div class="container">
+       
         <div class="top-text">
             <ul class="breadcrumb">
-                <li><i class="fa-solid fa-house"></i><a href="index.html">Home</a></li>
-                <li><i class="fa-solid fa-angles-right"></i><a href="Contact.html"></a>Contact</li>
+                <li><i class="fa-solid fa-house"></i><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li><i class="fa-solid fa-angles-right"></i><a asp-action="Index" asp-controller="Contact"></a>Contact</li>
             </ul>
         </div>
         <h1>@Model.Title</h1>
         <div class="contactUs">
-            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactEmailUs.cshtml", Model.EmailUs)
-            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactCareers.cshtml", Model.Careers)
+            <div class="email-info">
+                <img src="@Model.EmailUs.Image.ImageUrl" alt="@Model.EmailUs.Image.AltText">
+                <div class="email-info-text">
+                    <h5>@Model.Title</h5>
+                    <p>@Model.EmailUs.Description</p>
+                    <a asp-action="@Model.EmailUs.Link.ActionName" asp-controller="@Model.EmailUs.Link.ControllerName">@Model.EmailUs.Link.Text<i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="career-info">
+                <img src="@Model.Careers.Image.ImageUrl" alt="@Model.Careers.Image.AltText">
+                <div class="career-info-text">
+                    <h5>@Model.Title</h5>
+                    <p>@Model.Careers.Description</p>
+                    <a asp-action="@Model.Careers.Link.ActionName" asp-controller="@Model.Careers.Link.ControllerName">@Model.Careers.Link.Text<i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
 
         <div class="contactForm">
-            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactMainForm.cshtml", Model.ContactServiceForm)
+            <h2>Get In Contact With Us</h2>
+            @await Html.PartialAsync("~/Views/Shared/Sections/_ContactSection.cshtml", @Model.ContactServiceForm)
         </div>
     </div>
     <div class="contactMap">
         <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText">
     </div>
-    
+
 </section>

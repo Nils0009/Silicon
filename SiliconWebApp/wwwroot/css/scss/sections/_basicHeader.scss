@@ -61,12 +61,16 @@ header {
             nav {
                 display: flex;
                 gap: 15px;
-                
             }
         }
 
         .btn-switch {
             grid-area: switch;
+
+            .switch {
+                border-radius: 10px;
+                box-shadow: var(--box-theme-shadow);
+            }
 
             .darklabel {
                 margin-right: 10px;

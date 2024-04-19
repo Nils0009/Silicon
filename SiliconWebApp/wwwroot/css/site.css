@@ -138,6 +138,7 @@ a:hover {
   background: var(--color-theme);
   color: white;
   border: none;
+  box-shadow: var(--box-theme-shadow);
 }
 .btn-theme:hover {
   text-decoration: none;
@@ -181,6 +182,7 @@ a:hover {
   background: var(--color-gray-200);
   color: var(--color-gray-800);
   border: none;
+  box-shadow: var(--box-theme-shadow);
 }
 .btn-gray:hover {
   text-decoration: none;
@@ -198,6 +200,7 @@ a:hover {
   display: inline-block;
   width: 36px;
   height: 25px;
+  box-shadow: var(--box-theme-shadow);
 }
 .btn-switch .switch input {
   opacity: 0;
@@ -366,6 +369,10 @@ header .container #menu nav {
 header .container .btn-switch {
   grid-area: switch;
 }
+header .container .btn-switch .switch {
+  border-radius: 10px;
+  box-shadow: var(--box-theme-shadow);
+}
 header .container .btn-switch .darklabel {
   margin-right: 10px;
 }
@@ -482,6 +489,7 @@ main .showcase .container .content h1 {
 main .showcase .container .content .btn-theme-s {
   margin-top: 30px;
   margin-bottom: 100px;
+  box-shadow: var(--box-theme-shadow);
 }
 @media (min-width: 1200px) {
   main .showcase .container .content .btn-theme-s {
@@ -563,6 +571,7 @@ main .showcase .container .background-image {
 }
 .benefits .container #b-box:hover {
   background-color: white;
+  box-shadow: var(--box-theme-shadow);
 }
 .benefits .container #b-box a {
   text-decoration: none;
@@ -698,6 +707,7 @@ main .showcase .container .background-image {
 .managework .container .managework-content .btn-theme {
   margin-top: 30px;
   width: 100%;
+  box-shadow: var(--box-theme-shadow);
 }
 @media (min-width: 1200px) {
   .managework .container .managework-content .btn-theme {
@@ -775,6 +785,9 @@ main .showcase .container .background-image {
   margin: auto;
   margin-top: 20px;
 }
+.downloadApp .container .downloadApp-content .appstore-content a img {
+  box-shadow: var(--box-theme-shadow);
+}
 @media (min-width: 768px) {
   .downloadApp .container .downloadApp-content .appstore-content a {
     padding-top: 30px;
@@ -803,6 +816,9 @@ main .showcase .container .background-image {
 .downloadApp .container .downloadApp-content .googleplay-content a {
   margin: auto;
   margin-top: 20px;
+}
+.downloadApp .container .downloadApp-content .googleplay-content a img {
+  box-shadow: var(--box-theme-shadow);
 }
 @media (min-width: 768px) {
   .downloadApp .container .downloadApp-content .googleplay-content a {
@@ -902,16 +918,11 @@ main .showcase .container .background-image {
 .subscribe .container .section-title {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 .subscribe .container .section-title h1 {
   text-align: center;
-}
-@media (min-width: 768px) {
-  .subscribe .container .section-title {
-    justify-content: left;
-    margin-left: 14%;
-  }
 }
 .subscribe .container .section-title img {
   display: none;
@@ -922,7 +933,6 @@ main .showcase .container .background-image {
   }
 }
 .subscribe .container .signup-content {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -937,40 +947,33 @@ main .showcase .container .background-image {
     text-align: left;
   }
 }
-.subscribe .container .signup-content h5 {
-  margin-bottom: 30px;
-}
-@media (min-width: 768px) {
-  .subscribe .container .signup-content h5 {
-    position: absolute;
-    top: 0;
-    left: -30px;
-    width: 150px;
-  }
-}
-@media (min-width: 1200px) {
-  .subscribe .container .signup-content h5 {
-    left: 150px;
-  }
-}
 .subscribe .container .signup-content form .checkbox-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.subscribe .container .signup-content form .checkbox-content .ch-b {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
+  grid-template-columns: auto;
 }
 @media (min-width: 768px) {
-  .subscribe .container .signup-content form .checkbox-content .ch-b {
-    justify-content: left;
+  .subscribe .container .signup-content form .checkbox-content {
+    grid-template-columns: 200px 1fr;
   }
 }
-.subscribe .container .signup-content form .checkbox-content .ch-b label {
+.subscribe .container .signup-content form .checkbox-content .checkbox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+@media (min-width: 768px) {
+  .subscribe .container .signup-content form .checkbox-content .checkbox {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+.subscribe .container .signup-content form .checkbox-content .checkbox .ch-b {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 5px;
+}
+.subscribe .container .signup-content form .checkbox-content .checkbox .ch-b label {
   margin-top: 0px;
-  margin-left: 5px;
+  padding-left: 5px;
 }
 .subscribe .container .signup-content form .signup-email {
   display: flex;
@@ -983,20 +986,27 @@ main .showcase .container .background-image {
 @media (min-width: 768px) {
   .subscribe .container .signup-content form .signup-email {
     flex-direction: row;
+    justify-content: center;
   }
 }
 .subscribe .container .signup-content form .signup-email input {
   height: 50px;
+  width: 100%;
+  margin-right: 20px;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .subscribe .container .signup-content form .signup-email input {
-    margin-right: 30px;
-    width: 80%;
+    margin-right: 0px;
   }
 }
 .subscribe .container .signup-content form .signup-email button {
   height: 50px;
   width: 150px;
+}
+@media (max-width: 768px) {
+  .subscribe .container .signup-content form .signup-email button {
+    width: 100%;
+  }
 }
 .subscribe .container .signup-content form span {
   width: 100%;

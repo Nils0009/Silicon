@@ -17,15 +17,19 @@ namespace SiliconWebApi.Controllers
         {
             try
             {
-                var contact = await _contactService.GetOneContactAsync(email);
-                if (contact != null) 
+                if(ModelState.IsValid)
                 {
-                    return Ok(contact);
+                    var contact = await _contactService.GetOneContactAsync(email);
+                    if (contact != null)
+                    {
+                        return Ok(contact);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
                 }
-                else 
-                {
-                    return NotFound();
-                }
+
             }
             catch (Exception ex)
             {
